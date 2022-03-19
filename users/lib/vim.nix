@@ -1,5 +1,11 @@
 { pkgs, ... }: {
   enable = true;
+
+  plugins = [
+    pkgs.vimPlugins.ale
+    pkgs.vimPlugins.vim-unimpaired
+  ];
+  
   settings = {
     background = "dark";
     copyindent = false;
@@ -12,6 +18,7 @@
     tabstop = 2;
     undofile = true;
   };
+
   extraConfig = ''
     " Standard Settings
     set nocompatible
@@ -29,9 +36,9 @@
     set showtabline=2
     set guioptions-=e
     set splitbelow splitright
-    set backupdir=.backup/,~/.backup/,/tmp//
-    set directory=.swp/,~/.swp/,/tmp//
-    set undodir=.undo/,~/.undo/,/tmp//
+    set backupdir=~/.local/vim/backup//,/tmp//
+    set directory=~/.local/vim/swp//,/tmp//
+    set undodir=~/.local/vim/undo//,/tmp//
     map <Space> <Leader>
 
     " ALE Settings
@@ -81,7 +88,4 @@
     \  'go': ['gofmt', 'goimports']
     \}
   '';
-  plugins = [
-    pkgs.vimPlugins.ale
-  ];
 }
