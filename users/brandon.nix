@@ -12,6 +12,7 @@
     packages = with pkgs; [
       deno
       kubectl
+      lima
       ripgrep
     ];
   };
