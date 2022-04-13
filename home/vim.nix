@@ -6,5 +6,5 @@
     pkgs.vimPlugins.vim-unimpaired
   ];
 
-  extraConfig = import ./files/vimrc;
+  extraConfig = builtins.readFile ./files/vimrc;
 }
