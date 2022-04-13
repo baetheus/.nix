@@ -7,7 +7,6 @@
   shellAliases = {
     ll = "ls -alhG"; # Pretty ll
     vi = "vim"; # Prefer vim
-    grep = "rg"; # Prefer rg
   };
 
   history = {

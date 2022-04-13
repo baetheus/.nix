@@ -1,9 +1,9 @@
 {
-  description = "Brandon's System Configuration";
+  description = "Brandon's System Configurations";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
-
+    
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -13,30 +13,49 @@
 
   outputs = { darwin, nixpkgs, home-manager, ... }:
   let
-    inherit (nixpkgs.lib) genAttrs;
-
-    system = "x86_64-darwin";
-    hostnames = ["euclid" "hopper"];
-
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
+    darwinSystems = [
+      {
+        hostname = "euclid";
+        system = "x86_64-darwin";
+        username = "brandon";
+        name = "Brandon Blaylock";
+        email = "brandon@null.pub";
+      }
+      {
+        hostname = "hopper";
+        system = "x86_64-darwin";
+        username = "brandon";
+        name = "Brandon Blaylock";
+        email = "brandon@null.pub";
+      }
+      {
+        hostname = "parks";
+        system = "aarch64-darwin";
+        username = "brandonblaylock";
+        name = "Brandon Blaylock";
+        email = "bblaylock@cogility.com";
+      }
+    ];
   in {
-    darwinConfigurations = genAttrs hostnames (hostname:
-      darwin.lib.darwinSystem {
-        inherit system pkgs;
+    darwinConfigurations = builtins.foldl' (a: { hostname, system, username,
+    name, email }: a // {
+      "${hostname}" = darwin.lib.darwinSystem rec {
+        inherit system;
         inputs = { inherit darwin; };
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
         modules = [
-          ./configuration.nix
+          ./config/darwin.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.brandon = import ./users/brandon.nix;
+            home-manager.users.brandon = import ./home/user.nix { inherit pkgs username name email; };
           }
         ];
-      }
-    );
+      };
+    }) {} darwinSystems;
   };
 }

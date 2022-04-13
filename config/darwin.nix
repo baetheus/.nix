@@ -27,14 +27,8 @@
   # Users
   users.nix.configureBuildUsers = true;
 
-  # Programs
-  programs.zsh.enable = true;
-
   # Services
   services.nix-daemon.enable = true;
-
-  # Environment
-  environment.pathsToLink = [ "/share/zsh" ];
 
   # System
   system = {

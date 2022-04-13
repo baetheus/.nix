@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, username, name, email, ... }:
 
 {
   home = {
-    username = "brandon";
+    inherit username;
     stateVersion = "21.11";
 
     sessionVariables = {
@@ -20,13 +20,8 @@
   programs = {
     home-manager.enable = true;
 
-    zsh = import ./lib/zsh.nix;
-
-    vim = import ./lib/vim.nix { inherit pkgs; };
-
-    git = import ./lib/git.nix {
-      name = "Brandon Blaylock";
-      email = "brandon@null.pub";
-    };
+    zsh = import ./zsh.nix;
+    vim = import ./vim.nix { inherit pkgs; };
+    git = import ./git.nix { inherit name email; };
   };
 }
