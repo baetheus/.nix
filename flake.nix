@@ -37,8 +37,13 @@
       }
     ];
   in {
-    darwinConfigurations = builtins.foldl' (a: { hostname, system, username,
-    name, email }: a // {
+    darwinConfigurations = builtins.foldl' (configs: {
+      hostname,
+      system,
+      username,
+      name,
+      email
+    }: configs // {
       "${hostname}" = darwin.lib.darwinSystem rec {
         inherit system;
         inputs = { inherit darwin; };
@@ -52,7 +57,9 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.brandon = import ./home/user.nix { inherit pkgs username name email; };
+            home-manager.users.brandon = import ./home/user.nix {
+              inherit pkgs username name email;
+            };
           }
         ];
       };

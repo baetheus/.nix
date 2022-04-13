@@ -6,4 +6,5 @@
   aliases = {
     ll = "log --oneline";
   };
+  extraConfig.init.defaultBranch = "main";
 }
