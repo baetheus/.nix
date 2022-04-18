@@ -14,6 +14,7 @@
       kubectl
       lima
       ripgrep
+      helix
     ];
   };
 

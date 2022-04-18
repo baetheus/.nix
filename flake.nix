@@ -57,7 +57,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.brandon = import ./home/user.nix {
+            home-manager.users."${username}" = import ./home/user.nix {
               inherit pkgs username name email;
             };
           }
