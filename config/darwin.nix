@@ -30,6 +30,9 @@
   # Services
   services.nix-daemon.enable = true;
 
+  # Programs
+  programs.zsh.enable = true;
+
   # System
   system = {
     defaults = {

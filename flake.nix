@@ -9,9 +9,11 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    helix.url = "github:helix-editor/helix/master";
   };
 
-  outputs = { darwin, nixpkgs, home-manager, ... }:
+  outputs = { darwin, nixpkgs, home-manager, helix, ... }:
   let
     darwinSystems = [
       {
@@ -58,7 +60,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."${username}" = import ./home/user.nix {
-              inherit pkgs username name email;
+              inherit pkgs username name email helix;
             };
           }
         ];

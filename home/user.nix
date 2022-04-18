@@ -1,4 +1,4 @@
-{ pkgs, username, name, email, ... }:
+{ pkgs, username, name, email, helix, ... }:
 
 {
   home = {
@@ -11,6 +11,7 @@
 
     packages = with pkgs; [
       deno
+      helix
       kubectl
       lima
       ripgrep
