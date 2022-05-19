@@ -9,20 +9,24 @@
       EDITOR = "vim";
     };
 
-    packages = [
-      pkgs.helix
-      pkgs.deno
-      pkgs.kubectl
-      pkgs.lima
-      pkgs.ripgrep
+    packages = with pkgs; [
+      helix
+      rnix-lsp
+      deno
+      kubectl
+      lima
+      ripgrep
     ];
   };
 
   programs = {
     home-manager.enable = true;
-
     zsh = import ./zsh.nix;
     vim = import ./vim.nix { inherit pkgs; };
     git = import ./git.nix { inherit name email; };
+  };
+  
+  xdg.configFile = {
+    "helix/languages.toml".source = ./files/languages.toml;
   };
 }

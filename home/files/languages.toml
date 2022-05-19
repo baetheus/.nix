@@ -1,0 +1,43 @@
+[[language]]
+name = "typescript"
+scope = "source.ts"
+injection-regex = "^(ts|typescript)$"
+file-types = ["ts"]
+shebangs = []
+roots = []
+auto-format = true
+language-server = { command = "deno", args = ["lsp", "--unstable"], language-id = "typescript"}
+config = { deno = { enable = true, lint = true } }
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "typescript"
+source = { git = "https://github.com/tree-sitter/tree-sitter-typescript", rev = "3e897ea5925f037cfae2e551f8e6b12eec2a201a", subpath = "typescript" }
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+injection-regex = "^(tsx)$" # |typescript
+file-types = ["tsx"]
+roots = []
+auto-format = true
+language-server = { command = "deno", args = ["lsp", "--unstable"], language-id = "typescriptreact" }
+config = { deno = { enable = true, lint = true } }
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "tsx"
+source = { git = "https://github.com/tree-sitter/tree-sitter-typescript", rev = "3e897ea5925f037cfae2e551f8e6b12eec2a201a", subpath = "tsx" }
+
+[[language]]
+name = "nix"
+scope = "source.nix"
+file-types = ["nix"]
+roots = ["flake.nix", "shell.nix", "default.nix", ".git"]
+auto-format = true
+language-server = { command = "rnix-lsp" }
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "nix"
+source = { git = "https://github.com/cstrahan/tree-sitter-nix", rev = "6b71a810c0acd49b980c50fc79092561f7cee307" }
