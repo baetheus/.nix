@@ -1,4 +1,4 @@
-{ pkgs, username, name, email, helix, ... }:
+{ pkgs, username, name, email, ... }:
 
 {
   home = {
@@ -9,13 +9,12 @@
       EDITOR = "vim";
     };
 
-    packages = with pkgs; [
-      deno
-      helix
-      kubectl
-      lima
-      ripgrep
-      helix
+    packages = [
+      pkgs.helix
+      pkgs.deno
+      pkgs.kubectl
+      pkgs.lima
+      pkgs.ripgrep
     ];
   };
 

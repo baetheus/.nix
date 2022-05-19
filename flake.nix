@@ -11,6 +11,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     helix.url = "github:helix-editor/helix/master";
+    helix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { darwin, nixpkgs, home-manager, helix, ... }:
@@ -52,6 +53,7 @@
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          overlays = [(self: super: { helix = helix.defaultPackage."${system}"; })];
         };
         modules = [
           ./config/darwin.nix
@@ -60,7 +62,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."${username}" = import ./home/user.nix {
-              inherit pkgs username name email helix;
+              inherit pkgs username name email;
             };
           }
         ];
