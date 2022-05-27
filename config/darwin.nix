@@ -51,7 +51,7 @@
         "com.apple.springing.enabled" = false;
         "com.apple.swipescrolldirection" = false;
         "com.apple.trackpad.scaling" = "2.0";
-        
+
       };
 
       SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
@@ -75,7 +75,7 @@
         wvous-tl-corner = 1;
         wvous-tr-corner = 1;
       };
-      
+
       finder = {
         AppleShowAllExtensions = true;
         FXEnableExtensionChangeWarning = false;

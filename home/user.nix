@@ -13,9 +13,8 @@
       helix
       rnix-lsp
       deno
-      kubectl
-      lima
       ripgrep
+      deploy-rs
     ];
   };
 
@@ -25,7 +24,7 @@
     vim = import ./vim.nix { inherit pkgs; };
     git = import ./git.nix { inherit name email; };
   };
-  
+
   xdg.configFile = {
     "helix/languages.toml".source = ./files/languages.toml;
   };
