@@ -239,7 +239,7 @@
       },
       "original": {
         "owner": "helix-editor",
-        "ref": "master",
+        "ref": "22.05",
         "repo": "helix",
         "type": "github"
       }
@@ -365,11 +365,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1653756647,
-        "narHash": "sha256-SH7I3bOW2T9n9n9+/DWR2Ev3zrwDlgx3X4e+tr8QqH8=",
+        "lastModified": 1653757375,
+        "narHash": "sha256-Z32lJBuMtFXPteka4fx6aleeOU7aR1btjd3OEDZm5h8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ce961e6faf9ccd4952267d56ad29b738308182ab",
+        "rev": "f37f4ab9756bf5e7313ee351a98efbf2ff536a96",
         "type": "github"
       },
       "original": {
