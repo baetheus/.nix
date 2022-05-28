@@ -10,13 +10,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    helix.url = "github:helix-editor/helix/22.05";
-    helix.inputs.nixpkgs.follows = "nixpkgs";
     deploy-rs.url = "github:serokell/deploy-rs";
     deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { darwin, nixpkgs, home-manager, helix, deploy-rs, ... }:
+  outputs = { darwin, nixpkgs, home-manager, deploy-rs, ... }:
     let
       darwinSystems = [
         {
@@ -57,7 +55,6 @@
               inherit system;
               config.allowUnfree = true;
               overlays = [
-                (self: super: { helix = helix.defaultPackage."${system}"; })
                 (self: super: { deploy-rs = deploy-rs.defaultPackage."${system}"; })
               ];
             };
