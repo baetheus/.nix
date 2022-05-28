@@ -15,6 +15,7 @@
       deno
       ripgrep
       deploy-rs
+      kubectl
     ];
   };
 

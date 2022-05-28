@@ -2,7 +2,7 @@
   description = "Brandon's System Configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/21.11";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
