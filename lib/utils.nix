@@ -72,6 +72,7 @@ in
       modules = [
         ../config/common.nix
         ../config/linux.nix
+        ../config/users.nix
         agenix.nixosModule
         home-manager.nixosModule
         {
