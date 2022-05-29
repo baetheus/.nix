@@ -1,49 +1,5 @@
-{ pkgs, lib, ... }:
+{ ... }:
 {
-  # Nix
-  nix = {
-    binaryCaches = [
-      "https://cache.nixos.org/"
-    ];
-    binaryCachePublicKeys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
-
-    package = pkgs.nixUnstable;
-
-    trustedUsers = [
-      "@admin"
-      "@wheel"
-    ];
-
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      auto-optimise-store = true
-      keep-outputs = true
-      keep-derivations = true
-    '';
-
-    distributedBuilds = true;
-    buildMachines = [
-      # {
-      #   hostName = "bubbles.nll.sh";
-      #   sshUser = "brandon";
-      #   sshKey = "/var/root/.ssh/id_rsa";
-      #   systems = [ "x86_64-linux" "i686-linux" ];
-      #   maxJobs = 8;
-      #   supportedFeatures = [ "big-parallel" "kvm" "nixos-test" ];
-      # }
-      {
-        hostName = "toph";
-        sshUser = "brandon";
-        sshKey = "/var/root/.ssh/id_rsa";
-        systems = [ "x86_64-linux" "i686-linux" ];
-        maxJobs = 8;
-        supportedFeatures = [ "big-parallel" "kvm" "nixos-test" ];
-      }
-    ];
-  };
-
   # Users
   users.nix.configureBuildUsers = true;
 

@@ -4,74 +4,40 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.url = "github:lnl7/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    deploy-rs.url = "github:serokell/deploy-rs/master";
-    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.url = "github:ryantm/agenix/main";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { darwin, nixpkgs, home-manager, deploy-rs, ... }:
+  outputs = inputs:
     let
-      darwinSystems = [
-        {
-          hostname = "euclid";
-          system = "x86_64-darwin";
-          username = "brandon";
-          name = "Brandon Blaylock";
-          email = "brandon@null.pub";
-        }
-        {
-          hostname = "hopper";
-          system = "x86_64-darwin";
-          username = "brandon";
-          name = "Brandon Blaylock";
-          email = "brandon@null.pub";
-        }
-        {
+      inherit (import ./lib/utils.nix inputs) mkDarwin mkNixos;
+    in
+    {
+      darwinConfigurations = {
+        euclid = mkDarwin { hostname = "euclid"; };
+        hopper = mkDarwin { hostname = "hopper"; };
+        parks = mkDarwin {
           hostname = "parks";
           system = "aarch64-darwin";
           username = "brandonblaylock";
           name = "Brandon Blaylock";
           email = "bblaylock@cogility.com";
-        }
-      ];
-    in
-    {
-      darwinConfigurations = builtins.foldl'
-        (configs: { hostname
-                  , system
-                  , username
-                  , name
-                  , email
-                  }: configs // {
-          "${hostname}" = darwin.lib.darwinSystem rec {
-            inherit system;
-            inputs = { inherit darwin; };
-            pkgs = import nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
-              overlays = [
-                (self: super: { deploy-rs = deploy-rs.defaultPackage."${system}"; })
-              ];
-            };
-            modules = [
-              ./config/darwin.nix
-              home-manager.darwinModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users."${username}" = import ./home/user.nix {
-                  inherit pkgs username name email;
-                };
-              }
-            ];
-          };
-        })
-        { }
-        darwinSystems;
+        };
+      };
+
+      nixosConfigurations = {
+        bubbles = mkNixos {
+          hostname = "bubbles";
+          module = ./config/bubbles/configuration.nix;
+        };
+      };
     };
 }
+
+

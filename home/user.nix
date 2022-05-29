@@ -14,8 +14,7 @@
       rnix-lsp
       deno
       ripgrep
-      kubectl
-      deploy-rs
+      agenix
     ];
   };
 
