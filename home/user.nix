@@ -14,8 +14,8 @@
       rnix-lsp
       deno
       ripgrep
-      deploy-rs
       kubectl
+      nixops
     ];
   };
 

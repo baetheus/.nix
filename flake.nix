@@ -2,7 +2,7 @@
   description = "Brandon's System Configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/21.11";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -10,11 +10,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    deploy-rs.url = "github:serokell/deploy-rs";
-    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+    nixops.url = "github:nixos/nixops/master";
+    nixops.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { darwin, nixpkgs, home-manager, deploy-rs, ... }:
+  outputs = { darwin, nixpkgs, home-manager, nixops, ... }:
     let
       darwinSystems = [
         {
@@ -55,7 +55,7 @@
               inherit system;
               config.allowUnfree = true;
               overlays = [
-                (self: super: { deploy-rs = deploy-rs.defaultPackage."${system}"; })
+                (self: super: { nixops = nixops.defaultPackage."${system}"; })
               ];
             };
             modules = [
