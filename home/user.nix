@@ -15,7 +15,7 @@
       deno
       ripgrep
       kubectl
-      nixops
+      deploy-rs
     ];
   };
 
