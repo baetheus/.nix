@@ -22,6 +22,26 @@
       keep-outputs = true
       keep-derivations = true
     '';
+
+    distributedBuilds = true;
+    buildMachines = [
+      # {
+      #   hostName = "bubbles.nll.sh";
+      #   sshUser = "brandon";
+      #   sshKey = "/var/root/.ssh/id_rsa";
+      #   systems = [ "x86_64-linux" "i686-linux" ];
+      #   maxJobs = 8;
+      #   supportedFeatures = [ "big-parallel" "kvm" "nixos-test" ];
+      # }
+      {
+        hostName = "toph";
+        sshUser = "brandon";
+        sshKey = "/var/root/.ssh/id_rsa";
+        systems = [ "x86_64-linux" "i686-linux" ];
+        maxJobs = 8;
+        supportedFeatures = [ "big-parallel" "kvm" "nixos-test" ];
+      }
+    ];
   };
 
   # Users
