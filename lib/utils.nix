@@ -49,10 +49,10 @@ in
   mkNixos =
     { hostname
     , module ? {}: { }
-    , system ? defaults.darwin.system
-    , username ? defaults.darwin.username
-    , name ? defaults.darwin.name
-    , email ? defaults.darwin.email
+    , system ? defaults.nixos.system
+    , username ? defaults.nixos.username
+    , name ? defaults.nixos.name
+    , email ? defaults.nixos.email
     ,
     }:
     let
