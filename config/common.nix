@@ -22,5 +22,11 @@
 
   time.timeZone = "America/Los_Angeles";
 
-  environment.systemPackages = with pkgs; [ vim wget ];
+  environment.systemPackages = with pkgs; [ vim wget git ];
+
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+    permitRootLogin = "no";
+  };
 }

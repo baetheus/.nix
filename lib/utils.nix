@@ -74,6 +74,9 @@ in
         ../config/linux.nix
         ../config/users.nix
         agenix.nixosModule
+        {
+          age.identityPaths = [ "/home/brandon/.ssh/id_ed25519" ];
+        }
         home-manager.nixosModule
         {
           home-manager.useGlobalPkgs = true;
