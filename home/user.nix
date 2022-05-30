@@ -14,7 +14,6 @@
       rnix-lsp
       deno
       ripgrep
-      agenix
     ];
   };
 

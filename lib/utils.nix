@@ -1,20 +1,19 @@
-{ self, nixpkgs, home-manager, nix-darwin, agenix, impermanence, ... }:
+{ self, nixpkgs, home-manager, nix-darwin, agenix, ... }:
 let
   defaults = import ./defaults.nix;
 in
 {
+  # Create pkgs from nixpkgs using system and overlays
   mkPkgs = { system, overlays ? [ ] }: import nixpkgs {
-    inherit system;
-    overlays = [
-      (self: super: { agenix = agenix.defaultPackage."${system}"; })
-    ] ++ overlays;
+    inherit system overlays;
     config.allowUnfree = true;
   };
 
+  # Create a darwinSystem with a single user and home-manager
   mkDarwin =
     { hostname
-    , modules ? [ ]
-    , overlays ? [ ]
+    , modules ? [ ] # darwin modules
+    , overlays ? [ ] # nixpkgs overlays
     , system ? defaults.darwin.system
     , username ? defaults.darwin.username
     , name ? defaults.darwin.name
@@ -39,10 +38,12 @@ in
       ] ++ modules;
     };
 
+  # Create a nixosSystem with a single user, home-manager, and agenix
+  # Note: expects id_ed25519_shared in /keys for secrets
   mkNixos =
     { hostname
-    , modules ? [ ]
-    , overlays ? [ ]
+    , modules ? [ ] # nixos modules
+    , overlays ? [ ] # nixpkgs overlays
     , system ? defaults.nixos.system
     , username ? defaults.nixos.username
     , name ? defaults.nixos.name
@@ -58,7 +59,6 @@ in
     nixpkgs.lib.nixosSystem {
       inherit system pkgs;
       modules = [
-
         agenix.nixosModule
         {
           age.identityPaths = [ "/keys/id_ed25519_shared" ];
