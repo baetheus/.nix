@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   users.mutableUsers = false;
 
   users.users.brandon = {
@@ -7,5 +7,6 @@
     ];
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.zsh;
   };
 }
