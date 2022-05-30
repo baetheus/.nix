@@ -15,7 +15,7 @@
 
   # Nginx
   security.acme.acceptTerms = true;
-  security.acme.email = "admin@null.pub";
+  security.acme.defaults.email = "admin@null.pub";
 
   services.nginx = {
     enable = true;
