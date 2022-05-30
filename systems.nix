@@ -35,5 +35,16 @@ in
         ./config/bubbles/configuration.nix
       ];
     };
+
+    # Media Server
+    buttercup = mkNixos {
+      hostname = "buttercup";
+      modules = [
+        ./config/common.nix
+        ./config/linux.nix
+        ./config/users.nix
+        ./config/buttercup/configuration.nix
+      ];
+    };
   };
 }
