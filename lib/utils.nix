@@ -84,10 +84,10 @@ in
             ];
             files = [
               "/etc/machine-id"
-              { file = "/etc/nix/ssh_host_ed25519_key"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
-              { file = "/etc/nix/ssh_host_ed25519_key.pub"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
-              { file = "/etc/nix/ssh_host_rsa_key"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
-              { file = "/etc/nix/ssh_host_rsa_key.pub"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
+              "/etc/ssh/ssh_host_ed25519_key"
+              "/etc/ssh/ssh_host_ed25519_key.pub"
+              "/etc/ssh/ssh_host_rsa_key"
+              "/etc/ssh/ssh_host_rsa_key.pub"
             ];
             users.brandon = {
               directories = [
