@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "sd_mod" ];
@@ -14,37 +15,45 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8335-1508";
+    {
+      device = "/dev/disk/by-uuid/8335-1508";
       fsType = "vfat";
     };
 
   fileSystems."/boot2" =
-    { device = "/dev/disk/by-uuid/8373-6EB7";
+    {
+      device = "/dev/disk/by-uuid/8373-6EB7";
       fsType = "vfat";
     };
 
   fileSystems."/boot3" =
-    { device = "/dev/disk/by-uuid/83B1-9C60";
+    {
+      device = "/dev/disk/by-uuid/83B1-9C60";
       fsType = "vfat";
     };
 
   fileSystems."/boot4" =
-    { device = "/dev/disk/by-uuid/83F0-841B";
+    {
+      device = "/dev/disk/by-uuid/83F0-841B";
       fsType = "vfat";
     };
 
   fileSystems."/" =
-    { device = "pool/nixos";
-      fsType = "zfs";
+    {
+      device = "none";
+      fsType = "tmpfs";
+      options = [ "defaults" "size=2G" "mode=755" ];
     };
 
   fileSystems."/nix" =
-    { device = "pool/nixos/nix";
+    {
+      device = "pool/nixos/nix";
       fsType = "zfs";
     };
 
   fileSystems."/persist" =
-    { device = "pool/persist";
+    {
+      device = "pool/persist";
       fsType = "zfs";
     };
 

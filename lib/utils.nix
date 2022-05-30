@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, nix-darwin, agenix, ... }:
+{ nixpkgs, home-manager, nix-darwin, agenix, impermanence, ... }:
 let
   defaults = import ./defaults.nix;
 in
@@ -73,6 +73,26 @@ in
         ../config/common.nix
         ../config/linux.nix
         ../config/users.nix
+        impermanence.nixosModule
+        {
+          environment.persistence."/persist" = {
+            hideMounts = true;
+            directories = [
+              "/var/log"
+              "/var/lib/systemd/coredump"
+            ];
+            files = [
+              "/etc/machine-id"
+              { file = "/etc/nix/id_rsa"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
+            ];
+            users.brandon = {
+              directories = [
+                { directory = ".ssh"; mode = "0700"; }
+                { directory = ".nix"; mode = "0700"; }
+              ];
+            };
+          };
+        }
         agenix.nixosModule
         {
           age.identityPaths = [ "/home/brandon/.ssh/id_ed25519" ];
