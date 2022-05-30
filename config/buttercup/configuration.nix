@@ -16,10 +16,11 @@
   # Users and Groups
   users = {
     users.media = {
+      group = "media";
       isSystemUser = true;
     };
     groups.media = {
-      members = [ "media" "plex" ];
+      members = [ "plex" ];
     };
   };
 
