@@ -40,6 +40,16 @@
           extraConfig = "autoindex on;";
         };
       };
+
+      "plex.null.pub" = {
+
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:32400";
+          proxyWebsockets = true;
+        };
+      };
     };
   };
 
@@ -49,6 +59,5 @@
     user = "plex";
     group = "media";
     dataDir = "/media";
-    openFirewall = true;
   };
 }
