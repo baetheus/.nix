@@ -13,6 +13,16 @@
   # Secrets
   # age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
 
+  # Users and Groups
+  users = {
+    users.media = {
+      isSystemUser = true;
+    };
+    groups.media = {
+      members = [ "media" "plex" ];
+    };
+  };
+
   # Nginx
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "admin@null.pub";
