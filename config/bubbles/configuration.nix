@@ -26,37 +26,37 @@
         enableACME = true;
         locations."/" = {
           root = "/var/www/bubbles.nll.sh";
-          extraConfig = "autoindex on;"
-            };
+          extraConfig = "autoindex on;";
         };
+      };
 
-        "vault.null.pub" = {
-          forceSSL = true;
-          enableACME = true;
-          locations."/" = {
-            proxyPass = "http://0.0.0.0:8000";
-          };
-          locations."/notifications/hub" = {
-            proxyPass = "http://0.0.0.0:3012";
-            proxyWebsockets = true;
-          };
+      "vault.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:8000";
+        };
+        locations."/notifications/hub" = {
+          proxyPass = "http://0.0.0.0:3012";
+          proxyWebsockets = true;
         };
       };
     };
+  };
 
-    # Services
-    services.vaultwarden = {
-      enable = true;
-      config = {
-        DOMAIN = "https://vault.null.pub";
-        WEBSOCKET_ENABLED = "true";
-        SMTP_HOST = "smtp.fastmail.com";
-        SMTP_FROM = "noreply@null.pub";
-        SMTP_FROM_NAME = "Vaultwarden";
-        SMTP_PORT = "465";
-        SMTP_SSL = "true";
-        SMTP_EXPLICIT_SSL = "true";
-      };
-      environmentFile = config.age.secrets.vaultwarden.path;
+  # Services
+  services.vaultwarden = {
+    enable = true;
+    config = {
+      DOMAIN = "https://vault.null.pub";
+      WEBSOCKET_ENABLED = "true";
+      SMTP_HOST = "smtp.fastmail.com";
+      SMTP_FROM = "noreply@null.pub";
+      SMTP_FROM_NAME = "Vaultwarden";
+      SMTP_PORT = "465";
+      SMTP_SSL = "true";
+      SMTP_EXPLICIT_SSL = "true";
     };
-  }
+    environmentFile = config.age.secrets.vaultwarden.path;
+  };
+}
