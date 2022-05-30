@@ -14,10 +14,11 @@
   age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
 
   # Persist Directories
-  environment.persistence."/persist" = {
+  environment.persistence."/persist/root" = {
     directories = [
-      { directory = "/var/lib/bitwarden_rs"; user = "vaultwarden"; group = "vaultwarden"; mode = "u=rwx,g=rwx,o="; }
-      { directory = "/var/www"; user = "nginx"; group = "nginx"; mode = "u=rwx,g=rwx,o="; }
+      { directory = "/var/lib/bitwarden_rs"; user = "vaultwarden"; group = "vaultwarden"; mode = "0755"; }
+      { directory = "/var/lib/acme"; user = "adme"; group = "nginx"; mode = "0755"; }
+      { directory = "/var/www"; user = "nginx"; group = "nginx"; mode = "0774"; }
     ];
   };
 

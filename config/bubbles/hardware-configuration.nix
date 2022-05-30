@@ -16,25 +16,25 @@
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/D6ED-92C4";
+      device = "/dev/disk/by-id/ata-HGST_HUS726020ALA610_K5GN8DTA-part2";
       fsType = "vfat";
     };
 
   fileSystems."/boot2" =
     {
-      device = "/dev/disk/by-uuid/D724-CA8D";
+      device = "/dev/disk/by-id/ata-HGST_HUS726020ALA610_K5H89T4A-part2";
       fsType = "vfat";
     };
 
   fileSystems."/boot3" =
     {
-      device = "/dev/disk/by-uuid/D75A-9C3A";
+      device = "/dev/disk/by-id/ata-HGST_HUS726020ALA610_K5HU123F-part2";
       fsType = "vfat";
     };
 
   fileSystems."/boot4" =
     {
-      device = "/dev/disk/by-uuid/D791-A5FF";
+      device = "/dev/disk/by-id/ata-HGST_HUS726020ALA610_K5J3EZEG-part2";
       fsType = "vfat";
     };
 

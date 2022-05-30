@@ -4,7 +4,9 @@
 export disk=(/dev/disk/by-id/ata-HGST_HUS726020ALA610_K5GN8DTA /dev/disk/by-id/ata-HGST_HUS726020ALA610_K5H89T4A /dev/disk/by-id/ata-HGST_HUS726020ALA610_K5HU123F /dev/disk/by-id/ata-HGST_HUS726020ALA610_K5J3EZEG)
 
 # Partition disks
+
 for x in "${disk[@]}"; do
+  echo "Partitioning $x"
   sgdisk --zap-all "$x"
   parted "$x" -- mklabel gpt
   # Root
@@ -20,9 +22,11 @@ for x in "${disk[@]}"; do
 done
 
 # Probe disks
+echo "Probing discs"
 partprobe
 
 # Create zpool
+echo "Creating pool"
 zpool create \
   -o ashift=12 \
   -o autotrim=on \
@@ -41,16 +45,28 @@ zpool create \
   "${disk[@]/%/-part1}"
 
 # Create datasets
+echo "Creating datasets"
 zfs create -o refreservation=1G -o mountpoint=none pool/reserved
 zfs create -o canmount=on -o mountpoint=/nix pool/nix
 zfs create -o canmount=on -o mountpoint=/persist pool/persist
 
+echo "Setting up snapshots"
+zfs set com.sun:auto-snapshot=true persist
+
+
 # Mount boot partitions
+echo "Mounting boot partitions"
 mkdir /mnt/boot{,2,3,4}
 mount "${disk[0]}-part2" /mnt/boot
 mount "${disk[1]}-part2" /mnt/boot2
 mount "${disk[2]}-part2" /mnt/boot3
 mount "${disk[3]}-part2" /mnt/boot4
 
-# Geeneratee nix config
+# Generate nix config
+echo "Generating nixos configuration templates"
 nixos-generate-config --root /mnt
+
+# Some notes for the user
+echo "You can load a flake by running:"
+echo "nixos-install --flake github:baetheus/.nix#HOST --root /mnt --max-jobs 8"
+

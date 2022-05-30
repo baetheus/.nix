@@ -75,7 +75,7 @@ in
         ../config/users.nix
         impermanence.nixosModule
         {
-          environment.persistence."/persist" = {
+          environment.persistence."/persist/root" = {
             hideMounts = true;
             directories = [
               "/var/log"
@@ -89,16 +89,11 @@ in
               "/etc/ssh/ssh_host_rsa_key"
               "/etc/ssh/ssh_host_rsa_key.pub"
             ];
-            users.brandon = {
-              directories = [
-                { directory = ".ssh"; mode = "0700"; }
-              ];
-            };
           };
         }
         agenix.nixosModule
         {
-          age.identityPaths = [ "/persist/home/brandon/.ssh/id_ed25519" ];
+          age.identityPaths = [ "/persist/keys/id_ed25519_shared" ];
         }
         home-manager.nixosModule
         {
