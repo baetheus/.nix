@@ -16,25 +16,25 @@
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/6983-54E8";
+      device = "/dev/disk/by-uuid/D6ED-92C4";
       fsType = "vfat";
     };
 
   fileSystems."/boot2" =
     {
-      device = "/dev/disk/by-uuid/69B8-E406";
+      device = "/dev/disk/by-uuid/D724-CA8D";
       fsType = "vfat";
     };
 
   fileSystems."/boot3" =
     {
-      device = "/dev/disk/by-uuid/69F0-32C0";
+      device = "/dev/disk/by-uuid/D75A-9C3A";
       fsType = "vfat";
     };
 
   fileSystems."/boot4" =
     {
-      device = "/dev/disk/by-uuid/6A27-B24E";
+      device = "/dev/disk/by-uuid/D791-A5FF";
       fsType = "vfat";
     };
 
