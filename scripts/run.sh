@@ -64,7 +64,7 @@ if [[ ${#result[@]} = 2 ]]; then
     pool_type="mirror";
 elif [[ ${#result[@]} > 2 ]]; then
     pool_type="raidz1";
-else;
+else
     pool_type="";
 fi
 
@@ -100,9 +100,9 @@ zfs set com.sun:auto-snapshot=true pool/root
 echo "Mounting boot partitions"
 
 for i in ${!result[@]}; do
-    mnt="boot"
-    if [[ $i != 1 ]]; then
-        mnt+="$i";
+    mnt="/mnt/boot"
+    if [[ $i != 0 ]]; then
+        mnt+="$((i + 1))";
     fi
     mkdir $mnt;
     mount "${result[$i]}2" $mnt;
