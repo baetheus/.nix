@@ -98,7 +98,7 @@ in
         }
         agenix.nixosModule
         {
-          age.identityPaths = [ "/home/brandon/.ssh/id_ed25519" ];
+          age.identityPaths = [ "/persist/home/brandon/.ssh/id_ed25519" ];
         }
         home-manager.nixosModule
         {
