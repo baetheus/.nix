@@ -1,5 +1,5 @@
 {
-  description = "Brandon's System Configurations";
+  description = "Brandon's Superflake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -12,34 +12,11 @@
 
     agenix.url = "github:ryantm/agenix/main";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-
-    impermanence.url = "github:nix-community/impermanence/master";
   };
 
   outputs = inputs:
-    let
-      inherit (import ./lib/utils.nix inputs) mkDarwin mkNixos;
-    in
-    {
-      darwinConfigurations = {
-        euclid = mkDarwin { hostname = "euclid"; };
-        hopper = mkDarwin { hostname = "hopper"; };
-        parks = mkDarwin {
-          hostname = "parks";
-          system = "aarch64-darwin";
-          username = "brandonblaylock";
-          name = "Brandon Blaylock";
-          email = "bblaylock@cogility.com";
-        };
-      };
+    (import ./systems.nix inputs);
 
-      nixosConfigurations = {
-        bubbles = mkNixos {
-          hostname = "bubbles";
-          module = ./config/bubbles/configuration.nix;
-        };
-      };
-    };
 }
 
 

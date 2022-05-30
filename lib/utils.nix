@@ -1,14 +1,20 @@
-{ nixpkgs, home-manager, nix-darwin, agenix, impermanence, ... }:
+{ self, nixpkgs, home-manager, nix-darwin, agenix, impermanence, ... }:
 let
   defaults = import ./defaults.nix;
 in
 {
-  # Currently, I only run darwin systems for myself
-  # so my darwinSystems are simple and only have
-  # settings for me.
+  mkPkgs = { system, overlays ? [ ] }: import nixpkgs {
+    inherit system;
+    overlays = [
+      (self: super: { agenix = agenix.defaultPackage."${system}"; })
+    ] ++ overlays;
+    config.allowUnfree = true;
+  };
+
   mkDarwin =
     { hostname
-    , module ? {}: { }
+    , modules ? [ ]
+    , overlays ? [ ]
     , system ? defaults.darwin.system
     , username ? defaults.darwin.username
     , name ? defaults.darwin.name
@@ -16,39 +22,27 @@ in
     ,
     }:
     let
-      pkgs = import nixpkgs
-        {
-          inherit system;
-          config.allowUnfree = true;
-          overlays = [
-            (self: super: { agenix = agenix.defaultPackage."${system}"; })
-          ];
-        };
-
+      pkgs = self.mkPkgs { inherit system overlays; };
       user = import ../home/user.nix {
         inherit pkgs username name email;
       };
-
+    in
+    nix-darwin.lib.darwinSystem {
+      inherit system pkgs;
       modules = [
-        ../config/common.nix
-        ../config/darwin.nix
         home-manager.darwinModule
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users."${username}" = user;
         }
-        module
-      ];
-    in
-    nix-darwin.lib.darwinSystem { inherit system pkgs modules; };
+      ] ++ modules;
+    };
 
-  # My nixos configurations are pretty slim
-  # I like to add only the things I really need via a single
-  # module
   mkNixos =
     { hostname
-    , module ? {}: { }
+    , modules ? [ ]
+    , overlays ? [ ]
     , system ? defaults.nixos.system
     , username ? defaults.nixos.username
     , name ? defaults.nixos.name
@@ -56,23 +50,15 @@ in
     ,
     }:
     let
-      pkgs = import nixpkgs
-        {
-          inherit system;
-          config.allowUnfree = true;
-          overlays = [
-            (self: super: { agenix = agenix.defaultPackage."${system}"; })
-          ];
-        };
-
+      pkgs = self.mkPkgs { inherit system overlays; };
       user = import ../home/user.nix {
         inherit pkgs username name email;
       };
-
+    in
+    nixpkgs.lib.nixosSystem {
+      inherit system pkgs;
       modules = [
-        ../config/common.nix
-        ../config/linux.nix
-        ../config/users.nix
+
         agenix.nixosModule
         {
           age.identityPaths = [ "/keys/id_ed25519_shared" ];
@@ -83,8 +69,6 @@ in
           home-manager.useUserPackages = true;
           home-manager.users."${username}" = user;
         }
-        module
-      ];
-    in
-    nixpkgs.lib.nixosSystem { inherit system pkgs modules; };
+      ] ++ modules;
+    };
 }
