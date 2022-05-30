@@ -13,6 +13,15 @@
   # Secrets
   age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
 
+  # Persist Directories
+  environment.persistence."/persist" = {
+    directories = [
+      "/var/lib/acme"
+      "/var/lib/bitwarden-rs"
+      "/var/www"
+    ];
+  };
+
   # Nginx
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "admin@null.pub";
