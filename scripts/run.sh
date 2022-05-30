@@ -1,11 +1,44 @@
 #!/bin/sh
 
-# Local disks
-export disk=(/dev/disk/by-id/ata-HGST_HUS726020ALA610_K5GN8DTA /dev/disk/by-id/ata-HGST_HUS726020ALA610_K5H89T4A /dev/disk/by-id/ata-HGST_HUS726020ALA610_K5HU123F /dev/disk/by-id/ata-HGST_HUS726020ALA610_K5J3EZEG)
+# Select disks
+export disks=(`lsblk -dnl -o PATH`);
+
+menuitems() {
+    echo "Avaliable disks:"
+    for i in ${!disks[@]}; do
+        printf "[%s] %2d) %s\n" "${choices[i]:- }" $((i+1)) "${disks[i]}"
+    done
+    [[ "$msg" ]] && echo "$msg"; :
+}
+
+prompt="Select a disk (enter again to uncheck, press RETURN when done): "
+while menuitems && read -rp "$prompt" num && [[ "$num" ]]; do
+    [[ "$num" != *[![:digit:]]* ]] && (( num > 0 && num <= ${#disks[@]} )) || {
+        msg="Invalid option: $num"; continue
+    }
+    ((num--)); msg="${disks[num]} was ${choices[num]:+un-}selected"
+    [[ "${choices[num]}" ]] && choices[num]="" || choices[num]="x"
+done
+
+result=()
+for i in ${!disks[@]}; do
+    [[ "${choices[i]}" ]] && result+=("${disks[i]}");
+done
+
+
+if [[ ${#result[@]} = 0 ]]; then
+    echo "No disks selected.. aborting!";
+    exit;
+fi
+
+echo "\nYou selected:"
+for i in ${!result[@]}; do
+    echo " - ${result[i]}";
+done
 
 # Partition disks
 
-for x in "${disk[@]}"; do
+for x in "${result[@]}"; do
   echo "Partitioning $x"
   sgdisk --zap-all "$x"
   parted "$x" -- mklabel gpt
@@ -44,7 +77,7 @@ zpool create \
   -f \
   pool \
   raidz1 \
-  "${disk[@]/%/-part1}"
+  "${result[@]/%/-part1}"
 
 # Create datasets
 echo "Creating datasets"
@@ -57,11 +90,15 @@ zfs set com.sun:auto-snapshot=true pool/root
 
 # Mount boot partitions
 echo "Mounting boot partitions"
-mkdir /mnt/boot{,2,3,4}
-mount "${disk[0]}-part2" /mnt/boot
-mount "${disk[1]}-part2" /mnt/boot2
-mount "${disk[2]}-part2" /mnt/boot3
-mount "${disk[3]}-part2" /mnt/boot4
+
+for i in ${!result[@]}; do
+    mnt="boot"
+    if [[ $i != 1 ]]; then
+        mnt+="$i";
+    fi
+    mkdir $mnt;
+    mount "${result[$i]}-part2" $mnt;
+done
 
 # Generate nix config
 echo "Generating nixos configuration templates"
