@@ -27,7 +27,7 @@
         root = "/var/www/bubbles.nll.sh";
       };
 
-      "vault.nll.sh" = {
+      "vault.null.pub" = {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
@@ -45,7 +45,7 @@
   services.vaultwarden = {
     enable = true;
     config = {
-      DOMAIN = "https://vault.nll.sh";
+      DOMAIN = "https://vault.null.pub";
       WEBSOCKET_ENABLED = "true";
       SMTP_HOST = "smtp.fastmail.com";
       SMTP_FROM = "noreply@null.pub";
