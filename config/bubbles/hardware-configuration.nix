@@ -55,6 +55,7 @@
     {
       device = "pool/persist";
       fsType = "zfs";
+      neededForBoot = true;
     };
 
   swapDevices = [ ];
