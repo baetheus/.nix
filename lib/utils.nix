@@ -80,6 +80,7 @@ in
             directories = [
               "/var/log"
               "/var/lib/systemd/coredump"
+              "/run/agenix.d"
             ];
             files = [
               "/etc/machine-id"
@@ -91,7 +92,6 @@ in
             users.brandon = {
               directories = [
                 { directory = ".ssh"; mode = "0700"; }
-                { directory = ".nix"; mode = "0700"; }
               ];
             };
           };
