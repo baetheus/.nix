@@ -2,7 +2,7 @@
 let
   defaults = import ./defaults.nix;
 in
-{
+rec {
   # Create pkgs from nixpkgs using system and overlays
   mkPkgs = { system, overlays ? [ ] }: import nixpkgs {
     inherit system overlays;
@@ -21,7 +21,7 @@ in
     ,
     }:
     let
-      pkgs = self.mkPkgs { inherit system overlays; };
+      pkgs = mkPkgs { inherit system overlays; };
       user = import ../home/user.nix {
         inherit pkgs username name email;
       };
@@ -51,7 +51,7 @@ in
     ,
     }:
     let
-      pkgs = self.mkPkgs { inherit system overlays; };
+      pkgs = mkPkgs { inherit system overlays; };
       user = import ../home/user.nix {
         inherit pkgs username name email;
       };

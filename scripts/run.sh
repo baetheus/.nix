@@ -53,7 +53,7 @@ zfs create -o canmount=on -o mountpoint=/ pool/root
 zfs create -o canmount=on -o mountpoint=/nix pool/nix
 
 echo "Setting up snapshots"
-zfs set com.sun:auto-snapshot=true pool/persist
+zfs set com.sun:auto-snapshot=true pool/root
 
 # Mount boot partitions
 echo "Mounting boot partitions"
