@@ -37,7 +37,6 @@ for i in ${!result[@]}; do
 done
 
 # Partition disks
-
 for x in "${result[@]}"; do
   echo "Partitioning $x"
   sgdisk --zap-all "$x"
@@ -51,7 +50,7 @@ for x in "${result[@]}"; do
 
   sleep 2
 
-  mkfs.fat -F 32 -n EFI "${x}-part2"
+  mkfs.fat -F 32 -n EFI "${x}2"
 done
 
 # Probe disks
@@ -61,7 +60,16 @@ partprobe
 sleep 2
 
 # Create zpool
-echo "Creating pool"
+if [[ ${#result[@]} = 2 ]]; then
+    pool_type="mirror";
+elif [[ ${#result[@]} > 2 ]]; then
+    pool_type="raidz1";
+else;
+    pool_type="";
+fi
+
+echo "Creating pool $pool_type"
+
 zpool create \
   -o ashift=12 \
   -o autotrim=on \
@@ -76,8 +84,8 @@ zpool create \
   -O xattr=sa \
   -f \
   pool \
-  raidz1 \
-  "${result[@]/%/-part1}"
+  "$pool_type" \
+  "${result[@]/%/1}"
 
 # Create datasets
 echo "Creating datasets"
@@ -97,7 +105,7 @@ for i in ${!result[@]}; do
         mnt+="$i";
     fi
     mkdir $mnt;
-    mount "${result[$i]}-part2" $mnt;
+    mount "${result[$i]}2" $mnt;
 done
 
 # Generate nix config
