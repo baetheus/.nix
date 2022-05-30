@@ -8,7 +8,7 @@
 
   networking.hostName = "buttercup";
   networking.hostId = "e23f69c4";
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
 
   # Secrets
   # age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
@@ -33,4 +33,11 @@
   };
 
   # Services
+  services.plex = {
+    enable = true;
+    user = "plex";
+    group = "media";
+    dataDir = "/media";
+    openFirewall = true;
+  };
 }
