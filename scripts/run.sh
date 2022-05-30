@@ -49,10 +49,11 @@ echo "Creating datasets"
 zfs create -o refreservation=1G -o mountpoint=none pool/reserved
 zfs create -o canmount=on -o mountpoint=/nix pool/nix
 zfs create -o canmount=on -o mountpoint=/persist pool/persist
+zfs create pool/persist/root
+zfs create pool/persist/keys
 
 echo "Setting up snapshots"
-zfs set com.sun:auto-snapshot=true persist
-
+zfs set com.sun:auto-snapshot=true pool/persist
 
 # Mount boot partitions
 echo "Mounting boot partitions"
@@ -67,6 +68,9 @@ echo "Generating nixos configuration templates"
 nixos-generate-config --root /mnt
 
 # Some notes for the user
+echo "Remember to:"
+echo "- Check that persist/keys and persist/root exist"
+echo "- Copy id_ed25519_shared keypair is in persist/keys"
 echo "You can load a flake by running:"
 echo "nixos-install --flake github:baetheus/.nix#HOST --root /mnt --max-jobs 8"
 

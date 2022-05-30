@@ -16,8 +16,6 @@
   # Persist Directories
   environment.persistence."/persist/root" = {
     directories = [
-      { directory = "/var/lib/bitwarden_rs"; user = "vaultwarden"; group = "vaultwarden"; mode = "0755"; }
-      { directory = "/var/lib/acme"; user = "adme"; group = "nginx"; mode = "0755"; }
       { directory = "/var/www"; user = "nginx"; group = "nginx"; mode = "0774"; }
     ];
   };
