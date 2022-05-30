@@ -40,22 +40,14 @@
 
   fileSystems."/" =
     {
-      device = "none";
-      fsType = "tmpfs";
-      options = [ "defaults" "size=2G" "mode=755" ];
+      device = "pool/root";
+      fsType = "zfs";
     };
 
   fileSystems."/nix" =
     {
       device = "pool/nix";
       fsType = "zfs";
-    };
-
-  fileSystems."/persist" =
-    {
-      device = "pool/persist";
-      fsType = "zfs";
-      neededForBoot = true;
     };
 
   swapDevices = [ ];

@@ -73,21 +73,9 @@ in
         ../config/common.nix
         ../config/linux.nix
         ../config/users.nix
-        impermanence.nixosModule
-        {
-          environment.persistence."/persist/root" = {
-            hideMounts = true;
-            directories = [
-              "/var/log"
-              "/var/lib"
-              "/etc"
-              "/run"
-            ];
-          };
-        }
         agenix.nixosModule
         {
-          age.identityPaths = [ "/persist/keys/id_ed25519_shared" ];
+          age.identityPaths = [ "/keys/id_ed25519_shared" ];
         }
         home-manager.nixosModule
         {

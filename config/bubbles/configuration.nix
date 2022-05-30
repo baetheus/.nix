@@ -13,13 +13,6 @@
   # Secrets
   age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
 
-  # Persist Directories
-  environment.persistence."/persist/root" = {
-    directories = [
-      { directory = "/var/www"; user = "nginx"; group = "nginx"; mode = "0774"; }
-    ];
-  };
-
   # Nginx
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "admin@null.pub";
