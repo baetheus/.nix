@@ -77,7 +77,7 @@
       LogFile = "/var/log/nzbget.log";
       WebDir = "/var/www/nzbget.null.pub";
       ConfigTemplate = "/usr/local/share/nzbget/nzbget.conf";
-      CertStore = pkgs.cacert;
+      CertStore = "${pkgs.cacert}";
 
       # Easynews Europe
       "Server1.Active" = "yes";
