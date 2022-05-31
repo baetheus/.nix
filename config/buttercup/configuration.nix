@@ -66,6 +66,7 @@
     user = "nzbget";
     group = "media";
     settings = rec {
+      # Directories
       MainDir = "/var/lib/nzbget";
       DestDir = "${MainDir}/dst";
       InterDir = "${MainDir}/inter";
@@ -74,7 +75,10 @@
       TempDir = "${MainDir}/tmp";
       ScriptDir = "${MainDir}/scripts";
       LockFile = "${MainDir}/nzbget.lock";
+
+      # Other Stuff
       CertStore = "${pkgs.cacert}";
+      AuthorizedIp = "*";
 
       # Easynews Europe
       "Server1.Active" = "yes";
