@@ -74,8 +74,6 @@
       TempDir = "${MainDir}/tmp";
       ScriptDir = "${MainDir}/scripts";
       LockFile = "${MainDir}/nzbget.lock";
-      LogFile = "/var/log/nzbget.log";
-      WebDir = "/var/www/nzbget.null.pub";
       CertStore = "${pkgs.cacert}";
 
       # Easynews Europe
