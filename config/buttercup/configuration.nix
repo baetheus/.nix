@@ -11,7 +11,11 @@
   networking.firewall.allowedTCPPorts = [ 22 80 443 ];
 
   # Secrets
-  age.secrets.basicauth.file = ../../secrets/basicauth.age;
+  age.secrets.basicauth = {
+    file = ../../secrets/basicauth.age;
+    owner = "nginx";
+    group = "nginx";
+  };
 
   # Users and Groups
   users = {
