@@ -5,4 +5,5 @@ let
 in
 {
   "vaultwarden.age".publicKeys = users;
+  "basicauth.age".publicKeys = users;
 }

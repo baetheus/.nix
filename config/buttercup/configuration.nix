@@ -11,7 +11,7 @@
   networking.firewall.allowedTCPPorts = [ 22 80 443 ];
 
   # Secrets
-  # age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
+  age.secrets.basicauth.file = ../../secrets/basicauth.age;
 
   # Users and Groups
   users = {
@@ -49,10 +49,40 @@
           proxyWebsockets = true;
         };
       };
+
+      "nzbget.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        basicAuthFile = config.age.secrets.vaultwarden.path;
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:6789";
+          proxyWebsockets = true;
+        };
+      };
+
+      "headphones.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        basicAuthFile = config.age.secrets.vaultwarden.path;
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:8181";
+          proxyWebsockets = true;
+        };
+      };
+
+      "sickbeard.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        basicAuthFile = config.age.secrets.vaultwarden.path;
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:8081";
+          proxyWebsockets = true;
+        };
+      };
     };
   };
 
-  # Plex Media Server
+  # Media Services
   services.plex = {
     enable = true;
     user = "media";
@@ -60,6 +90,18 @@
   };
 
   services.nzbget = {
+    enable = true;
+    user = "media";
+    group = "media";
+  };
+
+  services.headphones = {
+    enable = true;
+    user = "media";
+    group = "media";
+  };
+
+  services.sickbeard = {
     enable = true;
     user = "media";
     group = "media";
