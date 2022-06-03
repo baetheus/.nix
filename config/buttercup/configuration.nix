@@ -70,12 +70,12 @@
         };
       };
 
-      "sickbeard.null.pub" = {
+      "sonarr.null.pub" = {
         forceSSL = true;
         enableACME = true;
         basicAuthFile = config.age.secrets.basicauth.path;
         locations."/" = {
-          proxyPass = "http://0.0.0.0:8081";
+          proxyPass = "http://0.0.0.0:8989";
           proxyWebsockets = true;
         };
       };
@@ -101,7 +101,7 @@
     group = "media";
   };
 
-  services.sickbeard = {
+  services.sonarr = {
     enable = true;
     user = "media";
     group = "media";
