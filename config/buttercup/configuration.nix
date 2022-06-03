@@ -20,7 +20,7 @@
       isSystemUser = true;
     };
     groups.media = {
-      members = [ "media" ];
+      members = [ "media" "brandon" ];
     };
   };
 
