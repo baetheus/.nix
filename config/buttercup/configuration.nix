@@ -20,7 +20,7 @@
       isSystemUser = true;
     };
     groups.media = {
-      members = [ "plex" "media" ];
+      members = [ "nzbget" "plex" "media" ];
     };
   };
 
