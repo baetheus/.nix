@@ -53,7 +53,7 @@
       "nzbget.null.pub" = {
         forceSSL = true;
         enableACME = true;
-        basicAuthFile = config.age.secrets.vaultwarden.path;
+        basicAuthFile = config.age.secrets.basicauth.path;
         locations."/" = {
           proxyPass = "http://0.0.0.0:6789";
           proxyWebsockets = true;
@@ -63,7 +63,7 @@
       "headphones.null.pub" = {
         forceSSL = true;
         enableACME = true;
-        basicAuthFile = config.age.secrets.vaultwarden.path;
+        basicAuthFile = config.age.secrets.basicauth.path;
         locations."/" = {
           proxyPass = "http://0.0.0.0:8181";
           proxyWebsockets = true;
@@ -73,7 +73,7 @@
       "sickbeard.null.pub" = {
         forceSSL = true;
         enableACME = true;
-        basicAuthFile = config.age.secrets.vaultwarden.path;
+        basicAuthFile = config.age.secrets.basicauth.path;
         locations."/" = {
           proxyPass = "http://0.0.0.0:8081";
           proxyWebsockets = true;
