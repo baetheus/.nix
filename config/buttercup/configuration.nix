@@ -20,7 +20,7 @@
       isSystemUser = true;
     };
     groups.media = {
-      members = [ "nzbget" "plex" "media" ];
+      members = [ "media" ];
     };
   };
 
@@ -42,7 +42,6 @@
       };
 
       "plex.null.pub" = {
-
         forceSSL = true;
         enableACME = true;
         locations."/" = {
@@ -56,62 +55,13 @@
   # Plex Media Server
   services.plex = {
     enable = true;
-    user = "plex";
+    user = "media";
     group = "media";
-    dataDir = "/media";
   };
 
   services.nzbget = {
     enable = true;
-    user = "nzbget";
+    user = "media";
     group = "media";
-    settings = rec {
-      # Directories
-      MainDir = "/var/lib/nzbget";
-      DestDir = "${MainDir}/dst";
-      InterDir = "${MainDir}/inter";
-      NzbDir = "${MainDir}/nzb";
-      QueueDir = "${MainDir}/queue";
-      TempDir = "${MainDir}/tmp";
-      ScriptDir = "${MainDir}/scripts";
-      LockFile = "${MainDir}/nzbget.lock";
-
-      # Other Stuff
-      CertStore = "${pkgs.cacert}";
-      AuthorizedIp = "*";
-
-      # Easynews Europe
-      "Server1.Active" = "yes";
-      "Server1.Level" = "0";
-      "Server1.Optional" = "no";
-      "Server1.Group" = "0";
-      "Server1.Host" = "secure-eu.news.easynews.com";
-      "Server1.Port" = "443";
-      "Server1.Username" = "user";
-      "Server1.Password" = "pass";
-      "Server1.JoinGroup" = "no";
-      "Server1.Encryption" = "yes";
-      "Server1.Connections" = "10";
-      "Server1.Retention" = "5037";
-      "Server1.IpVersion" = "ipv4";
-      "Server1.Notes" = "Easynews European Secure Server";
-
-      # Easynews USA
-      "Server2.Active" = "yes";
-      "Server2.Level" = "0";
-      "Server2.Optional" = "no";
-      "Server2.Group" = "0";
-      "Server2.Host" = "secure-us.news.easynews.com";
-      "Server2.Port" = "443";
-      "Server2.Username" = "user";
-      "Server2.Password" = "pass";
-      "Server2.JoinGroup" = "no";
-      "Server2.Encryption" = "yes";
-      "Server2.Connections" = "10";
-      "Server2.Retention" = "5037";
-      "Server2.IpVersion" = "ipv4";
-      "Server2.Notes" = "Easynews American Secure Server";
-    };
-
   };
 }
