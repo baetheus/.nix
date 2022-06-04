@@ -69,7 +69,7 @@
         enableACME = true;
         basicAuthFile = config.age.secrets.basicauth.path;
         locations."/" = {
-          proxyPass = "http://0.0.0.0:8181/home";
+          proxyPass = "http://localhost:8181";
           proxyWebsockets = true;
         };
       };
