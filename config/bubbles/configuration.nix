@@ -8,7 +8,7 @@
 
   networking.hostName = "bubbles";
   networking.hostId = "e23f69c3";
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 3389 ];
 
   # Secrets
   age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
@@ -65,6 +65,10 @@
     {
       autoStart = true;
       config = { config, pkgs, ... }: {
+        system.stateVersion = "22.05";
+
+        imports = [ ../users.nix ];
+
         services.xserver.enable = true;
         services.xserver.displayManager.sddm.enable = true;
         services.xserver.desktopManager.plasma5.enable = true;
