@@ -13,6 +13,7 @@ in
       hostname = "euclid";
       modules = darwinModules;
     };
+
     # Work Macbook Pro
     parks = mkDarwin {
       hostname = "parks";
@@ -48,7 +49,7 @@ in
     };
 
     # Backup Server
-    bubbles = mkNixos {
+    blossom = mkNixos {
       hostname = "blossom";
       modules = [
         ./config/common.nix
