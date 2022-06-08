@@ -46,5 +46,16 @@ in
         ./config/buttercup/configuration.nix
       ];
     };
+
+    # Backup Server
+    bubbles = mkNixos {
+      hostname = "blossom";
+      modules = [
+        ./config/common.nix
+        ./config/linux.nix
+        ./config/users.nix
+        ./config/blossom/configuration.nix
+      ];
+    };
   };
 }
