@@ -7,13 +7,28 @@
 
     sessionVariables = {
       EDITOR = "vim";
+      RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
     };
 
     packages = with pkgs; [
       helix
-      rnix-lsp
-      deno
       ripgrep
+      mkcert
+
+      # Kafka
+      apacheKafka
+
+      # TypeScript
+      deno
+
+      # Nix
+      rnix-lsp
+
+      # Rust
+      rustc
+      cargo
+      rust-analyzer
+      rustfmt
     ];
   };
 
