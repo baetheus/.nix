@@ -11,4 +11,10 @@
 
   services.zfs.autoScrub.enable = true;
   services.zfs.autoSnapshot.enable = true;
+
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+    permitRootLogin = "no";
+  };
 }
