@@ -9,8 +9,8 @@ in
 {
   darwinConfigurations = {
     # Personal Macbook Pro 13" 2018
-    euclid = mkDarwin {
-      hostname = "euclid";
+    hopper = mkDarwin {
+      hostname = "hopper";
       modules = darwinModules;
     };
 
