@@ -38,7 +38,7 @@ rec {
       homeUser = mkHomeUser { inherit pkgs username name email; };
     in
     nix-darwin.lib.darwinSystem {
-      inherit system pkgs modules;
+      inherit system pkgs;
       modules = [
         home-manager.darwinModule
         homeUser
