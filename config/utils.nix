@@ -9,6 +9,19 @@ rec {
     config.allowUnfree = true;
   };
 
+  # Creates a home-manager user
+  mkHomeUser =
+    { pkgs, username, name, email, }:
+    let
+      user = import ../home/user.nix { inherit pkgs username name email; };
+    in
+    {
+
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users."${username}" = user;
+    };
+
   # Create a darwinSystem with a single user and home-manager
   mkDarwin =
     { hostname
@@ -22,19 +35,13 @@ rec {
     }:
     let
       pkgs = mkPkgs { inherit system overlays; };
-      user = import ../home/user.nix {
-        inherit pkgs username name email;
-      };
+      homeUser = mkHomeUser { inherit pkgs username name email; };
     in
     nix-darwin.lib.darwinSystem {
-      inherit system pkgs;
+      inherit system pkgs modules;
       modules = [
         home-manager.darwinModule
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users."${username}" = user;
-        }
+        homeUser
       ] ++ modules;
     };
 
@@ -52,9 +59,7 @@ rec {
     }:
     let
       pkgs = mkPkgs { inherit system overlays; };
-      user = import ../home/user.nix {
-        inherit pkgs username name email;
-      };
+      homeUser = mkHomeUser { inherit pkgs username name email; };
     in
     nixpkgs.lib.nixosSystem {
       inherit system pkgs;
@@ -64,11 +69,7 @@ rec {
           age.identityPaths = [ "/keys/id_ed25519_shared" ];
         }
         home-manager.nixosModule
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users."${username}" = user;
-        }
+        homeUser
       ] ++ modules;
     };
 }

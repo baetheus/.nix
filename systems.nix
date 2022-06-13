@@ -1,17 +1,17 @@
 inputs:
 let
-  inherit (import ./lib/utils.nix inputs) mkDarwin mkNixos;
-  darwinModules = [
-    ./config/common.nix
-    ./config/darwin.nix
-  ];
+  inherit (import ./config/utils.nix inputs) mkDarwin mkNixos;
 in
 {
   darwinConfigurations = {
     # Personal Macbook Pro 13" 2018
     hopper = mkDarwin {
       hostname = "hopper";
-      modules = darwinModules;
+      modules = [
+        ./config/common.nix
+        ./config/darwin.nix
+        ./config/users/darwin-brandon.nix
+      ];
     };
 
     # Work Macbook Pro
@@ -21,7 +21,10 @@ in
       username = "brandonblaylock";
       name = "Brandon Blaylock";
       email = "bblaylock@cogility.com";
-      modules = darwinModules;
+      modules = [
+        ./config/common.nix
+        ./config/darwin.nix
+      ];
     };
   };
 
