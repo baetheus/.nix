@@ -11,24 +11,32 @@
     };
 
     packages = with pkgs; [
+      zellij
+      nerdfonts
       helix
       ripgrep
+
+      # Certificate tools
       mkcert
+      nssTools
 
       # Kafka
       apacheKafka
 
       # TypeScript
       deno
+      yarn
+      nodejs
+      nodePackages.npm
+      nodePackages.typescript
 
       # Nix
       rnix-lsp
 
       # Rust
-      rustc
-      cargo
+      rustup
       rust-analyzer
-      rustfmt
+      wasm-pack
     ];
   };
 
@@ -37,9 +45,5 @@
     zsh = import ./zsh.nix;
     vim = import ./vim.nix { inherit pkgs; };
     git = import ./git.nix { inherit name email; };
-  };
-
-  xdg.configFile = {
-    "helix/languages.toml".source = ./files/languages.toml;
   };
 }
