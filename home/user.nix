@@ -28,7 +28,8 @@
       nodejs
       nodePackages.npm
       nodePackages.typescript
-
+      nodePackages.typescript-language-server
+      
       # Nix
       rnix-lsp
 
@@ -46,7 +47,8 @@
     git = import ./git.nix { inherit name email; };
   };
   
+  xdg.enable = true;
   xdg.configFile = {
-    "alacritty.yml".source = ./files/alacritty.yml;
+    "alacritty/alacritty.yml".source = ./files/alacritty.yml;
   };  
 }
