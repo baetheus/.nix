@@ -9,7 +9,8 @@ rec {
     config.allowUnfree = true;
   };
 
-  # Creates a home-manager user
+  
+  # Creates a home-manager user for use with nixos or nix-darwin
   mkHomeUser =
     { pkgs, username, name, email, }:
     let

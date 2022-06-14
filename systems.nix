@@ -10,7 +10,6 @@ in
       modules = [
         ./config/common.nix
         ./config/darwin.nix
-        ./config/users/darwin-brandon.nix
       ];
     };
 

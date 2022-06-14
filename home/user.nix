@@ -11,7 +11,6 @@
 
     packages = with pkgs; [
       zellij
-      nerdfonts
       helix
       ripgrep
 
