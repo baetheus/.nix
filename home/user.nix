@@ -7,7 +7,6 @@
 
     sessionVariables = {
       EDITOR = "vim";
-      RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
     };
 
     packages = with pkgs; [
@@ -46,4 +45,8 @@
     vim = import ./vim.nix { inherit pkgs; };
     git = import ./git.nix { inherit name email; };
   };
+  
+  xdg.configFile = {
+    "alacritty.yml".source = ./files/alacritty.yml;
+  };  
 }
