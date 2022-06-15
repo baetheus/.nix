@@ -3,7 +3,7 @@
 {
   home = {
     inherit username;
-    stateVersion = "21.11";
+    stateVersion = "22.05";
 
     sessionVariables = {
       EDITOR = "vim";
@@ -46,8 +46,10 @@
     git = import ./git.nix { inherit name email; };
   };
   
-  xdg.enable = true;
-  xdg.configFile = {
-    "alacritty/alacritty.yml".source = ./files/alacritty.yml;
-  };  
+  xdg = {
+    configFile = {
+      "alacritty/alacritty.yml".source = ./files/alacritty.yml;
+      "zellij/config.yaml".source = ./files/zellij.yaml;
+    };  
+  };
 }
