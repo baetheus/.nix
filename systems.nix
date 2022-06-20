@@ -1,30 +1,28 @@
 inputs:
 let
   inherit (import ./config/utils.nix inputs) mkDarwin mkNixos;
+  inherit (inputs) age;
 in
 {
   darwinConfigurations = {
     # Personal Macbook Pro 13" 2018
     hopper = mkDarwin {
       hostname = "hopper";
-      modules = [
-        ./config/common.nix
-        ./config/darwin.nix
-        ./config/users/darwin-brandon.nix
-      ];
+      system = "x86_64-darwin";
+    };
+
+    # Personal Macbook Pro 14 2021
+    rosalind = mkDarwin {
+      hostname = "rosalind";
+      system = "aarch64-darwin";
     };
 
     # Work Macbook Pro
     parks = mkDarwin {
       hostname = "parks";
-      system = "aarch64-darwin";
       username = "brandonblaylock";
       name = "Brandon Blaylock";
       email = "bblaylock@cogility.com";
-      modules = [
-        ./config/common.nix
-        ./config/darwin.nix
-      ];
     };
   };
 
@@ -33,9 +31,8 @@ in
     bubbles = mkNixos {
       hostname = "bubbles";
       modules = [
-        ./config/common.nix
-        ./config/linux.nix
-        ./config/users.nix
+        agenix.nixosModule
+        ./config/age.nix
         ./config/bubbles/configuration.nix
       ];
     };
@@ -44,9 +41,8 @@ in
     buttercup = mkNixos {
       hostname = "buttercup";
       modules = [
-        ./config/common.nix
-        ./config/linux.nix
-        ./config/users.nix
+        agenix.nixosModule
+        ./config/age.nix
         ./config/buttercup/configuration.nix
       ];
     };
@@ -55,9 +51,8 @@ in
     blossom = mkNixos {
       hostname = "blossom";
       modules = [
-        ./config/common.nix
-        ./config/linux.nix
-        ./config/users.nix
+        agenix.nixosModule
+        ./config/age.nix
         ./config/blossom/configuration.nix
       ];
     };

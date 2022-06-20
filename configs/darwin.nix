@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   # Users
   users.nix.configureBuildUsers = true;

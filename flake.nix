@@ -2,6 +2,8 @@
   description = "Brandon's Superflake";
 
   inputs = {
+    flake-utils.url = "github:numtide/flake-utils";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-darwin.url = "github:lnl7/nix-darwin/master";
@@ -15,7 +17,8 @@
   };
 
   outputs = inputs:
-    (import ./systems.nix inputs);
+    (import ./systems.nix inputs)
+    ++ (import ./homes.nix inputs);
 
 }
 

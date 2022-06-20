@@ -1,6 +1,6 @@
 {
   darwin = {
-    system = "x86_64-darwin";
+    system = "aarch64-darwin";
     username = "brandon";
     name = "Brandon Blaylock";
     email = "brandon@null.pub";
