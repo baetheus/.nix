@@ -9,12 +9,9 @@ rec {
     config.allowUnfree = true;
   };
 
-  # Creates a simple home user configuration
-  mkHomeUser = { pkgs, username, name, email }: import ../home-manager/simple.nix { inherit pkgs username name email; };
-
   # Creates home-manager module for a single user
   mkHomeUserModule = { pkgs, username, name, email }: {
-    home-manager.users."username" = mkHomeUser { inherit pkgs username name email; };
+    home-manager.users."${username}" = import ./home/simple.nix { inherit pkgs username name email; };
   };
 
   # Create a basic darwin system
@@ -36,9 +33,9 @@ rec {
       modules = [
         home-manager.darwinModules.home-manager
         user
-        ./config/common.nix
-        ./config/darwin.nix
-        ./config/home-manager.nix
+        ./configs/common.nix
+        ./configs/darwin.nix
+        ./configs/home-manager.nix
       ] ++ modules;
     };
 
@@ -61,9 +58,9 @@ rec {
       modules = [
         home-manager.darwinModules.home-manager
         user
-        ./config/common.nix
-        ./config/linux.nix
-        ./config/home-manager.nix
+        ./configs/common.nix
+        ./configs/linux.nix
+        ./configs/home-manager.nix
       ] ++ modules;
     };
 }

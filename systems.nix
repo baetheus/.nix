@@ -1,7 +1,7 @@
 inputs:
 let
-  inherit (import ./config/utils.nix inputs) mkDarwin mkNixos;
-  inherit (inputs) age;
+  inherit (import ./utils.nix inputs) mkDarwin mkNixos;
+  inherit (inputs) agenix;
 in
 {
   darwinConfigurations = {
@@ -32,8 +32,8 @@ in
       hostname = "bubbles";
       modules = [
         agenix.nixosModule
-        ./config/age.nix
-        ./config/bubbles/configuration.nix
+        ./configs/age.nix
+        ./configs/bubbles/configuration.nix
       ];
     };
 
@@ -42,8 +42,8 @@ in
       hostname = "buttercup";
       modules = [
         agenix.nixosModule
-        ./config/age.nix
-        ./config/buttercup/configuration.nix
+        ./configs/age.nix
+        ./configs/buttercup/configuration.nix
       ];
     };
 
@@ -52,8 +52,8 @@ in
       hostname = "blossom";
       modules = [
         agenix.nixosModule
-        ./config/age.nix
-        ./config/blossom/configuration.nix
+        ./configs/age.nix
+        ./configs/blossom/configuration.nix
       ];
     };
   };
