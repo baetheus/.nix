@@ -10,10 +10,16 @@
     };
 
     packages = with pkgs; [
+      # General Environment
       helix
-      rnix-lsp
-      deno
+      zellij
       ripgrep
+
+      # Language Servers
+      rnix-lsp
+
+      # Virtual Machines
+      deno
     ];
   };
 

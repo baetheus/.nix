@@ -7,6 +7,8 @@
   shellAliases = {
     ll = "ls -alhG"; # Pretty ll
     vi = "vim"; # Prefer vim
+    switch = "darwin-rebuild switch --flake ~/.nix";
+    flake = "nix flake new -t github:nix-community/nix-direnv .";
   };
 
   history = {
