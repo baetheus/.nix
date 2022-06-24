@@ -34,6 +34,7 @@ in
         agenix.nixosModule
         ./configs/age.nix
         ./configs/bubbles/configuration.nix
+        ./configs/users/brandon.nix
       ];
     };
 
@@ -44,6 +45,7 @@ in
         agenix.nixosModule
         ./configs/age.nix
         ./configs/buttercup/configuration.nix
+        ./configs/users/brandon.nix
       ];
     };
 
@@ -54,6 +56,7 @@ in
         agenix.nixosModule
         ./configs/age.nix
         ./configs/blossom/configuration.nix
+        ./configs/users/brandon.nix
       ];
     };
   };
