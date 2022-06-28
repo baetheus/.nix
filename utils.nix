@@ -7,6 +7,9 @@ rec {
   mkPkgs = { system, overlays ? [ ] }: import nixpkgs {
     inherit system overlays;
     config.allowUnfree = true;
+    config.packageOverrides = pkgs: {
+      zfsStable = pkgs.zfsStable.override { enableMail = true; };
+    };
   };
 
   # Creates home-manager module for a single user

@@ -5,11 +5,7 @@
   services.zfs.autoScrub.enable = true;
   services.zfs.autoSnapshot.enable = true;
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    zfsStable = pkgs.zfsStable.override { enableMail = true; };
-  };
-
-  # Tell zfs zed to use msmtp relay
+  # Requires zfs to be compiled with mail support
   services.zfs.zed.enableMail = true;
   services.zfs.zed.settings = {
     ZED_DEBUG_LOG = "/tmp/zed.debug.log";
