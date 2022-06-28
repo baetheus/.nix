@@ -5,7 +5,6 @@
   services.zfs.autoScrub.enable = true;
   services.zfs.autoSnapshot.enable = true;
 
-
   age.secrets.msmtp-passwordeval.file = ../secrets/msmtp-passwordeval.age;
 
   # Setup SMTP Relay
@@ -25,7 +24,7 @@
         host = "smtp.fastmail.com";
         passwordeval = "cat ${config.age.secrets.msmtp-passwordeval.path}";
         user = "brandon@nll.sh";
-        from = "brandon@nll.sh";
+        from = "noreply@null.pub";
       };
     };
   };
