@@ -23,7 +23,7 @@
       default = {
         host = "smtp.fastmail.com";
         passwordeval = "cat ${config.age.secrets.msmtp-passwordeval.path}";
-        user = "brandon@null.pub";
+        user = "noreply@null.pub";
         from = "noreply@null.pub";
       };
     };
