@@ -5,7 +5,7 @@
   services.zfs.autoScrub.enable = true;
   services.zfs.autoSnapshot.enable = true;
 
-  age.secrets.msmtp-passwordeval.file = ../../secrets/msmtp-passwordeval.age;
+  age.secrets.msmtp-passwordeval.file = ../secrets/msmtp-passwordeval.age;
 
   # Setup SMTP Relay
   programs.msmtp = {
