@@ -1,0 +1,3 @@
+# Nix things to ignore
+.direnv
+result
