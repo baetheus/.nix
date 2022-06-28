@@ -44,7 +44,7 @@
     };
   };
 
-  # Services
+  # Provides a private bitwarden server
   services.vaultwarden = {
     enable = true;
     config = {
@@ -60,42 +60,15 @@
     environmentFile = config.age.secrets.vaultwarden.path;
   };
 
-  # Containers
-  # containers.remote =
-  #   {
-  #     autoStart = true;
-  #     config = { config, pkgs, ... }: {
-  #       system.stateVersion = "22.05";
-
-  #       imports = [ ../users.nix ];
-
-
-  #       services.xserver = {
-  #         enable = true;
-
-  #         desktopManager = {
-  #           xterm.enable = false;
-  #         };
-
-  #         displayManager = {
-  #           defaultSession = "none+i3";
-  #         };
-
-  #         windowManager.i3 = {
-  #           enable = true;
-  #           extraPackages = with pkgs; [
-  #             dmenu #application launcher most people use
-  #             i3status # gives you the default i3 status bar
-  #             i3lock #default i3 screen locker
-  #             i3blocks #if you are planning on using i3blocks over i3status
-  #             firefox
-  #           ];
-  #         };
-  #       };
-
-  #       services.xrdp.enable = true;
-  #       services.xrdp.defaultWindowManager = "i3";
-  #       services.xrdp.openFirewall = true;
-  #     };
-  #   };
+  # Backs up non-nix files to blossom
+  services.zfs.autoReplication = {
+    enable = true;
+    recursive = true;
+    followDelete = true;
+    host = "blossom.nll.sh";
+    username = "brandon";
+    identityFilePath = "/keys/id_ed25519_shared";
+    localFilesystem = "pool/root";
+    remoteFilesystem = "pool/backup/bubbles/root";
+  };
 }
