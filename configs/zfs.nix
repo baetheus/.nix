@@ -1,4 +1,4 @@
-{ config, nixpkgs, ... }: {
+{ config, pkgs, ... }: {
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.devNodes = "/dev/";
 
