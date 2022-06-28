@@ -32,9 +32,9 @@
   # Tell zfs zed to use msmtp relay
   services.zfs.zed.settings = {
     ZED_DEBUG_LOG = "/tmp/zed.debug.log";
-    ZED_EMAIL_ADDR = [ "root" ];
+    ZED_EMAIL_ADDR = [ "brandon@null.pub" ];
     ZED_EMAIL_PROG = "${pkgs.msmtp}/bin/msmtp";
-    ZED_EMAIL_OPTS = "@ADDRESS@";
+    ZED_EMAIL_OPTS = "-s '@SUBJECT@' @ADDRESS@'";
 
     ZED_NOTIFY_INTERVAL_SECS = 3600;
     ZED_NOTIFY_VERBOSE = true;
