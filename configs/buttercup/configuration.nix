@@ -8,7 +8,7 @@
 
   networking.hostName = "buttercup";
   networking.hostId = "e23f69c4";
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 32400 ];
 
   # Secrets
   age.secrets.basicauth = {
