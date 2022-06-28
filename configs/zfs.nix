@@ -42,5 +42,5 @@
     ZED_USE_ENCLOSURE_LEDS = true;
     ZED_SCRUB_AFTER_RESILVER = true;
   };
-  services.zfs.zed.enableMail = false;
+  services.zfs.zed.enableMail = true;
 }
