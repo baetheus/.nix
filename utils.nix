@@ -56,7 +56,7 @@ rec {
     nixpkgs.lib.nixosSystem {
       inherit system pkgs;
       modules = [
-        home-manager.darwinModules.home-manager
+        home-manager.nixosModules.home-manager
         user
         ./configs/common.nix
         ./configs/linux.nix
