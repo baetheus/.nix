@@ -17,9 +17,6 @@
 
       # Language Servers
       rnix-lsp
-
-      # Virtual Machines
-      deno
     ];
   };
 
