@@ -6,20 +6,10 @@
   # General
   system.stateVersion = "22.05"; # Did you read the comment?
 
-  # Secrets!
-  age.secrets."wifi-tuna".file = ../../secrets/wifi-tuna.age;
-
   # Networking
   networking.hostName = "toph"; # Define your hostname.
   networking.hostId = "007f0200";
-  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   networking.interfaces.eno1.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
-  networking.supplicant = {
-    "WLAN" = {
-      configFile.path = config.age.secrets."wifi-tuna".path;
-    };
-  };
 
   # Firewall
   networking.firewall.enable = true;
