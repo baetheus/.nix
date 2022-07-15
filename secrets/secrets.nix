@@ -8,4 +8,5 @@ in
   "vaultwarden.age".publicKeys = users;
   "basicauth.age".publicKeys = users;
   "msmtp-passwordeval.age".publicKeys = users;
+  "wifi-tuna.age".publicKeys = users;
 }

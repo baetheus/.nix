@@ -62,5 +62,16 @@ in
         ./configs/users/brandon.nix
       ];
     };
+
+    # Home Server
+    toph = mkNixos {
+      hostname = "toph";
+      modules = [
+        agenix.nixosModules
+        ./configs/age.nix
+        ./configs/toph/configuration.nix
+        ./configs/users/brandon.nix
+      ];
+    };
   };
 }
