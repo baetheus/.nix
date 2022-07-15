@@ -32,7 +32,7 @@
   services.printing.listenAddresses = [ "*:631" ];
   services.printing.allowFrom = [ "all" ];
   services.printing.defaultShared = true;
-  services.printing.drivers = [ pkgs.samsungUnifiedLinuxDriver ];
+  services.printing.drivers = [ pkgs.samsung-unified-linux-driver ];
 
   # Service discovery
   services.avahi.enable = true;
