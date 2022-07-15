@@ -7,7 +7,7 @@
   system.stateVersion = "22.05"; # Did you read the comment?
 
   # Secrets!
-  age.secrets."tuna-wifi".file = ../../secrets/tuna-wifi.age;
+  age.secrets."wifi-tuna".file = ../../secrets/wifi-tuna.age;
 
   # Networking
   networking.hostName = "toph"; # Define your hostname.
@@ -17,7 +17,7 @@
   networking.interfaces.wlp0s20f3.useDHCP = true;
   networking.supplicant = {
     "WLAN" = {
-      configFile.path = config.age.secrets."tuna-wifi".path;
+      configFile.path = config.age.secrets."wifi-tuna".path;
     };
   };
 
