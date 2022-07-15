@@ -11,7 +11,7 @@
 
   # Networking
   networking.hostName = "toph"; # Define your hostname.
-  networking.hostId = "e23fasc3";
+  networking.hostId = "007f0200";
   networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   networking.interfaces.eno1.useDHCP = true;
   networking.interfaces.wlp0s20f3.useDHCP = true;
