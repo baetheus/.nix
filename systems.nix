@@ -67,7 +67,7 @@ in
     toph = mkNixos {
       hostname = "toph";
       modules = [
-        agenix.nixosModules
+        agenix.nixosModule
         ./configs/age.nix
         ./configs/toph/configuration.nix
         ./configs/users/brandon.nix
