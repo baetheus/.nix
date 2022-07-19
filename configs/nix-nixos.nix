@@ -4,7 +4,7 @@
     package = pkgs.nixUnstable;
 
     settings = {
-      trustedUsers = [ "@wheel" ];
+      trusted-users = [ "@wheel" ];
       substituters = [
         "https://cache.nixos.org/"
       ];
