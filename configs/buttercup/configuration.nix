@@ -83,6 +83,16 @@
           proxyWebsockets = true;
         };
       };
+
+      "lidarr.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        basicAuthFile = config.age.secrets.basicauth.path;
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:8686";
+          proxyWebsockets = true;
+        };
+      };
     };
   };
 
@@ -106,6 +116,12 @@
   };
 
   services.sonarr = {
+    enable = true;
+    user = "media";
+    group = "media";
+  };
+
+  services.lidarr = {
     enable = true;
     user = "media";
     group = "media";
