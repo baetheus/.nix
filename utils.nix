@@ -34,6 +34,7 @@ rec {
         home-manager.darwinModules.home-manager
         user
         ./configs/common.nix
+        ./configs/nix-darwin.nix
         ./configs/darwin.nix
         ./configs/home-manager.nix
       ] ++ modules;
@@ -59,6 +60,7 @@ rec {
         home-manager.nixosModules.home-manager
         user
         ./configs/common.nix
+        ./configs/nix-nixos.nix
         ./configs/linux.nix
         ./configs/home-manager.nix
       ] ++ modules;
