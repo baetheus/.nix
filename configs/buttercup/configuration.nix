@@ -64,22 +64,22 @@
         };
       };
 
-      "headphones.null.pub" = {
-        forceSSL = true;
-        enableACME = true;
-        basicAuthFile = config.age.secrets.basicauth.path;
-        locations."/" = {
-          proxyPass = "http://localhost:8181";
-          proxyWebsockets = true;
-        };
-      };
-
       "sonarr.null.pub" = {
         forceSSL = true;
         enableACME = true;
         basicAuthFile = config.age.secrets.basicauth.path;
         locations."/" = {
           proxyPass = "http://0.0.0.0:8989";
+          proxyWebsockets = true;
+        };
+      };
+
+      "radarr.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        basicAuthFile = config.age.secrets.basicauth.path;
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:7878";
           proxyWebsockets = true;
         };
       };
@@ -109,13 +109,13 @@
     group = "media";
   };
 
-  services.headphones = {
+  services.sonarr = {
     enable = true;
     user = "media";
     group = "media";
   };
 
-  services.sonarr = {
+  services.radarr = {
     enable = true;
     user = "media";
     group = "media";
