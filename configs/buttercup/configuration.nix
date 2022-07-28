@@ -64,7 +64,14 @@
         };
       };
 
+      # Redirect sonarr to series.null.pub
       "sonarr.null.pub" = {
+        globalRedirect = "series.null.pub";
+        forceSSL = true;
+        enableACME = true;
+      };
+
+      "series.null.pub" = {
         forceSSL = true;
         enableACME = true;
         basicAuthFile = config.age.secrets.basicauth.path;
@@ -74,7 +81,14 @@
         };
       };
 
+      # Redirect radarr to movies.null.pub
       "radarr.null.pub" = {
+        globalRedirect = "movies.null.pub";
+        forceSSL = true;
+        enableACME = true;
+      };
+
+      "movies.null.pub" = {
         forceSSL = true;
         enableACME = true;
         basicAuthFile = config.age.secrets.basicauth.path;
@@ -84,7 +98,14 @@
         };
       };
 
+      # Redirect lidarr to music.null.pub
       "lidarr.null.pub" = {
+        globalRedirect = "music.null.pub";
+        forceSSL = true;
+        enableACME = true;
+      };
+
+      "music.null.pub" = {
         forceSSL = true;
         enableACME = true;
         basicAuthFile = config.age.secrets.basicauth.path;
