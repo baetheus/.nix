@@ -1,7 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware/nuc.nix
+    ./modules/minimal.nix
+    ./modules/nix/nixos.nix
+    ./modules/nixos.nix
+    ./modules/openssh.nix
+    ./users/brandon.nix
+  ];
 
   # General
   system.stateVersion = "22.05"; # Did you read the comment?
@@ -13,8 +20,8 @@
 
   # Firewall
   networking.firewall.enable = true;
-  networking.firewall.allowedUDPPorts = [ 22 53 631 5353 32400 ];
-  networking.firewall.allowedTCPPorts = [ 22 53 631 5353 32400 ];
+  networking.firewall.allowedUDPPorts = [ 22 53 631 5353 ];
+  networking.firewall.allowedTCPPorts = [ 22 53 631 5353 ];
 
   # Printing
   services.printing.enable = true;
@@ -29,24 +36,6 @@
   services.avahi.publish.enable = true;
   services.avahi.publish.domain = true;
   services.avahi.publish.userServices = true;
-
-  # Users and Groups
-  users = {
-    users.media = {
-      group = "media";
-      isSystemUser = true;
-    };
-    groups.media = {
-      members = [ "media" "brandon" ];
-    };
-  };
-
-  # Home plex
-  services.plex = {
-    enable = true;
-    user = "media";
-    group = "media";
-  };
 }
 
 

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./bundles/sys-1-sat-32.nix ];
 
   # General
   system.stateVersion = "22.05";
@@ -11,7 +11,7 @@
   networking.firewall.allowedTCPPorts = [ 22 80 443 3389 ];
 
   # Secrets
-  age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
+  age.secrets.vaultwarden.file = ../secrets/vaultwarden.age;
 
   # Nginx
   security.acme.acceptTerms = true;

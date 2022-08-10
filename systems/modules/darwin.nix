@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   # Users
   users.nix.configureBuildUsers = true;
 
@@ -27,7 +26,6 @@
         "com.apple.springing.enabled" = false;
         "com.apple.swipescrolldirection" = false;
         "com.apple.trackpad.scaling" = "2.0";
-
       };
 
       SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;

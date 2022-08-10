@@ -1,28 +1,41 @@
 inputs:
 let
-  inherit (import ./utils.nix inputs) mkDarwin mkNixos;
+  utils = (import ./utils.nix inputs);
   inherit (inputs) agenix;
 in
-{
+with utils; {
   darwinConfigurations = {
     # Personal Macbook Pro 13" 2018
     hopper = mkDarwin {
       hostname = "hopper";
       system = "x86_64-darwin";
+      modules = [
+        darwinHome
+        homes.desktop
+      ];
     };
 
     # Personal Macbook Pro 14 2021
     rosalind = mkDarwin {
       hostname = "rosalind";
       system = "aarch64-darwin";
+      modules = [
+        darwinHome
+        homes.desktop
+      ];
     };
 
     # Work Macbook Pro
     parks = mkDarwin {
       hostname = "parks";
-      username = "brandonblaylock";
-      name = "Brandon Blaylock";
-      email = "bblaylock@cogility.com";
+      modules = [
+        darwinHome
+        (mkDesktopUser {
+          username = "brandonblaylock";
+          name = "Brandon Blaylock";
+          email = "bblaylock@cogility.com";
+        })
+      ];
     };
   };
 
@@ -31,11 +44,10 @@ in
     bubbles = mkNixos {
       hostname = "bubbles";
       modules = [
+        ./systems/bubbles.nix
         agenix.nixosModule
-        ./configs/age.nix
-        ./configs/bubbles/configuration.nix
-        ./configs/zfs.nix
-        ./configs/users/brandon.nix
+        nixosHome
+        homes.server
       ];
     };
 
@@ -43,11 +55,10 @@ in
     buttercup = mkNixos {
       hostname = "buttercup";
       modules = [
+        ./systems/buttercup.nix
         agenix.nixosModule
-        ./configs/age.nix
-        ./configs/buttercup/configuration.nix
-        ./configs/zfs.nix
-        ./configs/users/brandon.nix
+        nixosHome
+        homes.server
       ];
     };
 
@@ -55,11 +66,10 @@ in
     blossom = mkNixos {
       hostname = "blossom";
       modules = [
+        ./systems/blossom.nix
         agenix.nixosModule
-        ./configs/age.nix
-        ./configs/blossom/configuration.nix
-        ./configs/zfs.nix
-        ./configs/users/brandon.nix
+        nixosHome
+        homes.server
       ];
     };
 
@@ -67,10 +77,9 @@ in
     toph = mkNixos {
       hostname = "toph";
       modules = [
-        agenix.nixosModule
-        ./configs/age.nix
-        ./configs/toph/configuration.nix
-        ./configs/users/brandon.nix
+        ./systems/toph.nix
+        nixosHome
+        homes.server
       ];
     };
   };

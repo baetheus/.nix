@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./bundles/sys-1-sat-32.nix ];
 
   # General
   system.stateVersion = "22.05";
@@ -12,7 +12,7 @@
 
   # Secrets
   age.secrets.basicauth = {
-    file = ../../secrets/basicauth.age;
+    file = ../secrets/basicauth.age;
     owner = "nginx";
     group = "nginx";
   };
@@ -24,7 +24,7 @@
       isSystemUser = true;
     };
     groups.media = {
-      members = [ "media" "brandon" ];
+      members = [ "media" ];
     };
   };
 
