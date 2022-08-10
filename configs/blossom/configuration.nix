@@ -8,7 +8,7 @@
 
   networking.hostName = "blossom";
   networking.hostId = "5be573ce";
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [ 22 443 ];
 
   # Secrets
   # age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
@@ -17,19 +17,19 @@
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "admin@null.pub";
 
-  # services.nginx = {
-  #   enable = true;
+  # Headscale
+  services.headscale = {
+    enable = true;
+    address = "0.0.0.0";
+    port = 443;
+    serverUrl = "https://blossom.null.pub";
+    tls.letsencrypt.hostname = "blossom.null.pub";
 
-  #   virtualHosts = {
-  #     "bubbles.nll.sh" = {
-  #       forceSSL = true;
-  #       enableACME = true;
-  #       locations."/" = {
-  #         root = "/var/www/bubbles.nll.sh";
-  #         extraConfig = "autoindex on;";
-  #       };
-  #     };
-  #   };
-  # };
-
+    dns = {
+      nameservers = [ "1.1.1.1" ];
+      domains = [ "null.internal" ];
+      magicDns = true;
+      baseDomain = "null.internal";
+    };
+  };
 }
