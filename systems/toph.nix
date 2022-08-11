@@ -3,10 +3,11 @@
 {
   imports = [
     ./hardware/nuc.nix
-    ./modules/minimal.nix
-    ./modules/nix/nixos.nix
-    ./modules/nixos.nix
-    ./modules/openssh.nix
+    ./common/minimal.nix
+    ./nixos/common.nix
+    ./nixos/nix.nix
+    ./nixos/openssh.nix
+    ./nixos/tailscale.nix
     ./users/brandon.nix
   ];
 
