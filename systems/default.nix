@@ -100,5 +100,16 @@ with utils; {
         homes.server
       ];
     };
+
+    # Second OVHCloud Server Test
+    bartleby = mkNixos {
+      hostname = "bart" ebyl;
+      modules = [
+        ./bartleby.nix
+        agenix.nixosModule
+        nixosHome
+        homes.server
+      ];
+    };
   };
 }
