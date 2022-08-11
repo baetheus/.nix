@@ -17,6 +17,9 @@ with utils; {
       hostname = "hopper";
       system = "x86_64-darwin";
       modules = [
+        ./darwin/minimal.nix
+        ./darwin/nix.nix
+        ./users/brandon-darwin.nix
         darwinHome
         homes.desktop
       ];
@@ -27,6 +30,9 @@ with utils; {
       hostname = "rosalind";
       system = "aarch64-darwin";
       modules = [
+        ./darwin/minimal.nix
+        ./darwin/nix.nix
+        ./users/brandon-darwin.nix
         darwinHome
         homes.desktop
       ];
@@ -36,6 +42,8 @@ with utils; {
     parks = mkDarwin {
       hostname = "parks";
       modules = [
+        ./darwin/minimal.nix
+        ./darwin/nix.nix
         darwinHome
         (mkDesktopUser {
           username = "brandonblaylock";

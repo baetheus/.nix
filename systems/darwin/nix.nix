@@ -20,4 +20,6 @@
       keep-derivations = true
     '';
   };
+
+  services.nix-daemon.enable = true;
 }
