@@ -89,5 +89,16 @@ with utils; {
         homes.server
       ];
     };
+
+    # First OVHCloud Server Test
+    abigail = mkNixos {
+      hostname = "abigail";
+      modules = [
+        ./abigail.nix
+        agenix.nixosModule
+        nixosHome
+        homes.server
+      ];
+    };
   };
 }
