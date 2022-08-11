@@ -41,7 +41,7 @@ rec {
       home-manager.users."${username}" = import ./homes/server.nix;
       # Passes username, name, and email to nested hm modules
       home-manager.extraSpecialArgs = {
-        git = { inherit username name email; };
+        more = { inherit username name email; };
       };
     };
 
@@ -55,7 +55,7 @@ rec {
       home-manager.users."${username}" = import ./homes/desktop.nix;
       # Passes username, name, and email to nested hm modules
       home-manager.extraSpecialArgs = {
-        git = { inherit username name email; };
+        more = { inherit username name email; };
       };
     };
 

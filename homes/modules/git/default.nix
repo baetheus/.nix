@@ -1,8 +1,8 @@
-{ git, ... }: {
-  programs.git = {
+{ more, ... }: {
+  programs.git = with more; {
     enable = true;
-    userEmail = git.email;
-    userName = git.name;
+    userEmail = email;
+    userName = name;
     ignores = [ "*.DS_Store" "*~" "*.swp" ".direnv" ];
     aliases = {
       ll = "log --oneline";

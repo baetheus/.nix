@@ -1,6 +1,7 @@
-{ ... }: {
-  home = {
-    stateVersion = "21.11";
+{ more, ... }: {
+  home = with more; {
+    inherit username;
+    stateVersion = "22.05";
   };
 
   programs = {
