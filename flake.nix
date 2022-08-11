@@ -17,7 +17,7 @@
   };
 
   outputs = inputs:
-    (import ./systems.nix inputs);
+    (import ./systems inputs);
 
 }
 

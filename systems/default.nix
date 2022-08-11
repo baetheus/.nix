@@ -1,6 +1,13 @@
+# This file contains all of my system configurations
+# assuming the inputs passed to the root level
+# flake.nix
+#
+# It's primary outputs are
+# - darwinConfigurations
+# - nixosConfigurations
 inputs:
 let
-  utils = (import ./utils.nix inputs);
+  utils = (import ../utils.nix inputs);
   inherit (inputs) agenix;
 in
 with utils; {
@@ -44,7 +51,7 @@ with utils; {
     bubbles = mkNixos {
       hostname = "bubbles";
       modules = [
-        ./systems/bubbles.nix
+        ./bubbles.nix
         agenix.nixosModule
         nixosHome
         homes.server
@@ -55,7 +62,7 @@ with utils; {
     buttercup = mkNixos {
       hostname = "buttercup";
       modules = [
-        ./systems/buttercup.nix
+        ./buttercup.nix
         agenix.nixosModule
         nixosHome
         homes.server
@@ -66,7 +73,7 @@ with utils; {
     blossom = mkNixos {
       hostname = "blossom";
       modules = [
-        ./systems/blossom.nix
+        ./blossom.nix
         agenix.nixosModule
         nixosHome
         homes.server
@@ -77,7 +84,7 @@ with utils; {
     toph = mkNixos {
       hostname = "toph";
       modules = [
-        ./systems/toph.nix
+        ./toph.nix
         nixosHome
         homes.server
       ];

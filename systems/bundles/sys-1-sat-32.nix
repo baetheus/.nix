@@ -5,7 +5,7 @@
     ../nixos/zfs.nix
     ../nixos/common.nix
     ../nixos/age.nix
-    ../nixos/nix/nixos.nix
+    ../nixos/nix.nix
     ../nixos/openssh.nix
     ../nixos/tailscale.nix
     ../users/brandon.nix

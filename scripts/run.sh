@@ -1,5 +1,14 @@
 #!/bin/sh
 
+# This script is used to configure zfs on
+# a system that is being "infected" with nixos.
+# It's purpose is to
+# 1. Select disks to install to
+# 2. Minimally partition them
+# 3. Setup an "appropriate" zpool: single, mirror, or raidz1
+# 4. Setup nix and root zfs filesystems
+# 5. Generate a system config
+
 # Select disks
 export disks=(`lsblk -dnl -o PATH`);
 

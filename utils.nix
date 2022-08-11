@@ -1,3 +1,11 @@
+# This file contains utils that should simplify the
+# creation of home-manager users, nixos configs,
+# and nix-darwin configs.
+#
+# I think moving to system definitions using 
+# bundles in nixos is ideal and this file should be
+# split between systems/default.nix and
+# homes/default.nix
 { self, nixpkgs, home-manager, nix-darwin, agenix, ... }:
 let
   defaults = import ./defaults.nix;
