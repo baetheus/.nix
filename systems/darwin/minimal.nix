@@ -8,6 +8,13 @@
   # Programs
   programs.zsh.enable = true;
 
+  # Packages
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+    tailscale
+  ];
+
   # System
   system = {
     defaults = {
