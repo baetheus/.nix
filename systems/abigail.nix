@@ -15,6 +15,8 @@
   security.acme.defaults.email = "admin@null.pub";
 
   # Headscale
+  environment.systemPackages = with pkgs; [ headscale ];
+
   services.headscale = {
     enable = true;
     address = "0.0.0.0";
