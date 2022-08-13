@@ -14,15 +14,35 @@
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "admin@null.pub";
 
+  services.nginx = {
+    enable = true;
+
+    virtualHosts = {
+      "abigail.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          root = "/var/www/abigail.null.pub";
+          extraConfig = "autoindex on;";
+        };
+      };
+
+      "net.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8080";
+        };
+      };
+    };
+  };
+
   # Headscale
   environment.systemPackages = with pkgs; [ headscale ];
 
   services.headscale = {
     enable = true;
-    address = "0.0.0.0";
-    port = 443;
     serverUrl = "https://net.null.pub";
-    tls.letsencrypt.hostname = "net.null.pub";
 
     dns = {
       magicDns = true;
