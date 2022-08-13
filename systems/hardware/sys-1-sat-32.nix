@@ -13,18 +13,8 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  boot.loader.grub = {
-    enable = true;
-    zfsSupport = true;
-    mirroredBoots = [
-      { devices = [ "nodev" ]; path = "/boot"; }
-      { devices = [ "nodev" ]; path = "/boot2"; }
-      { devices = [ "nodev" ]; path = "/boot3"; }
-      { devices = [ "nodev" ]; path = "/boot4"; }
-    ];
-  };
-
-  # Mirrored Boots!
+  # Mirrored Boots!?
+  # Gotta setup replication somehow
   fileSystems."/boot" = {
     device = "/dev/sda2";
     fsType = "vfat";
