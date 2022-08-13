@@ -8,7 +8,7 @@
 
   networking.hostName = "abigail";
   networking.hostId = "a9a768fa";
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
 
   # Nginx
   security.acme.acceptTerms = true;
