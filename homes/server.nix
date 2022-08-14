@@ -10,6 +10,7 @@
 
   imports = [
     ./modules/zsh
+    ./modules/zellij
     ./modules/vim
     ./modules/git
   ];
