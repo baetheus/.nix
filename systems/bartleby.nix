@@ -45,7 +45,7 @@
         };
       };
 
-      "plex.lkj.one" = {
+      "plex.null.pub" = {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
@@ -54,7 +54,7 @@
         };
       };
 
-      "nzbget.lkj.one" = {
+      "nzbget.null.pub" = {
         forceSSL = true;
         enableACME = true;
         basicAuthFile = config.age.secrets.basicauth.path;
@@ -64,7 +64,7 @@
         };
       };
 
-      "series.lkj.one" = {
+      "series.null.pub" = {
         forceSSL = true;
         enableACME = true;
         basicAuthFile = config.age.secrets.basicauth.path;
@@ -74,7 +74,7 @@
         };
       };
 
-      "movies.lkj.one" = {
+      "movies.null.pub" = {
         forceSSL = true;
         enableACME = true;
         basicAuthFile = config.age.secrets.basicauth.path;
@@ -84,7 +84,7 @@
         };
       };
 
-      "music.lkj.one" = {
+      "music.null.pub" = {
         forceSSL = true;
         enableACME = true;
         basicAuthFile = config.age.secrets.basicauth.path;
