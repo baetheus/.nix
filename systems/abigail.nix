@@ -47,7 +47,7 @@
     dns = {
       magicDns = true;
       nameservers = [ "1.1.1.1" ];
-      domains = [ "null.pub" ];
+      domains = [ ];
       baseDomain = "null.pub";
     };
   };
