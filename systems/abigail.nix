@@ -73,12 +73,6 @@
     config = {
       DOMAIN = "https://vault.null.pub";
       WEBSOCKET_ENABLED = "true";
-      SMTP_HOST = "smtp.fastmail.com";
-      SMTP_FROM = "noreply@null.pub";
-      SMTP_FROM_NAME = "Vaultwarden";
-      SMTP_PORT = "465";
-      SMTP_SSL = "true";
-      SMTP_EXPLICIT_SSL = "true";
     };
     environmentFile = config.age.secrets.vaultwarden.path;
   };
