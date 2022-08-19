@@ -22,7 +22,7 @@
   # Firewall
   networking.firewall.enable = true;
   networking.firewall.allowedUDPPorts = [ 22 53 631 5353 ];
-  networking.firewall.allowedTCPPorts = [ 22 53 631 5353 ];
+  networking.firewall.allowedTCPPorts = [ 22 53 631 3478 5353 41641 ];
 
   # Printing
   services.printing.enable = true;
