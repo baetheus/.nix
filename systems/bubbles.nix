@@ -10,6 +10,8 @@
   networking.hostId = "e23f69c3";
   networking.firewall.allowedTCPPorts = [ 22 80 443 6443 ];
 
+  environment.systemPackages = with pkgs; [ kubectl ];
+
   # Secrets
   age.secrets.k3s-token.file = ../secrets/k3s-token.age;
 
@@ -17,6 +19,7 @@
   services.k3s = {
     enable = true;
     tokenFile = config.age.secrets.k3s-token.path;
-    extraFlags = "--cluster-init";
+    # Bubbles was the initial node in the HA setup
+    # extraFlags = "--cluster-init";
   };
 }
