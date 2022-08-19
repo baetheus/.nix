@@ -8,24 +8,15 @@
 
   networking.hostName = "bubbles";
   networking.hostId = "e23f69c3";
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 6443 ];
 
-  # Nginx
-  security.acme.acceptTerms = true;
-  security.acme.defaults.email = "admin@null.pub";
+  # Secrets
+  age.secrets.k3s-token.file = ../secrets/k3s-token.age;
 
-  services.nginx = {
+  # k3s
+  services.k3s = {
     enable = true;
-
-    virtualHosts = {
-      "bubbles.nll.sh" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/" = {
-          root = "/var/www/bubbles.nll.sh";
-          extraConfig = "autoindex on;";
-        };
-      };
-    };
+    tokenFile = config.age.secrets.k3s-token.path;
+    extraFlags = "--cluster-init";
   };
 }

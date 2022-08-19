@@ -9,4 +9,5 @@ in
   "basicauth.age".publicKeys = users;
   "msmtp-passwordeval.age".publicKeys = users;
   "wifi-tuna.age".publicKeys = users;
+  "k3s-token.age".publicKeys = users;
 }
