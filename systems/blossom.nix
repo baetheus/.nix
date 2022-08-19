@@ -8,7 +8,8 @@
 
   networking.hostName = "blossom";
   networking.hostId = "5be573ce";
-  networking.firewall.allowedTCPPorts = [ 22 80 443 6443 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 6443 10250 ];
+  networking.firewall.allowedUDPPorts = [ 8472 51820 ];
 
   environment.systemPackages = with pkgs; [ kubectl ];
 
@@ -19,7 +20,6 @@
   services.k3s = {
     enable = true;
     tokenFile = config.age.secrets.k3s-token.path;
-    # Bubbles was the initial node in the HA setup
-    # extraFlags = "--server https://bubbles.nll.sh:6443";
+    serverAddr = "https://bubbles.nll.sh:6443";
   };
 }
