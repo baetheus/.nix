@@ -6,6 +6,8 @@
     initExtra = ''
       PROMPT="%n@%B%m%b %# "
       RPROMPT="%~"
+      export DENO_INSTALL="/Users/brandon/.deno"
+      export PATH="$DENO_INSTALL/bin:$PATH"
     '';
 
     shellAliases = {
