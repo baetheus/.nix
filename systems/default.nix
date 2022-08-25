@@ -30,7 +30,10 @@ let
     }:
     let
       pkgs = mkPkgs { inherit system overlays; };
-      mods = if homes == [ ] then modules else modules ++ [ home-manager.darwinModules.home-manager ] ++ homes;
+      mods =
+        if homes == [ ]
+        then modules
+        else modules ++ homes ++ [ home-manager.darwinModules.home-manager ];
     in
     nix-darwin.lib.darwinSystem {
       inherit system pkgs;
@@ -46,9 +49,12 @@ let
     }:
     let
       pkgs = mkPkgs { inherit system overlays; };
-      mods = if homes == [ ] then modules else modules ++ [ home-manager.nixosModules.home-manager ] ++ homes;
+      mods =
+        if homes == [ ]
+        then modules
+        else modules ++ homes ++ [ home-manager.darwinModules.home-manager ];
     in
-    nix-darwin.lib.darwinSystem {
+    nixpkgs.lib.nixosSystem {
       inherit system pkgs;
       modules = mods;
     };
