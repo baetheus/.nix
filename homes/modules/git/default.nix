@@ -1,5 +1,5 @@
-{ more, ... }: {
-  programs.git = with more; {
+{ me, ... }: {
+  programs.git = with me; {
     enable = true;
     userEmail = email;
     userName = name;
