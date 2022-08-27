@@ -5,7 +5,6 @@
     ./hardware/nuc.nix
     ./common/minimal.nix
     ./nixos/common.nix
-    ./nixos/nix.nix
     ./nixos/openssh.nix
     ./nixos/tailscale.nix
     ./users/brandon.nix

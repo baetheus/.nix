@@ -42,7 +42,6 @@ in
         hm-darwin
         self.homes.brandon.default
         ./darwin/minimal.nix
-        ./darwin/nix.nix
         ./users/brandon-darwin.nix
       ];
     };
@@ -55,7 +54,6 @@ in
         hm-darwin
         self.homes.brandon.default
         ./darwin/minimal.nix
-        ./darwin/nix.nix
         ./users/brandon-darwin.nix
       ];
     };
@@ -68,7 +66,6 @@ in
         hm-darwin
         self.homes.brandon.work
         ./darwin/minimal.nix
-        ./darwin/nix.nix
       ];
     };
   };

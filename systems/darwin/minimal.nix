@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   # Users
-  users.nix.configureBuildUsers = true;
+  nix.configureBuildUsers = true;
 
   # Services
   services.nix-daemon.enable = true;
