@@ -1,4 +1,4 @@
-{ me, ... }@inputs: {
+{ me, ... }: {
   home = with me; {
     inherit username;
     stateVersion = "22.05";
@@ -9,7 +9,7 @@
   };
 
   imports = [
-    (import (../modules/git) inputs)
+    ../modules/git
     ../modules/zsh
     ../modules/vim
 

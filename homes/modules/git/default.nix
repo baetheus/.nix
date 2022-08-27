@@ -3,7 +3,12 @@
     enable = true;
     userEmail = email;
     userName = name;
-    ignores = [ "*.DS_Store" "*~" "*.swp" ".direnv" ];
+    ignores = [
+      "*.DS_Store"
+      "*~"
+      "*.swp"
+      ".direnv"
+    ];
     aliases = {
       ll = "log --oneline";
     };
