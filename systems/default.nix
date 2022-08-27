@@ -9,7 +9,7 @@
 # TODO
 # * Simplify darwin configurations to be more like
 #   nixos configurations.
-{ self, nixpkgs, home-manager, nix-darwin, ... }@specialArgs:
+{ self, nixpkgs, home-manager, nix-darwin, agenix, ... }:
 let
   # Create pkgs from nixpkgs using system and overlays
   # Prefer allowUnfree
@@ -19,12 +19,10 @@ let
   };
 
   # Supplement nixosSystem with flake inputs
-  nixosSystem = args:
-    nixpkgs.lib.nixosSystem (args // { inherit specialArgs; });
+  nixosSystem = nixpkgs.lib.nixosSystem;
 
   # Supplement darwinSystem with flake inputs
-  darwinSystem = args:
-    nix-darwin.lib.darwinSystem (args // { inherit specialArgs; });
+  darwinSystem = nix-darwin.lib.darwinSystem;
 
   # Shortcuts
   hm-nixos = home-manager.nixosModules.home-manager;
@@ -88,6 +86,7 @@ in
       system = "x86_64-linux";
       modules = [
         hm-nixos
+        agenix.nixosModule
         self.homes.brandon.server
         ./abigail.nix
       ];
@@ -99,6 +98,7 @@ in
       system = "x86_64-linux";
       modules = [
         hm-nixos
+        agenix.nixosModule
         self.homes.brandon.server
         ./bartleby.nix
       ];
@@ -110,6 +110,7 @@ in
       system = "x86_64-linux";
       modules = [
         hm-nixos
+        agenix.nixosModule
         self.homes.brandon.server
         ./bubbles.nix
       ];
@@ -121,6 +122,7 @@ in
       system = "x86_64-linux";
       modules = [
         hm-nixos
+        agenix.nixosModule
         self.homes.brandon.server
         ./buttercup.nix
       ];
@@ -132,6 +134,7 @@ in
       system = "x86_64-linux";
       modules = [
         hm-nixos
+        agenix.nixosModule
         self.homes.brandon.server
         ./blossom.nix
       ];
