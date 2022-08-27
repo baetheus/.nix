@@ -6,67 +6,41 @@
 # - darwinConfigurations
 # - nixosConfigurations
 #
-# TODO:
-# 1. Get agenix.nixosModule into an overlay
-#    so it can be used via modules/agenix.nix
-{ self, nixpkgs, home-manager, nix-darwin, agenix, ... }:
+# TODO
+# * Simplify darwin configurations to be more like
+#   nixos configurations.
+{ self, nixpkgs, home-manager, nix-darwin, ... }@specialArgs:
 let
-  # Seeded home modules
-  homes = self.homes;
-
   # Create pkgs from nixpkgs using system and overlays
+  # Prefer allowUnfree
   mkPkgs = { system, overlays ? [ ] }: import nixpkgs {
     inherit system overlays;
     config.allowUnfree = true;
   };
 
-  # Create a basic darwin system
-  mkDarwin =
-    { hostname
-    , system ? "aarch64-darwin"
-    , homes ? [ ] # home modules
-    , modules ? [ ] # darwin modules
-    , overlays ? [ ] # nixpkgs overlays
-    }:
-    let
-      pkgs = mkPkgs { inherit system overlays; };
-      mods =
-        if homes == [ ]
-        then modules
-        else modules ++ homes ++ [ home-manager.darwinModules.home-manager ];
-    in
-    nix-darwin.lib.darwinSystem {
-      inherit system pkgs;
-      modules = mods;
-    };
+  # Supplement nixosSystem with flake inputs
+  nixosSystem = args:
+    nixpkgs.lib.nixosSystem (args // { inherit specialArgs; });
 
-  mkNixos =
-    { hostname
-    , system ? "x86_64-linux"
-    , homes ? [ ] # home modules
-    , modules ? [ ] # nixos modules
-    , overlays ? [ ] # nixpkgs overlays
-    }:
-    let
-      pkgs = mkPkgs { inherit system overlays; };
-      mods =
-        if homes == [ ]
-        then modules
-        else modules ++ homes ++ [ home-manager.darwinModules.home-manager ];
-    in
-    nixpkgs.lib.nixosSystem {
-      inherit system pkgs;
-      modules = mods;
-    };
+  # Supplement darwinSystem with flake inputs
+  darwinSystem = args:
+    nix-darwin.lib.darwinSystem (args // { inherit specialArgs; });
+
+  # Shortcuts
+  hm-nixos = home-manager.nixosModules.home-manager;
+  hm-darwin = home-manager.darwinModules.home-manager;
 in
 {
+  # Darwin configs are a little boilerplatey.. we could
+  # do better to organize and setup modules/bundles.
   darwinConfigurations = {
     # Personal Macbook Pro 13" 2018
-    hopper = mkDarwin {
-      hostname = "hopper";
+    hopper = darwinSystem rec {
+      pkgs = mkPkgs { inherit system; };
       system = "x86_64-darwin";
-      homes = [ homes.brandon.default ];
       modules = [
+        hm-darwin
+        self.homes.brandon.default
         ./darwin/minimal.nix
         ./darwin/nix.nix
         ./users/brandon-darwin.nix
@@ -74,10 +48,12 @@ in
     };
 
     # Personal Macbook Pro 14 2021
-    rosalind = mkDarwin {
-      hostname = "rosalind";
-      homes = [ homes.brandon.default ];
+    rosalind = darwinSystem rec {
+      pkgs = mkPkgs { inherit system; };
+      system = "aarch64-darwin";
       modules = [
+        hm-darwin
+        self.homes.brandon.default
         ./darwin/minimal.nix
         ./darwin/nix.nix
         ./users/brandon-darwin.nix
@@ -85,75 +61,82 @@ in
     };
 
     # Work Macbook Pro
-    parks = mkDarwin {
-      hostname = "parks";
-      homes = [ homes.brandon.work ];
+    parks = darwinSystem rec {
+      pkgs = mkPkgs { inherit system; };
+      system = "aarch64-darwin";
       modules = [
+        hm-darwin
+        self.homes.brandon.work
         ./darwin/minimal.nix
         ./darwin/nix.nix
-        ./users/brandon-darwin.nix
       ];
     };
   };
 
   nixosConfigurations = {
     # Home Server
-    toph = mkNixos {
-      hostname = "toph";
-      homes = [ homes.brandon.server ];
+    toph = nixosSystem rec {
+      pkgs = mkPkgs { inherit system; };
+      system = "x86_64-linux";
       modules = [
+        hm-nixos
+        self.homes.brandon.server
         ./toph.nix
-        agenix.nixosModule
       ];
     };
 
     # Private services (OVHCloud)
-    abigail = mkNixos {
-      hostname = "abigail";
-      homes = [ homes.brandon.server ];
+    abigail = nixosSystem rec {
+      pkgs = mkPkgs { inherit system; };
+      system = "x86_64-linux";
       modules = [
+        hm-nixos
+        self.homes.brandon.server
         ./abigail.nix
-        agenix.nixosModule
       ];
     };
 
     # Public services (OVHCloud)
-    bartleby = mkNixos {
-      hostname = "bartleby";
-      homes = [ homes.brandon.server ];
+    bartleby = nixosSystem rec {
+      pkgs = mkPkgs { inherit system; };
+      system = "x86_64-linux";
       modules = [
+        hm-nixos
+        self.homes.brandon.server
         ./bartleby.nix
-        agenix.nixosModule
       ];
     };
 
     # Cluster Test 1 (SYS)
-    bubbles = mkNixos {
-      hostname = "bubbles";
-      homes = [ homes.brandon.server ];
+    bubbles = nixosSystem rec {
+      pkgs = mkPkgs { inherit system; };
+      system = "x86_64-linux";
       modules = [
+        hm-nixos
+        self.homes.brandon.server
         ./bubbles.nix
-        agenix.nixosModule
       ];
     };
 
     # Cluster Test 2 (SYS)
-    buttercup = mkNixos {
-      hostname = "buttercup";
-      homes = [ homes.brandon.server ];
+    buttercup = nixosSystem rec {
+      pkgs = mkPkgs { inherit system; };
+      system = "x86_64-linux";
       modules = [
+        hm-nixos
+        self.homes.brandon.server
         ./buttercup.nix
-        agenix.nixosModule
       ];
     };
 
     # Cluster Test 3 (SYS)
-    blossom = mkNixos {
-      hostname = "blossom";
-      homes = [ homes.brandon.server ];
+    blossom = nixosSystem rec {
+      pkgs = mkPkgs { inherit system; };
+      system = "x86_64-linux";
       modules = [
+        hm-nixos
+        self.homes.brandon.server
         ./blossom.nix
-        agenix.nixosModule
       ];
     };
   };

@@ -24,17 +24,24 @@ let
       bundles)
     )
     profiles);
+
 in
 {
   # Home modules for nixos or nix-darwin
   # seeded 
-  inherit homes;
 
   # I don't currently use home-manager outside
   # of nixos or nix-darwin configurations, but if
   # I start to do that I would put
-  # homeConfigurations here.
+  # homeConfigurations here. The first issue to
+  # face is that according to
+  # https://nix-community.github.io/home-manager/index.html#ch-nix-flakes
+  # one must specify pkgs to pull from, which requires
+  # setting a system. Thus homeConfigurations is not
+  # portable across system architectures unless keyed
+  # by a combination of user-system... hopefully this
+  # will change in the future.
 
   # homeConfigurations.brandon = ...
-
+  inherit homes;
 }
