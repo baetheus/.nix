@@ -39,6 +39,7 @@ in
       modules = [
         hm-darwin
         self.homes.brandon.default
+        ./common/minimal.nix
         ./darwin/minimal.nix
         ./users/brandon-darwin.nix
       ];
@@ -51,6 +52,7 @@ in
       modules = [
         hm-darwin
         self.homes.brandon.default
+        ./common/minimal.nix
         ./darwin/minimal.nix
         ./users/brandon-darwin.nix
       ];
@@ -63,6 +65,7 @@ in
       modules = [
         hm-darwin
         self.homes.brandon.work
+        ./common/minimal.nix
         ./darwin/minimal.nix
       ];
     };
