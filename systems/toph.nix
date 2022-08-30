@@ -35,7 +35,7 @@
   # Netatalk (Time Capsule)
   users.users.capsule.group = "capsule";
   users.users.capsule.isSystemUser = true;
-  users.groups.capsule.members = "capsule";
+  users.groups.capsule.members = [ "capsule" ];
 
   services.netatalk.enable = true;
   services.netatalk.settings = {
