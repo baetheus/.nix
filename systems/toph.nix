@@ -32,25 +32,6 @@
   services.printing.defaultShared = true;
   services.printing.drivers = [ pkgs.samsung-unified-linux-driver ];
 
-  # Netatalk (Time Capsule)
-  users.users.capsule.group = "capsule";
-  users.users.capsule.isSystemUser = true;
-  users.groups.capsule.members = [ "capsule" ];
-
-  services.netatalk.enable = true;
-  services.netatalk.settings = {
-    Global = {
-      "server name" = "capsule";
-      "uam list" = "uams_guest.so,uams_dhx.so,uams_dhx2.so";
-      "mimic model" = "TimeCapsule6,116";
-      "guest account" = "capsule";
-    };
-    capsule = {
-      path = "/backup/capsule";
-      "time machine" = "yes";
-    };
-  };
-
   # Service discovery
   services.avahi.enable = true;
   services.avahi.publish.enable = true;
