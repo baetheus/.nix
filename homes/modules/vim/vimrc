@@ -2,6 +2,7 @@
 syntax on
 set re=0
 filetype plugin indent on
+colorscheme noctu
 
 set nocompatible
 set background=dark
@@ -30,6 +31,31 @@ set undodir=~/.local/vim/undo//,/tmp//
 
 map <Space> <Leader>
 
+" Fuzzy file finding
+set path=$PWD/**
+set wildmenu
+set wildignore+=**/.git/**,**/node_modules/**,**/result/**,**/dist/**,**/build/**
+
+" Tab through omnifunc
+function! Tab()
+  if (pumvisible())
+    return "\<C-N>"                         " existing text matching
+  else
+    return "\<Tab>"                         " plugin matching
+  endif
+endfunction
+
+function! ShiftTab()
+  if (pumvisible())
+    return "\<C-P>"                         " existing text matching
+  else
+    return "\<S-Tab>"                         " plugin matching
+  endif
+endfunction
+
+inoremap <Tab> <c-r>=Tab()<CR>
+inoremap <S-Tab> <c-r>=ShiftTab()<CR>
+
 " ALE Settings
 let g:ale_fix_on_save = 1 " Run fixers on write
 let g:ale_completion_enabled = 1 " Allow autocompletion
@@ -38,7 +64,6 @@ let g:ale_set_balloons = 1 " Show hover info in balloon
 
 " ALE deno customization
 let g:ale_deno_unstable = 1
-" autocmd BufNewFile,BufRead *.ts if filereadable("tsconfig.json") | let g:ale_deno_lsp_project_root = 'tsconfig.json' | endif
 
 " ALE Autocompletion
 set omnifunc=ale#completion#OmniFunc
