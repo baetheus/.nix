@@ -7,6 +7,11 @@
     aliases = {
       ll = "log --oneline";
     };
-    extraConfig.init.defaultBranch = "main";
+    extraConfig = {
+      init.defaultBranch = "main";
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      user.signingkey = signingkey;
+    };
   };
 }

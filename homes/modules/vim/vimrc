@@ -83,7 +83,7 @@ nmap <silent> ]d <Plug>(ale_next_wrap)
 let g:ale_linters = {
 \  'javascript': ['deno'],
 \  'javascriptreact': ['deno'],
-\  'nix': ['nix'],
+\  'nix': ['rnix_lsp'],
 \  'typescript': ['deno'],
 \  'typescriptreact': ['deno'],
 \  'rust': ['analyzer'],
@@ -96,7 +96,7 @@ let g:ale_fixers = {
 \  '*': ['remove_trailing_lines', 'trim_whitespace'],
 \  'javascript': ['deno'],
 \  'javascriptreact': ['deno'],
-\  'nix': ['nixpkgs-fmt'],
+\  'nix': ['statix'],
 \  'typescript': ['deno'],
 \  'typescriptreact': ['deno'],
 \  'rust': ['rustfmt'],
