@@ -41,7 +41,6 @@ in
         self.homes.brandon.default
         ./common/minimal.nix
         ./darwin/minimal.nix
-        ./users/brandon-darwin.nix
       ];
     };
 
@@ -54,7 +53,6 @@ in
         self.homes.brandon.default
         ./common/minimal.nix
         ./darwin/minimal.nix
-        ./users/brandon-darwin.nix
       ];
     };
 
@@ -64,7 +62,7 @@ in
       system = "aarch64-darwin";
       modules = [
         hm-darwin
-        self.homes.brandon.work
+        self.homes.brandonblaylock.work
         ./common/minimal.nix
         ./darwin/minimal.nix
       ];
