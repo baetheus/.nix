@@ -13,6 +13,7 @@
     git
     vim
     tailscale
+    openssh
   ];
 
   # System
