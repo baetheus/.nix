@@ -1,4 +1,4 @@
-{ me, ... }@inputs: {
+{ me, pkgs, ... }@inputs: {
   home = with me; {
     inherit username;
     stateVersion = "22.05";
@@ -7,6 +7,13 @@
     sessionVariables = {
       EDITOR = "vim";
     };
+
+    # System packages I want
+    packages = with pkgs; [
+      ripgrep # Searching
+      yubikey-agent # Logging in
+      comma # Not polluting my shell with other stuff
+    ];
   };
 
   programs = {
@@ -14,10 +21,10 @@
   };
 
   imports = [
-    (import (../modules/git) inputs)
-    ../modules/zsh
-    ../modules/vim
-    ../modules/zellij
-    ../modules/direnv
+    (import (../modules/git) inputs) # Coding
+    ../modules/zsh # Shell
+    ../modules/vim # Coding
+    ../modules/zellij # Useful sometimes but mucks with vim
+    ../modules/direnv # Useful for dev environments
   ];
 }
