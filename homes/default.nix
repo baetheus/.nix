@@ -6,13 +6,15 @@ let
   # A collection of bundles (home-manager modules)
   bundles = {
     default = import ./bundles/default.nix;
-    work = import ./bundles/work.nix;
     server = import ./bundles/server.nix;
   };
 
   # Make a module for nixos or nix-darwin
   mkHomeModule = { me, bundle }: {
     home-manager.users."${me.username}" = bundle { inherit me; };
+    users.users."${me.username}" = {
+      home = "/Users/${me.username}";
+    };
   };
 
   # Seeded home modules by profile and bundle

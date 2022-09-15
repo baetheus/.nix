@@ -2,6 +2,11 @@
   home = with me; {
     inherit username;
     stateVersion = "22.05";
+
+    # Use vim as the default editor
+    sessionVariables = {
+      EDITOR = "vim";
+    };
   };
 
   programs = {

@@ -20,7 +20,7 @@
     username = "brandonblaylock";
     name = "Brandon Blaylock";
     email = "bblaylock@cogility.com";
-    signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGmvOAVOtZWsucJnuEUGAw05MB11AOxgLtCmjRg5fY6u bblaylock@cogility.com";
+    signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGmvOAVOtZWsucJnuEUGAw05MB11AOxgLtCmjRg5fY6u";
     keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGmvOAVOtZWsucJnuEUGAw05MB11AOxgLtCmjRg5fY6u bblaylock@cogility.com"
     ];
