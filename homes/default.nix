@@ -6,7 +6,6 @@ let
   # A collection of bundles (home-manager modules)
   bundles = {
     default = import ./bundles/default.nix;
-    work = import ./bundles/work.nix;
     server = import ./bundles/server.nix;
   };
 

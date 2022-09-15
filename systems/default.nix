@@ -62,7 +62,7 @@ in
       system = "aarch64-darwin";
       modules = [
         hm-darwin
-        self.homes.brandonblaylock.work
+        self.homes.brandonblaylock.default
         ./common/minimal.nix
         ./darwin/minimal.nix
       ];
