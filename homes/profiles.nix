@@ -9,11 +9,12 @@
     username = "brandon";
     name = "Brandon Blaylock";
     email = "brandon@null.pub";
-    signingkey = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIAetuhFZ8SCOLnYdfZOCFTQLzIh3a25WX991X5aWem5eAAAAC3NzaDpkZWZhdWx0 brandon@rosalind";
+    signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKApq/9Vfhbk1M5wu0XmnajPCl/KlrL4bW6llSjReniR";
     keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH26soDnOC7jeIiaG65Vur93mFRbQipNZiWHd95ZF+TB brandon@hopper"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJrUIIRoOgUoPZ17KzBE5MuI5kq/LvUnO7Sw3wVdbzhB brandon@rosalind"
+      # Keychain Yubkey
       "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIAetuhFZ8SCOLnYdfZOCFTQLzIh3a25WX991X5aWem5eAAAAC3NzaDpkZWZhdWx0 brandon@rosalind"
+      # Folder Yubikey
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIO1pi4MnWUTF2w9GBbxk7F5uuYmt+uRA7gKMGuKqeQe3AAAAC3NzaDpkZWZhdWx0 brandon@rosalind"
     ];
   };
 
