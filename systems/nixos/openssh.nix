@@ -3,6 +3,6 @@
     enable = true;
     passwordAuthentication = false;
     permitRootLogin = "no";
-    extraConfig = "PubkeyAuthOptions verify-required"
+    extraConfig = "PubkeyAuthOptions verify-required";
   };
 }

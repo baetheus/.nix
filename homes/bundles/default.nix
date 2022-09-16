@@ -10,8 +10,7 @@
 
     # System packages I want
     packages = with pkgs; [
-      ripgrep # Searching
-      yubikey-agent # Logging in
+      ripgrep # Because I always need it
       comma # Not polluting my shell with other stuff
     ];
   };
@@ -21,10 +20,10 @@
   };
 
   imports = [
-    (import (../modules/git) inputs) # Coding
-    ../modules/zsh # Shell
-    ../modules/vim # Coding
-    ../modules/zellij # Useful sometimes but mucks with vim
-    ../modules/direnv # Useful for dev environments
+    (import (../configs/git) inputs) # Coding
+    ../configs/zsh # Shell
+    ../configs/vim # Coding
+    ../configs/zellij # Useful sometimes but mucks with vim
+    ../configs/direnv # Useful for dev environments
   ];
 }

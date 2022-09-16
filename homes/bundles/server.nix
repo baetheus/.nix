@@ -14,9 +14,9 @@
   };
 
   imports = [
-    (import (../modules/git) inputs)
-    ../modules/zsh
-    ../modules/zellij
-    ../modules/vim
+    (import (../configs/git) inputs)
+    ../configs/zsh
+    ../configs/zellij
+    ../configs/vim
   ];
 }
