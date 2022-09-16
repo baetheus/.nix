@@ -9,10 +9,19 @@ let
     server = import ./bundles/server.nix;
   };
 
-  # Make a module for nixos or nix-darwin
+  # Make a home module for nixos or nix-darwin
   mkHomeModule = { me, bundle }: { pkgs, ... }: {
     home-manager.users."${me.username}" = bundle { inherit me pkgs; };
-    users.users."${me.username}" = { };
+    # Create a minimal user 
+    users.users."${me.username}" = if pkgs.stdenv.isDarwin then {
+      shell = pkgs.zsh;
+      home = "/Users/${me.username}";
+    } else {
+      shell = pkgs.zsh;
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+      openssh.authorizedKeys.keys = me.keys;
+    };
   };
 
   # Seeded home modules by profile and bundle

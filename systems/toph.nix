@@ -7,7 +7,6 @@
     ./nixos/common.nix
     ./nixos/openssh.nix
     ./nixos/tailscale.nix
-    ./users/brandon.nix
   ];
 
   # General

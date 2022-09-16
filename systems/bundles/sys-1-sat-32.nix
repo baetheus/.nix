@@ -7,6 +7,5 @@
     ../nixos/age.nix
     ../nixos/openssh.nix
     ../nixos/tailscale.nix
-    ../users/brandon.nix
   ];
 }
