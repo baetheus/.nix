@@ -13,7 +13,7 @@
     keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH26soDnOC7jeIiaG65Vur93mFRbQipNZiWHd95ZF+TB brandon@hopper"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJrUIIRoOgUoPZ17KzBE5MuI5kq/LvUnO7Sw3wVdbzhB brandon@rosalind"
-      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEf2E+i91/V57OrVIQ3EiSvXSe9CWQiGSHMCPf9Kjgw6PknUyxBIwBmUNOe+AF7zYtX5A9depl769RSdAKmjyNU= YubiKey #17771953 PIV Slot 9a"
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKyaECGqSZL4wX6eqm1Mw7VNW7E1Cw1LyJftqawN787tAAAAC3NzaDpkZWZhdWx0 brandon@rosalind"
     ];
   };
 
@@ -22,10 +22,10 @@
     username = "brandonblaylock";
     name = "Brandon Blaylock";
     email = "bblaylock@cogility.com";
-    signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGmvOAVOtZWsucJnuEUGAw05MB11AOxgLtCmjRg5fY6u";
+    signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGmvOAVOtZWsucJnuEUGAw05MB11AOxgLtCmjRg5fY6u bblaylock@cogility.com";
     keys = [
-      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEf2E+i91/V57OrVIQ3EiSvXSe9CWQiGSHMCPf9Kjgw6PknUyxBIwBmUNOe+AF7zYtX5A9depl769RSdAKmjyNU= YubiKey #17771953 PIV Slot 9a"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGmvOAVOtZWsucJnuEUGAw05MB11AOxgLtCmjRg5fY6u bblaylock@cogility.com"
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKyaECGqSZL4wX6eqm1Mw7VNW7E1Cw1LyJftqawN787tAAAAC3NzaDpkZWZhdWx0 brandon@rosalind"
     ];
   };
 }

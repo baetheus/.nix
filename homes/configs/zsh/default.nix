@@ -1,5 +1,5 @@
-{ ... }: {
-  home.packages = [
+{ pkgs, ... }: {
+  home.packages = with pkgs; [
     openssh # For a good ssh-agent
   ];
 
