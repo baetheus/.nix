@@ -12,9 +12,7 @@ let
   # Make a module for nixos or nix-darwin
   mkHomeModule = { me, bundle }: { pkgs, ... }: {
     home-manager.users."${me.username}" = bundle { inherit me pkgs; };
-    users.users."${me.username}" = {
-      home = "/Users/${me.username}";
-    };
+    users.users."${me.username}" = { };
   };
 
   # Seeded home modules by profile and bundle
