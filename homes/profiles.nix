@@ -9,11 +9,11 @@
     username = "brandon";
     name = "Brandon Blaylock";
     email = "brandon@null.pub";
-    signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJrUIIRoOgUoPZ17KzBE5MuI5kq/LvUnO7Sw3wVdbzhB brandon@rosalind";
+    signingkey = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIAetuhFZ8SCOLnYdfZOCFTQLzIh3a25WX991X5aWem5eAAAAC3NzaDpkZWZhdWx0 brandon@rosalind";
     keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH26soDnOC7jeIiaG65Vur93mFRbQipNZiWHd95ZF+TB brandon@hopper"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJrUIIRoOgUoPZ17KzBE5MuI5kq/LvUnO7Sw3wVdbzhB brandon@rosalind"
-      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKyaECGqSZL4wX6eqm1Mw7VNW7E1Cw1LyJftqawN787tAAAAC3NzaDpkZWZhdWx0 brandon@rosalind"
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIAetuhFZ8SCOLnYdfZOCFTQLzIh3a25WX991X5aWem5eAAAAC3NzaDpkZWZhdWx0 brandon@rosalind"
     ];
   };
 
@@ -25,7 +25,7 @@
     signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGmvOAVOtZWsucJnuEUGAw05MB11AOxgLtCmjRg5fY6u bblaylock@cogility.com";
     keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGmvOAVOtZWsucJnuEUGAw05MB11AOxgLtCmjRg5fY6u bblaylock@cogility.com"
-      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKyaECGqSZL4wX6eqm1Mw7VNW7E1Cw1LyJftqawN787tAAAAC3NzaDpkZWZhdWx0 brandon@rosalind"
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIAetuhFZ8SCOLnYdfZOCFTQLzIh3a25WX991X5aWem5eAAAAC3NzaDpkZWZhdWx0 brandon@rosalind"
     ];
   };
 }
