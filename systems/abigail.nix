@@ -59,6 +59,10 @@
     enable = true;
     serverUrl = "https://net.null.pub";
 
+    settings = {
+      "ip_prefixes": [ "10.10.10.0/10" ];
+    };
+
     dns = {
       magicDns = true;
       nameservers = [ "1.1.1.1" ];
