@@ -60,7 +60,7 @@
     serverUrl = "https://net.null.pub";
 
     settings = {
-      "ip_prefixes": [ "10.10.10.0/10" ];
+      "ip_prefixes" = [ "10.10.10.0/10" ];
     };
 
     dns = {
