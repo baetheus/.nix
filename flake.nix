@@ -18,7 +18,8 @@
 
   outputs = inputs:
     (import ./homes/default.nix inputs)
-    // (import ./systems/default.nix inputs);
+    // (import ./systems/default.nix inputs)
+    // (import ./templates/default.nix inputs);
 
 }
 

@@ -16,9 +16,10 @@
     shellAliases = {
       ll = "ls -alhG"; # Pretty ll
       vi = "vim"; # Prefer vim
-      swdarwin = "darwin-rebuild switch --flake ~/.nix";
-      swnixos = "nixos-rebuild switch --flake ~/.nix --use-remote-sudo";
-      flake = "nix flake new -t github:nix-community/nix-direnv .";
+      sw = if pkgs.stdenv.isDarwin
+        then "darwin-rebuild switch --flake ~/.nix"
+        else "nixos-rebuild switch --flake ~/.nix --use-remote-sudo";
+      flake = "nix flake new -t github:baetheus/.nix .";
     };
 
     history = {
