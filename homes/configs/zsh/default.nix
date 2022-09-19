@@ -19,7 +19,7 @@
       sw = if pkgs.stdenv.isDarwin
         then "darwin-rebuild switch --flake ~/.nix"
         else "nixos-rebuild switch --flake ~/.nix --use-remote-sudo";
-      flake = "nix flake new -t github:baetheus/.nix .";
+      fl = "nix flake new -t github:baetheus/.nix .";
     };
 
     history = {
