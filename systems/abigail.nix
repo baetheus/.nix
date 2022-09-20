@@ -60,14 +60,14 @@
     serverUrl = "https://net.null.pub";
 
     settings = {
-      "ip_prefixes" = [ "10.10.10.0/10" ];
+      "ip_prefixes" = [ "100.64.0.0/10" ];
     };
 
     dns = {
       magicDns = true;
       nameservers = [ "1.1.1.1" ];
-      domains = [ "net.internal" ];
-      baseDomain = "net.internal";
+      domains = [ "internal" ];
+      baseDomain = "internal";
     };
   };
 
