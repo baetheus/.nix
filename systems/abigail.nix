@@ -12,6 +12,7 @@
 
   # Secrets
   age.secrets.vaultwarden.file = ../secrets/vaultwarden.age;
+  age.secrets.innernet.file = ../secrets/innernet-config.age;
 
   # Nginx
   security.acme.acceptTerms = true;
@@ -30,14 +31,6 @@
         };
       };
 
-      "net.null.pub" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8080";
-        };
-      };
-
       "vault.null.pub" = {
         forceSSL = true;
         enableACME = true;
@@ -52,24 +45,14 @@
     };
   };
 
-  # Headscale
-  environment.systemPackages = with pkgs; [ headscale ];
-
-  services.headscale = {
+  # Innernet
+  services.innernet = {
     enable = true;
-    serverUrl = "https://net.null.pub";
-
-    settings = {
-      "ip_prefixes" = [ "100.64.0.0/10" ];
-    };
-
-    dns = {
-      magicDns = true;
-      nameservers = [ "1.1.1.1" ];
-      domains = [ "rou.st" ];
-      baseDomain = "rou.st";
-    };
+    configFile = config.age.secrets.innernet.path;
+    interfaceName = "innernet0";
+    openFirewall = true;
   };
+
 
   # Provides a private bitwarden server
   services.vaultwarden = {

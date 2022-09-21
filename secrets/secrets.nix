@@ -1,13 +1,14 @@
 let
-  hopper = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH26soDnOC7jeIiaG65Vur93mFRbQipNZiWHd95ZF+TB brandon@hopper";
-  rosalind = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJrUIIRoOgUoPZ17KzBE5MuI5kq/LvUnO7Sw3wVdbzhB brandon@rosalind";
+  keychain-a = "age1yubikey1q0w4elvpyp83lnat0hce5247rvuvmjnx2d670t0qp07447rxqyulx7tpv2r";
+  folder-b = "age1yubikey1qwqyr54w5yseu8lwusqr9tvxm8e30tv7mn3xf4swjaq6r383985k5t7fp3y";
   shared = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBajlplZeTASyUqnPJVrmkX3eyWT5I3JhwEWiDsV7NH1 brandon@null.pub";
-  users = [ hopper rosalind shared ];
+  all = [ keychain-a folder-b shared ];
 in
 {
-  "vaultwarden.age".publicKeys = users;
-  "basicauth.age".publicKeys = users;
-  "msmtp-passwordeval.age".publicKeys = users;
-  "wifi-tuna.age".publicKeys = users;
-  "k3s-token.age".publicKeys = users;
+  "vaultwarden.age".publicKeys = all;
+  "basicauth.age".publicKeys = all;
+  "msmtp-passwordeval.age".publicKeys = all;
+  "wifi-tuna.age".publicKeys = all;
+  "k3s-token.age".publicKeys = all;
+  "innernet-config.age".publicKeys = all;
 }
