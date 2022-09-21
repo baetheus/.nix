@@ -6,7 +6,6 @@
     ./common/minimal.nix
     ./nixos/common.nix
     ./nixos/openssh.nix
-    ./nixos/tailscale.nix
   ];
 
   # General

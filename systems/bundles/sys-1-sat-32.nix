@@ -6,6 +6,5 @@
     ../nixos/common.nix
     ../nixos/age.nix
     ../nixos/openssh.nix
-    ../nixos/tailscale.nix
   ];
 }
