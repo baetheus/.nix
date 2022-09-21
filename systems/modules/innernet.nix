@@ -23,7 +23,7 @@ in {
     config = mkOption {
       default = null;
       type = nullOr str;
-      description = `
+      description = ''
       Configuration as toml string
       Example:
         # The server's WireGuard key
@@ -37,7 +37,7 @@ in {
 
         # The CIDR prefix of the WireGuard network
         network-cidr-prefix: 15
-      `;
+      '';
     };
 
     interfaceName = mkOption {
