@@ -1,0 +1,13 @@
+# See https://numtide.github.io/devshell for Docs
+
+# Add packages to have them available
+[devshell]
+packages = [
+  "ripgrep"
+]
+
+# Add commands to have them available and
+# show up in the menu
+[[commands]]
+package = "devshell.cli"
+help = "Per project developer environments"
