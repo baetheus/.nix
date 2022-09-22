@@ -14,7 +14,8 @@
       imports = [
         (importTOML ./devshell.toml)
       ];
-      packages = [ # packages go here ];
+      # Packages go here ?
+      packages = [];
     };
   in {
     devShells = {
