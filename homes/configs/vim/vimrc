@@ -36,6 +36,12 @@ set path=$PWD/**
 set wildmenu
 set wildignore+=**/.git/**,**/node_modules/**,**/result/**,**/dist/**,**/build/**
 
+" Use ripgrep
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
+  set grepformat=%f:%l:%c:%m
+endif
+
 " Tab through omnifunc
 function! Tab()
   if (pumvisible())
