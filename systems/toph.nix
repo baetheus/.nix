@@ -17,12 +17,8 @@
   # Audio
   sound.enable = true;
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.settings = {
-    General = {
-      Enable = "Source,Sink,Media,Socket";
-    };
-  };
-  users.extraUsers.brandon.extraGroups = [ "audio" ];
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
   # Networking
   networking.hostName = "toph"; # Define your hostname.
@@ -60,10 +56,6 @@
       User = "brandon";
     };
   };
-
-  # RDP
-  services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "startplasma-x11";
 
   # Synergy
   services.synergy.client = {
