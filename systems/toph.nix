@@ -10,9 +10,7 @@
 
   # General
   system.stateVersion = "22.05"; # Did you read the comment?
-
-
-
+  sound.enable = true;
 
   # Networking
   networking.hostName = "toph"; # Define your hostname.
@@ -40,6 +38,7 @@
 
   # Window Manager
   services.xserver.enable = true;
+  services.xserver.layout = "us";
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
