@@ -16,7 +16,6 @@
 
   # Audio
   sound.enable = true;
-  services.blueman.enable = true;
   nixpkgs.config.pulseaudio = true;
   hardware.bluetooth.enable = true;
   hardware.pulseaudio.enable = true;
