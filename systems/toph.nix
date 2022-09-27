@@ -20,6 +20,7 @@
   hardware.bluetooth.settings = {
     General = {
       Enable = "Control,Gateway,Headset,Media,Sink,Socket,Source";
+      MultiProfile = "multiple";
     };
   };
   hardware.pulseaudio.enable = true;
