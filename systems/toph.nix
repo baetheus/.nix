@@ -52,4 +52,10 @@
   # RDP
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "startplasma-x11";
+
+  # Synergy
+  services.synergy.client = {
+    enable = true;
+    serverAddress = "192.168.86.21";
+  };
 }
