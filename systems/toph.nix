@@ -10,7 +10,16 @@
 
   # General
   system.stateVersion = "22.05"; # Did you read the comment?
+  environment.systemPackages = with pkgs; [
+    firefox
+  ];
+
+  # Audio
   sound.enable = true;
+  nixpkgs.config.pulseaudio = true;
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+  users.extraUsers.brandon.extraGroups = [ "audio" ];
 
   # Networking
   networking.hostName = "toph"; # Define your hostname.
@@ -58,4 +67,11 @@
     enable = true;
     serverAddress = "192.168.86.21";
   };
+
+  # Plex
+  services.plex = {
+    enable = true;
+    openFirewall = true;
+  };
 }
+
