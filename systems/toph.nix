@@ -18,19 +18,14 @@
   sound.enable = true;
   nixpkgs.config.pulseaudio = true;
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      Enable = "Source,Sink,Media,Socket";
+    };
+  };
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
-  hardware.pulseaudio.configFile = pkgs.writeText "default.pa" ''
-    load-module module-bluetooth-policy
-    load-module module-bluetooth-discover
-    ## module fails to load with
-    ##   module-bluez5-device.c: Failed to get device path from module arguments
-    ##   module.c: Failed to load module "module-bluez5-device" (argument: ""): initialization failed.
-    # load-module module-bluez5-device
-    # load-module module-bluez5-discover
-  '';
-
   users.extraUsers.brandon.extraGroups = [ "audio" ];
 
   # Networking
