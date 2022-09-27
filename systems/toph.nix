@@ -16,16 +16,12 @@
 
   # Audio
   sound.enable = true;
-  nixpkgs.config.pulseaudio = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.settings = {
     General = {
       Enable = "Source,Sink,Media,Socket";
     };
   };
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
   users.extraUsers.brandon.extraGroups = [ "audio" ];
 
   # Networking
