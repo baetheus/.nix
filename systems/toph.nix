@@ -17,6 +17,11 @@
   # Audio
   sound.enable = true;
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      Enable = "Control,Gateway,Headset,Media,Sink,Socket,Source";
+    };
+  };
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
