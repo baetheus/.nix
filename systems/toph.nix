@@ -39,8 +39,15 @@
   # Window Manager
   services.xserver.enable = true;
   services.xserver.layout = "us";
-  services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm.autoLogin.relogin = true;
+  services.xserver.displayManager.sddm.settings = {
+    Autologin = {
+      Session = "plasma.desktop";
+      User = "brandon";
+    };
+  };
 
   # RDP
   services.xrdp.enable = true;
