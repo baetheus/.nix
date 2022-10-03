@@ -6,6 +6,7 @@
     ./common/minimal.nix
     ./nixos/common.nix
     ./nixos/openssh.nix
+    ./nixos/age.nix
   ];
 
   # Secrets
