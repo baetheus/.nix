@@ -76,6 +76,7 @@ in
       system = "x86_64-linux";
       modules = [
         hm-nixos
+        agenix.nixosModule
         self.homes.brandon.server
         ./toph.nix
       ];
