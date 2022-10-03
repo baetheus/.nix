@@ -9,7 +9,7 @@
   ];
 
   # Secrets
-  age.secrets."tuna-wifi".file = ../secrets/tuna-wifi.age;
+  age.secrets."tuna-wifi".file = ../secrets/wifi-tuna.age;
 
   # General
   system.stateVersion = "22.05"; # Did you read the comment?
