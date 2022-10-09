@@ -7,6 +7,7 @@
     ./nixos/common.nix
     ./nixos/openssh.nix
     ./nixos/age.nix
+    ./nixos/tailscale.nix
   ];
 
   # Secrets
