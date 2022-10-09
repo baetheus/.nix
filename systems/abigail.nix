@@ -34,10 +34,10 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://0.0.0.0:8000";
+          proxyPass = "http://127.0.0.1:8000";
         };
         locations."/notifications/hub" = {
-          proxyPass = "http://0.0.0.0:3012";
+          proxyPass = "http://127.0.0.1:3012";
           proxyWebsockets = true;
         };
       };
@@ -45,8 +45,30 @@
       "net.null.pub" = {
         forceSSL = true;
         enableACME = true;
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8080";
+        locations = {
+          "/metrics" = {
+            proxyPass = "http://127.0.0.1:${toString config.services.headscale.port}";
+            extraConfig = ''
+              allow 100.64.0.0/16;
+              deny all;
+            '';
+            priority = 2;
+          };
+
+          "/" = {
+            proxyPass = "http://127.0.0.1:${toString config.services.headscale.port}";
+            extraConfig = ''
+              keepalive_requests          100000;
+              keepalive_timeout           160s;
+              proxy_buffering             off;
+              proxy_connect_timeout       75;
+              proxy_ignore_client_abort   on;
+              proxy_read_timeout          900s;
+              proxy_send_timeout          600;
+              send_timeout                600;
+            '';
+            priority = 99;
+          };
         };
       };
     };
