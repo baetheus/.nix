@@ -3,7 +3,13 @@
   time.timeZone = "America/Los_Angeles";
 
   # Make sure we have the tools to troubleshoot available to root
-  environment.systemPackages = with pkgs; [ darkhttpd vim wget git zellij ];
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    git
+    ripgrep
+    darkhttpd
+  ];
 
   # Configure nix for all the fun stuff
   nix = {
