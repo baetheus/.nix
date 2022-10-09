@@ -105,41 +105,5 @@ in
         ./bartleby.nix
       ];
     };
-
-    # Cluster Test 1 (SYS)
-    bubbles = nixosSystem rec {
-      pkgs = mkPkgs { inherit system; };
-      system = "x86_64-linux";
-      modules = [
-        hm-nixos
-        agenix.nixosModule
-        self.homes.brandon.server
-        ./bubbles.nix
-      ];
-    };
-
-    # Cluster Test 2 (SYS)
-    buttercup = nixosSystem rec {
-      pkgs = mkPkgs { inherit system; };
-      system = "x86_64-linux";
-      modules = [
-        hm-nixos
-        agenix.nixosModule
-        self.homes.brandon.server
-        ./buttercup.nix
-      ];
-    };
-
-    # Cluster Test 3 (SYS)
-    blossom = nixosSystem rec {
-      pkgs = mkPkgs { inherit system; };
-      system = "x86_64-linux";
-      modules = [
-        hm-nixos
-        agenix.nixosModule
-        self.homes.brandon.server
-        ./blossom.nix
-      ];
-    };
   };
 }

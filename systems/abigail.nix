@@ -12,7 +12,6 @@
 
   # Secrets
   age.secrets.vaultwarden.file = ../secrets/vaultwarden.age;
-  age.secrets.innernet.file = ../secrets/innernet-config.age;
 
   # Nginx
   security.acme.acceptTerms = true;
@@ -44,15 +43,6 @@
       };
     };
   };
-
-  # Innernet
-  services.innernet = {
-    enable = true;
-    configFile = config.age.secrets.innernet.path;
-    interfaceName = "innernet0";
-    openFirewall = true;
-  };
-
 
   # Provides a private bitwarden server
   services.vaultwarden = {
