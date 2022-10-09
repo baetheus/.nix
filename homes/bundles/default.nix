@@ -11,7 +11,7 @@
     # System packages I want
     packages = with pkgs; [
       ripgrep # Because I always need it
-      comma # Not polluting my shell with other stuff
+      tailscale # For remote access
     ];
   };
 
