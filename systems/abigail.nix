@@ -84,8 +84,6 @@
     dns = {
       magicDns = true;
       nameservers = [ "1.1.1.1" ];
-      domains = [ "internal" ];
-      baseDomain = "internal";
     };
   };
 
