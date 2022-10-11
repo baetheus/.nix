@@ -133,7 +133,7 @@ in {
          + optionalString cfg.repolist " --repolist"
          + optionalString (cfg.baseurl != null) " --baseurl ${cfg.baseurl}"
          + optionalString (cfg.maxLatency > 0) " --max-latency ${toString cfg.maxLatency}"
-         + cfg.repository;
+         + " ${cfg.repository}";
         Restart = "always";
         RestartSec = 3;
       };
