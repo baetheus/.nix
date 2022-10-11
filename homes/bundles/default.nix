@@ -12,6 +12,9 @@
     packages = with pkgs; [
       ripgrep # Because I always need it
       tailscale # For remote access
+      # SCM
+      git 
+      fossil
     ];
   };
 

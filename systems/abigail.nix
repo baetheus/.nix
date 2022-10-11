@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./bundles/sys-1-sat-32.nix ];
+  imports = [
+    ./bundles/sys-1-sat-32.nix
+    ./modules/fossil.nix
+  ];
 
   # General
   system.stateVersion = "22.05";
@@ -72,6 +75,14 @@
         };
       };
     };
+  };
+  
+  # Fossil
+  services.fossil = {
+    enable = true;
+    git = pkgs.git;
+    repolist = true;
+    openFirewall = true;
   };
 
   # Headscale
