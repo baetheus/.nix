@@ -38,7 +38,7 @@
         enableACME = true;
         locations."/" = {
           extraConfig = ''
-            include scgi_params;
+            include ${pkgs.nginx}/conf/scgi_params;
             scgi_pass 127.0.0.1:${toString config.services.fossil.port};
             scgi_param HTTPS "on";
             scgi_param SCRIPT_NAME "";
