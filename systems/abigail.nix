@@ -33,6 +33,19 @@
         };
       };
 
+      "code.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          extraConfig = ''
+            include scgi_params;
+            scgi_pass 127.0.0.1:${toString config.services.fossil.port};
+            scgi_param HTTPS "on";
+            scgi_param SCRIPT_NAME "";
+          '';
+        };
+      };
+
       "vault.null.pub" = {
         forceSSL = true;
         enableACME = true;
@@ -80,9 +93,9 @@
   # Fossil
   services.fossil = {
     enable = true;
-    git = pkgs.git;
     repolist = true;
-    openFirewall = true;
+    scgi = true;
+    git = pkgs.git;
   };
 
   # Headscale
