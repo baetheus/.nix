@@ -22,10 +22,10 @@
         PMPrintingExpandedStateForPrint = true;
 
         "com.apple.sound.beep.feedback" = 0;
-        "com.apple.sound.beep.volume" = "0.4723665";
+        "com.apple.sound.beep.volume" = 0.4;
         "com.apple.springing.enabled" = false;
         "com.apple.swipescrolldirection" = false;
-        "com.apple.trackpad.scaling" = "2.0";
+        "com.apple.trackpad.scaling" = 2.0;
       };
 
       SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
