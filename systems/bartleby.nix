@@ -54,6 +54,15 @@
         };
       };
 
+      "jelly.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:8096";
+          proxyWebsockets = true;
+        };
+      };
+
       "nzbget.null.pub" = {
         forceSSL = true;
         enableACME = true;
