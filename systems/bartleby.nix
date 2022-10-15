@@ -103,6 +103,12 @@
     group = "media";
   };
 
+  services.jellyfin = {
+    enable = true;
+    user = "media";
+    group = "media";
+  };
+
   services.nzbget = {
     enable = true;
     user = "media";
