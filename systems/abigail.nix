@@ -108,6 +108,8 @@
     dns = {
       magicDns = true;
       nameservers = [ "1.1.1.1" ];
+      domains = [ "rou.st" ];
+      base_domain = "rou.st";
     };
   };
 
@@ -117,6 +119,7 @@
     config = {
       DOMAIN = "https://vault.null.pub";
       WEBSOCKET_ENABLED = "true";
+      SIGNUPS_ALLOWED = "false";
     };
     environmentFile = config.age.secrets.vaultwarden.path;
   };
