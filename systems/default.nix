@@ -9,12 +9,24 @@
 # TODO
 # * Simplify darwin configurations to be more like
 #   nixos configurations.
-{ self, nixpkgs, home-manager, nix-darwin, agenix, ... }:
+{ self, nixpkgs, unstable, home-manager, nix-darwin, agenix, ... }:
 let
+  # Common overlays
+  mkUnstable = { system, overlays ? [] }:
+  let pkgs = import unstable {
+    inherit system overlays;
+    config.allowUnfree = true;
+  }; in [
+    (self: super: with pkgs; { inherit tailscale; })
+  ];
+
   # Create pkgs from nixpkgs using system and overlays
   # Prefer allowUnfree
   mkPkgs = { system, overlays ? [ ] }: import nixpkgs {
-    inherit system overlays;
+    inherit system;
+    overlays = overlays ++ (mkUnstable {
+      inherit system overlays;
+    });
     config.allowUnfree = true;
   };
 
