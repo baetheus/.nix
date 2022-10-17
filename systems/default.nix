@@ -45,7 +45,7 @@ in
   # do better to organize and setup modules/bundles.
   darwinConfigurations = {
     # Personal Macbook Pro 13" 2018
-    hopper = darwinSystem rec {
+    diane = darwinSystem rec {
       pkgs = mkPkgs { inherit system; };
       system = "x86_64-darwin";
       modules = [
