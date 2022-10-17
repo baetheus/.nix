@@ -14,19 +14,23 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2d479505-17cf-4d86-a9dd-93b768d7a685";
-      fsType = "ext4";
+    { device = "pool/root";
+      fsType = "zfs";
+    };
+
+  fileSystems."/nix" =
+    { device = "pool/nix";
+      fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/4016-660C";
+    { device = "/dev/disk/by-uuid/4050-E10B";
       fsType = "vfat";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/aeb8d711-d228-4a70-8184-849563b8ed98"; }
-    ];
+  swapDevices = [ ];
 
+  networking.useDHCP = lib.mkDefault true;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

@@ -47,4 +47,4 @@
   services.avahi.publish.domain = true;
   services.avahi.publish.userServices = true;
 }
-
+ 
