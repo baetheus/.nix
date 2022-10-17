@@ -109,7 +109,7 @@
       magicDns = true;
       nameservers = [ "1.1.1.1" ];
       domains = [ "rou.st" ];
-      base_domain = "rou.st";
+      baseDomain = "rou.st";
     };
   };
 
