@@ -4,6 +4,7 @@
   imports = [
     ./hardware/nuc.nix
     ./common/minimal.nix
+    ./nixos/zfs.nix
     ./nixos/common.nix
     ./nixos/openssh.nix
     ./nixos/age.nix
