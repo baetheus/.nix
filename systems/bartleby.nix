@@ -17,6 +17,10 @@
     group = "nginx";
   };
 
+  age.secrets.miniflux = {
+    file = ../secrets/miniflux-config.age;
+  };
+
   # Users and Groups
   users = {
     users.media = {
@@ -102,6 +106,15 @@
           proxyWebsockets = true;
         };
       };
+
+      "reader.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:8080";
+          proxyWebsockets = true;
+        };
+      };
     };
   };
 
@@ -140,5 +153,10 @@
     enable = true;
     user = "media";
     group = "media";
+  };
+
+  services.miniflux = {
+    enable = true;
+    adminCredentialsFile = config.age.secrets.miniflux.path;
   };
 }
