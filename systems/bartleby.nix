@@ -58,15 +58,6 @@
         };
       };
 
-      "jelly.null.pub" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/" = {
-          proxyPass = "http://0.0.0.0:8096";
-          proxyWebsockets = true;
-        };
-      };
-
       "nzbget.null.pub" = {
         forceSSL = true;
         enableACME = true;
@@ -120,12 +111,6 @@
 
   # Media Services
   services.plex = {
-    enable = true;
-    user = "media";
-    group = "media";
-  };
-
-  services.jellyfin = {
     enable = true;
     user = "media";
     group = "media";
