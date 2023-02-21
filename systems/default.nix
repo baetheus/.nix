@@ -88,7 +88,7 @@ in
       system = "x86_64-linux";
       modules = [
         hm-nixos
-        agenix.nixosModule
+        agenix.nixosModule.age
         self.homes.brandon.server
         ./toph.nix
       ];
@@ -100,7 +100,7 @@ in
       system = "x86_64-linux";
       modules = [
         hm-nixos
-        agenix.nixosModule
+        agenix.nixosModule.age
         self.homes.brandon.server
         ./abigail.nix
       ];
@@ -112,7 +112,7 @@ in
       system = "x86_64-linux";
       modules = [
         hm-nixos
-        agenix.nixosModule
+        agenix.nixosModule.age
         self.homes.brandon.server
         ./bartleby.nix
       ];
