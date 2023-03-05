@@ -9,6 +9,7 @@
     git
     ripgrep
     darkhttpd
+    syncthing
   ];
 
   # Configure nix for all the fun stuff
