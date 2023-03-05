@@ -57,31 +57,29 @@
     user = "brandon";
     group = "users";
     guiAddress = "0.0.0.0:8384";
-    declarative = {
-      overrideDevices = true;
-      overrideFolders = true;
-      devices = {
-        "abigail" = { id = "ABIGAIL-KEY"; };
-        "rosalind" = { id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW"; };
+    overrideDevices = true;
+    overrideFolders = true;
+    devices = {
+      "abigail" = { id = "ABIGAIL-KEY"; };
+      "rosalind" = { id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW"; };
+    };
+    folders = {
+      "nix" = {
+        path = "/home/brandon/.nix";
+        devices = [ "abigail" "rosalind" ];
       };
-      folders = {
-        "nix" = {
-          path = "/home/brandon/.nix";
-          devices = [ "abigail" "rosalind" ];
-        };
-        "src" = {
-          path = "/home/brandon/src";
-          devices = [ "abigail" "rosalind" ];
-        };
-        "Documents" = {
-          path = "/home/brandon/documents";
-          devices = [ "abigail" "rosalind" ];
-          versioning = {
-            type = "staggered";
-            params = {
-              cleanInterval = "3600";
-              maxAge = "15768000";
-            };
+      "src" = {
+        path = "/home/brandon/src";
+        devices = [ "abigail" "rosalind" ];
+      };
+      "Documents" = {
+        path = "/home/brandon/documents";
+        devices = [ "abigail" "rosalind" ];
+        versioning = {
+          type = "staggered";
+          params = {
+            cleanInterval = "3600";
+            maxAge = "15768000";
           };
         };
       };
