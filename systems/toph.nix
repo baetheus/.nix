@@ -52,8 +52,8 @@
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-    # dataDir = "/home/wk";
-    # configDir = "/home/wk/.config/syncthing";
+    dataDir = "/home/brandon";
+    configDir = "/home/brandon/.config/syncthing";
     user = "brandon";
     group = "users";
     guiAddress = "0.0.0.0:8384";
