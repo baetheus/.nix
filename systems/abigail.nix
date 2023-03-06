@@ -24,11 +24,11 @@
     enable = true;
 
     virtualHosts = {
-      "abigail.null.pub" = {
+      "public.null.pub" = {
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          root = "/var/www/abigail.null.pub";
+          root = "/var/www/public.null.pub";
           extraConfig = "autoindex on;";
         };
       };
