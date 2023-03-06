@@ -67,16 +67,6 @@
         introducer = true;
       };
     };
-    folders = {
-      "src" = {
-        path = "/home/brandon/src";
-        devices = [ "rosalind" ];
-      };
-      "share" = {
-        path = "/home/brandon/share";
-        devices = [ "rosalind" ];
-      };
-    };
   };
 }
 
