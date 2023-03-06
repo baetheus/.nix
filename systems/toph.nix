@@ -60,28 +60,21 @@
     overrideDevices = true;
     overrideFolders = true;
     devices = {
-      "abigail" = { id = "ABIGAIL-KEY"; };
-      "rosalind" = { id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW"; };
+      "rosalind" = {
+        id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW";
+        addresses = [ "tcp://rosalind:22000" ];
+        autoAcceptFolders = true;
+        introducer = true;
+      };
     };
     folders = {
-      "nix" = {
-        path = "/home/brandon/.nix";
-        devices = [ "abigail" "rosalind" ];
-      };
       "src" = {
         path = "/home/brandon/src";
-        devices = [ "abigail" "rosalind" ];
+        devices = [ "rosalind" ];
       };
-      "Documents" = {
-        path = "/home/brandon/documents";
-        devices = [ "abigail" "rosalind" ];
-        versioning = {
-          type = "staggered";
-          params = {
-            cleanInterval = "3600";
-            maxAge = "15768000";
-          };
-        };
+      "share" = {
+        path = "/home/brandon/share";
+        devices = [ "rosalind" ];
       };
     };
   };

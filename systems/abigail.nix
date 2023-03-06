@@ -58,6 +58,15 @@
         };
       };
 
+      "sync.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8384";
+          proxyWebsockets = true;
+        };
+      };
+
       "net.null.pub" = {
         forceSSL = true;
         enableACME = true;
@@ -122,5 +131,36 @@
       SIGNUPS_ALLOWED = "false";
     };
     environmentFile = config.age.secrets.vaultwarden.path;
+  };
+
+  # Syncthing
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    dataDir = "/home/brandon";
+    configDir = "/home/brandon/.config/syncthing";
+    user = "brandon";
+    group = "users";
+    guiAddress = "0.0.0.0:8384";
+    overrideDevices = true;
+    overrideFolders = true;
+    devices = {
+      "rosalind" = {
+        id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW";
+        addresses = [ "tcp://rosalind:22000" ];
+        autoAcceptFolders = true;
+        introducer = true;
+      };
+    };
+    folders = {
+      "src" = {
+        path = "/home/brandon/src";
+        devices = [ "rosalind" ];
+      };
+      "share" = {
+        path = "/home/brandon/share";
+        devices = [ "rosalind" ];
+      };
+    };
   };
 }
