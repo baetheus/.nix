@@ -141,5 +141,11 @@
         introducer = true;
       };
     };
+    folders = {
+      "abigail" = {
+        path = "/var/www/abigail.null.pub";
+        devices = [ "rosalind" ];
+      };
+    };
   };
 }
