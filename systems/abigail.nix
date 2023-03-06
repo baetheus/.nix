@@ -142,8 +142,12 @@
       };
     };
     folders = {
-      "abigail" = {
-        path = "/var/www/abigail.null.pub";
+      "public" = {
+        path = "/var/www/public.null.pub";
+        devices = [ "rosalind" ];
+      };
+      "lib-abigail" = {
+        path = "/var/lib";
         devices = [ "rosalind" ];
       };
     };
