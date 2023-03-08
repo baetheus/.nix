@@ -164,6 +164,6 @@
   # Photoprism
   services.photoprism = {
     enable = true;
-    config = config.age.secrets.photoprism.path;
+    environmentFile = config.age.secrets.photoprism.path;
   };
 }
