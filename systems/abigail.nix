@@ -144,11 +144,8 @@
         introducer = true;
       };
     };
+    # Sync /var/lib to pick up 
     folders = {
-      "public" = {
-        path = "/var/www/public.null.pub";
-        devices = [ "rosalind" ];
-      };
       "lib-abigail" = {
         path = "/var/lib";
         devices = [ "rosalind" ];
