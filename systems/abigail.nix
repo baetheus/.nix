@@ -4,6 +4,7 @@
   imports = [
     ./bundles/sys-1-sat-32.nix
     ./modules/fossil.nix
+    ./modules/photoprism.nix
   ];
 
   # General
@@ -15,6 +16,7 @@
 
   # Secrets
   age.secrets.vaultwarden.file = ../secrets/vaultwarden.age;
+  age.secrets.photoprism.file = ../secrets/photoprism.age;
 
   # Nginx
   security.acme.acceptTerms = true;
@@ -30,6 +32,14 @@
         locations."/" = {
           root = "/var/www/public.null.pub";
           extraConfig = "autoindex on;";
+        };
+      };
+
+      "photos.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:2342";
         };
       };
 
@@ -90,13 +100,6 @@
     };
   };
   
-  # Fossil
-  services.fossil = {
-    enable = true;
-    repolist = true;
-    scgi = true;
-    git = pkgs.git;
-  };
 
   # Headscale
   environment.systemPackages = with pkgs; [ headscale ];
@@ -151,5 +154,19 @@
         devices = [ "rosalind" ];
       };
     };
+  };
+
+  # Fossil
+  services.fossil = {
+    enable = true;
+    repolist = true;
+    scgi = true;
+    git = pkgs.git;
+  };
+
+  # Photoprism
+  service.photoprism = {
+    enable = true;
+    config = config.age.secrets.photoprism.path;
   };
 }

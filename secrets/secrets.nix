@@ -13,4 +13,5 @@ in
   "k3s-token.age".publicKeys = all;
   "innernet-config.age".publicKeys = all;
   "miniflux-config.age".publicKeys = all;
+  "photoprism.age".publicKeys = all;
 }
