@@ -67,7 +67,7 @@ in {
     users.users = mkIf (cfg.user == "photoprism") {
       photoprism = {
         description = "Photoprism Service";
-        home = cfg.path;
+        home = cfg.workingDir;
         useDefaultShell = true;
         group = "photoprism";
         isSystemUser = true;
