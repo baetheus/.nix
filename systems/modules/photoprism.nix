@@ -15,10 +15,15 @@ in {
       description = "The package to use for photoprism";
     };
 
-    path = mkOption {
+    workingDir = mkOption {
       type = path;
       default = "/var/lib/photoprism";
       description = "config storage PATH, values in options.yml override CLI flags and environment variables if present";
+    };
+
+    environmentFile = mkOption {
+      type = path;
+      description = "path to file with environment variables";
     };
 
     config = mkOption {
@@ -28,19 +33,19 @@ in {
 
     originalsPath = mkOption {
       type = path;
-      default = "${cfg.path}/originals";
+      default = "${cfg.workingDir}/originals";
       description = "path to directory containing original images";
     };
 
     importPath = mkOption {
       type = path;
-      default = "${cfg.path}/import";
+      default = "${cfg.workingDir}/import";
       description = "path to directory containing imports";
     };
 
     storagePath = mkOption {
       type = path;
-      default = "${cfg.path}/storage";
+      default = "${cfg.workingDir}/storage";
       description = "path to directory for photoprism storage";
     };
 
@@ -77,8 +82,7 @@ in {
     # Configure systemd
     systemd.packages = [ cfg.package ];
     systemd.tmpfiles.rules = [
-      "d '${cfg.path}' 0770 ${cfg.user} ${cfg.group} - -"
-      "F '${cfg.path}/options.yml' 0770 ${cfg.user} ${cfg.group} - ${cfg.config}"
+      "d '${cfg.workingDir}' 0770 ${cfg.user} ${cfg.group} - -"
       "d '${cfg.originalsPath}' 0770 ${cfg.user} ${cfg.group} - -"
       "d '${cfg.importPath}' 0770 ${cfg.user} ${cfg.group} - -"
       "d '${cfg.storagePath}' 0770 ${cfg.user} ${cfg.group} - -"
@@ -90,7 +94,6 @@ in {
       path = [ cfg.package ];
 
       environment = {
-        PHOTOPRISM_CONFIG_PATH = cfg.path;
         PHOTOPRISM_ORIGINALS_PATH = cfg.originalsPath;
         PHOTOPRISM_IMPORT_PATH = cfg.importPath;
         PHOTOPRISM_STORAGE_PATH = cfg.storagePath;
@@ -99,8 +102,9 @@ in {
       serviceConfig = {
         User = cfg.user;
         Group = cfg.group;
-        WorkingDirectory = cfg.path;
-        ReadWritePaths = [ cfg.path ];
+        WorkingDirectory = cfg.workingDir;
+        ReadWritePaths = [ cfg.workingDir ];
+        EnvironmentFile = [ cfg.environmentFile ];
         ExecStart = "${cfg.package}/bin/photoprism up";
         Restart = "always";
         RestartSec = 3;
