@@ -60,7 +60,7 @@ in {
     systemd.packages = [ cfg.package ];
     systemd.tmpfiles.rules = [
       "d '${cfg.path}' 0770 ${cfg.user} ${cfg.group} - -"
-      "F '${cfs.path}/options.yml' 0770 ${cfg.user} ${cfg.group} - ${cfg.config}"
+      "F '${cfg.path}/options.yml' 0770 ${cfg.user} ${cfg.group} - ${cfg.config}"
     ];
     systemd.services.photoprism = {
       description = "photoprism server";
