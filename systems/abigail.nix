@@ -165,7 +165,7 @@
   };
 
   # Photoprism
-  service.photoprism = {
+  services.photoprism = {
     enable = true;
     config = config.age.secrets.photoprism.path;
   };
