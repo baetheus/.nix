@@ -25,6 +25,11 @@
   services.nginx = {
     enable = true;
 
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedProxySettings = true;
+
     virtualHosts = {
       "public.null.pub" = {
         forceSSL = true;
@@ -40,6 +45,13 @@
         enableACME = true;
         locations."/" = {
           proxyPass = "http://127.0.0.1:2342";
+          proxyWebsockets = true;
+          extraConfig = ''
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+          '';
         };
       };
 
