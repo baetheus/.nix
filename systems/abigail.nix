@@ -155,8 +155,12 @@
     };
     # Sync /var/lib to pick up 
     folders = {
-      "lib-abigail" = {
-        path = "/var/lib";
+      "photos" = {
+        path = "/var/lib/photoprism/originals";
+        devices = [ "rosalind" ];
+      };
+      "vaultwarden" = {
+        path = "/var/lib/bitwarden_rs";
         devices = [ "rosalind" ];
       };
     };
