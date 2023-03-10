@@ -162,5 +162,11 @@
         introducer = true;
       };
     };
+    folders = {
+      "vaultwarden" = {
+        path = "/media/music";
+        devices = [ "rosalind" ];
+      };
+    };
   };
 }
