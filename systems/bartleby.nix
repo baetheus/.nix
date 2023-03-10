@@ -163,7 +163,7 @@
       };
     };
     folders = {
-      "vaultwarden" = {
+      "music" = {
         path = "/media/music";
         devices = [ "rosalind" ];
       };
