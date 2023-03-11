@@ -154,19 +154,19 @@
     user = "brandon";
     group = "users";
     guiAddress = "0.0.0.0:8384";
-    devices = {
-      "rosalind" = {
-        id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW";
-        addresses = [ "tcp://rosalind:22000" ];
-        autoAcceptFolders = true;
-        introducer = true;
-      };
-    };
-    folders = {
-      "music" = {
-        path = "/media/music";
-        devices = [ "rosalind" ];
-      };
-    };
+    # devices = {
+    #   "rosalind" = {
+    #     id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW";
+    #     addresses = [ "tcp://rosalind:22000" ];
+    #     autoAcceptFolders = true;
+    #     introducer = true;
+    #   };
+    # };
+    # folders = {
+    #   "music" = {
+    #     path = "/media/music";
+    #     devices = [ "rosalind" ];
+    #   };
+    # };
   };
 }
