@@ -57,7 +57,7 @@
     user = "brandon";
     group = "users";
     guiAddress = "0.0.0.0:8384";
-    overrideFolder = true;
+    overrideFolders = true;
     overrideDevices = true;
     
     devices = {
