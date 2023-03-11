@@ -154,19 +154,30 @@
     user = "brandon";
     group = "users";
     guiAddress = "0.0.0.0:8384";
-    # devices = {
-    #   "rosalind" = {
-    #     id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW";
-    #     addresses = [ "tcp://rosalind:22000" ];
-    #     autoAcceptFolders = true;
-    #     introducer = true;
-    #   };
-    # };
-    # folders = {
-    #   "music" = {
-    #     path = "/media/music";
-    #     devices = [ "rosalind" ];
-    #   };
-    # };
+    overrideFolder = true;
+    overrideDevices = true;
+    
+    devices = {
+      "rosalind" = {
+        id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW";
+        addresses = [ "tcp://rosalind:22000" ];
+      };
+      "toph" = {
+        id = "X6JGCDD-4DQQTNL-VPPBNYB-PRTO4XJ-KTWLZ5O-N2DLDHP-PCNIYA5-TXFO6AI";
+        addresses = [ "tcp://toph:22000" ];
+      };
+      "abigail" = {
+        id = "5HMRD3B-UWFLIFC-XDY2NPO-TVWGA2U-GB5H2CT-FUFWNDB-OTKAGEQ-JGLF5QF";
+        addresses = [ "tcp://abigail:22000" ];
+      };
+    };
+
+    folders = {
+      "share" = {
+        id = "xa7yg-wn5qo";
+        path = "/home/brandon/share";
+        devices = [ "rosalind" "toph" "abigail" ];
+      };
+    };
   };
 }
