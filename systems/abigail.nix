@@ -170,12 +170,12 @@
         devices = [ "rosalind" "toph" "bartleby" ];
       };
 
-      # "photos" = {
-      #   id = "xa7yg-ph0to";
-      #   type = "sendonly";
-      #   path = "/var/lib/photoprism/originals";
-      #   devices = [ "rosalind" "toph" "bartleby" ];
-      # };
+      "photos" = {
+        id = "xa7yg-ph0to";
+        type = "sendonly";
+        path = "/var/lib/photoprism/originals";
+        devices = [ "rosalind" "toph" "bartleby" ];
+      };
     };
   };
 
