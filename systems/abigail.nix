@@ -169,6 +169,12 @@
         path = "/home/brandon/share";
         devices = [ "rosalind" "toph" "bartleby" ];
       };
+
+      "share" = {
+        id = "xa7yg-wn5qo";
+        path = "/home/brandon/share";
+        devices = [ "rosalind" "toph" "bartleby" ];
+      };
     };
   };
 
@@ -183,6 +189,7 @@
   # Photoprism
   services.photoprism = {
     enable = true;
+    group = "users";
     environmentFile = config.age.secrets.photoprism.path;
   };
 }

@@ -69,8 +69,8 @@ in {
         description = "Photoprism Service";
         home = cfg.workingDir;
         useDefaultShell = true;
-        group = "photoprism";
         isSystemUser = true;
+        group = cfg.group;
       };
     };
 
