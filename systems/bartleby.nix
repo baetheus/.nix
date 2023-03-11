@@ -178,6 +178,13 @@
         path = "/home/brandon/share";
         devices = [ "rosalind" "toph" "abigail" ];
       };
+
+      "photos" = {
+        id = "xa7yg-ph0to";
+        type = "receiveonly";
+        path = "/home/brandon/photos";
+        devices = [ "rosalind" "toph" "abigail" ];
+      };
     };
   };
 }

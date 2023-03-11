@@ -81,6 +81,13 @@
         path = "/home/brandon/share";
         devices = [ "rosalind" "abigail" "bartleby" ];
       };
+
+      "photos" = {
+        id = "xa7yg-ph0to";
+        type = "receiveonly";
+        path = "/home/brandon/photos";
+        devices = [ "rosalind" "abigail" "bartleby" ];
+      };
     };
   };
 }
