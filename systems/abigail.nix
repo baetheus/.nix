@@ -29,6 +29,7 @@
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
     recommendedProxySettings = true;
+    clientMaxBodySize = "500m";
 
     virtualHosts = {
       "public.null.pub" = {
