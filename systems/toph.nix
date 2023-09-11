@@ -44,6 +44,8 @@
 
   # Service discovery
   services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  services.avahi.openFirewall = true;
   services.avahi.publish.enable = true;
   services.avahi.publish.domain = true;
   services.avahi.publish.userServices = true;
