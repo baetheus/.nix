@@ -3,9 +3,9 @@
 with lib;
 
 let
-  cfg = config.services.photoprism;
+  cfg = config.services.photoprism-local;
 in {
-  options.services.photoprism = with types; {
+  options.services.photoprism-local = with types; {
     enable = mkEnableOption "photoprism service";
 
     package = mkOption {

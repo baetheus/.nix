@@ -4,7 +4,7 @@
   imports = [
     ./bundles/sys-1-sat-32.nix
     ./modules/fossil.nix
-    ./modules/photoprism.nix
+    ./modules/photoprism-local.nix
   ];
 
   # General
@@ -113,16 +113,17 @@
 
   # Headscale
   environment.systemPackages = with pkgs; [ headscale ];
-
   services.headscale = {
     enable = true;
-    serverUrl = "https://net.null.pub";
 
-    dns = {
-      magicDns = true;
-      nameservers = [ "1.1.1.1" ];
-      domains = [ "rou.st" ];
-      baseDomain = "rou.st";
+    settings = {
+      server_url = "https://net.null.pub";
+      dns_config = {
+        magic_dns = true;
+        base_domain = "rou.st";
+        domains = [ "rou.st" ];
+        nameservers = [ "1.1.1.1" ];
+      };
     };
   };
 
@@ -189,7 +190,7 @@
   };
 
   # Photoprism
-  services.photoprism = {
+  services.photoprism-local = {
     enable = true;
     group = "users";
     environmentFile = config.age.secrets.photoprism.path;

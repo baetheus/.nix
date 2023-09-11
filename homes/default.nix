@@ -5,14 +5,14 @@ let
 
   # A collection of bundles (home-manager modules)
   bundles = {
-    default = import ./bundles/default.nix;
-    server = import ./bundles/server.nix;
+    basic = import ./bundles/basic.nix;
   };
 
   # Make a home module for nixos or nix-darwin
   mkHomeModule = { me, bundle }: { pkgs, ... }: {
     home-manager.users."${me.username}" = bundle { inherit me pkgs; };
     # Create a minimal user 
+    programs.zsh.enable = true;
     users.users."${me.username}" = if pkgs.stdenv.isDarwin then {
       shell = pkgs.zsh;
       home = "/Users/${me.username}";

@@ -4,14 +4,12 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
 
-    nixpkgs.url = "github:nixos/nixpkgs/22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-23.05";
 
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    nix-darwin.url = "github:lnl7/nix-darwin/master";
+    nix-darwin.url = "github:lnl7/nix-darwin/release-23.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager/release-22.11";
+    home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix/main";

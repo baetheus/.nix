@@ -1,7 +1,7 @@
 { me, pkgs, ... }@inputs: {
   home = with me; {
     inherit username;
-    stateVersion = "22.05";
+    stateVersion = "23.05";
 
     # Use vim as the default editor
     sessionVariables = {
@@ -23,10 +23,9 @@
   };
 
   imports = [
-    (import (../configs/git) inputs) # Coding
+    (import (../configs/git) inputs)
     ../configs/zsh # Shell
     ../configs/vim # Coding
-    ../configs/zellij # Useful sometimes but mucks with vim
     ../configs/direnv # Useful for dev environments
   ];
 }

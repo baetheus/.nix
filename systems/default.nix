@@ -9,24 +9,12 @@
 # TODO
 # * Simplify darwin configurations to be more like
 #   nixos configurations.
-{ self, nixpkgs, unstable, home-manager, nix-darwin, agenix, ... }:
+{ self, nixpkgs, home-manager, nix-darwin, agenix, ... }:
 let
-  # Common overlays
-  mkUnstable = { system, overlays ? [] }:
-  let pkgs = import unstable {
-    inherit system overlays;
-    config.allowUnfree = true;
-  }; in [
-    (self: super: with pkgs; { inherit tailscale; })
-  ];
-
   # Create pkgs from nixpkgs using system and overlays
   # Prefer allowUnfree
   mkPkgs = { system, overlays ? [ ] }: import nixpkgs {
     inherit system;
-    overlays = overlays ++ (mkUnstable {
-      inherit system overlays;
-    });
     config.allowUnfree = true;
   };
 
@@ -50,7 +38,7 @@ in
       system = "x86_64-darwin";
       modules = [
         hm-darwin
-        self.homes.brandon.default
+        self.homes.brandon.basic
         ./common/minimal.nix
         ./darwin/minimal.nix
       ];
@@ -62,19 +50,7 @@ in
       system = "aarch64-darwin";
       modules = [
         hm-darwin
-        self.homes.brandon.default
-        ./common/minimal.nix
-        ./darwin/minimal.nix
-      ];
-    };
-
-    # Work Macbook Pro
-    parks = darwinSystem rec {
-      pkgs = mkPkgs { inherit system; };
-      system = "aarch64-darwin";
-      modules = [
-        hm-darwin
-        self.homes.brandonblaylock.default
+        self.homes.brandon.basic
         ./common/minimal.nix
         ./darwin/minimal.nix
       ];
@@ -89,7 +65,7 @@ in
       modules = [
         hm-nixos
         agenix.nixosModules.age
-        self.homes.brandon.server
+        self.homes.brandon.basic
         ./toph.nix
       ];
     };
@@ -101,7 +77,7 @@ in
       modules = [
         hm-nixos
         agenix.nixosModules.age
-        self.homes.brandon.server
+        self.homes.brandon.basic
         ./abigail.nix
       ];
     };
@@ -113,7 +89,7 @@ in
       modules = [
         hm-nixos
         agenix.nixosModules.age
-        self.homes.brandon.server
+        self.homes.brandon.basic
         ./bartleby.nix
       ];
     };
