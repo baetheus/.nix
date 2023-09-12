@@ -93,6 +93,7 @@
 
           "/" = {
             proxyPass = "http://127.0.0.1:${toString config.services.headscale.port}";
+            proxyWebsockets = true;
             extraConfig = ''
               keepalive_requests          100000;
               keepalive_timeout           160s;
