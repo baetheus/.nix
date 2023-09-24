@@ -184,7 +184,7 @@
         id = "xa7yg-mu5ic";
         type = "receiveonly";
         path = "/home/brandon/music";
-        devices = [ "rosalind" "toph" "abigail" ];
+        devices = [ "rosalind" "toph" "bartleby" ];
       };
     };
   };
