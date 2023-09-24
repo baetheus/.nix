@@ -189,9 +189,9 @@
       "music" = {
         id = "xa7yg-mu5ic";
         type = "sendonly";
-        path = "/home/brandon/share";
+        path = "/media/music";
         devices = [ "rosalind" "toph" "abigail" ];
-      }
+      };
     };
   };
 }
