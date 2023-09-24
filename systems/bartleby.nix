@@ -185,6 +185,13 @@
         path = "/home/brandon/photos";
         devices = [ "rosalind" "toph" "abigail" ];
       };
+
+      "music" = {
+        id = "xa7yg-mu5ic";
+        type = "sendonly";
+        path = "/home/brandon/share";
+        devices = [ "rosalind" "toph" "abigail" ];
+      }
     };
   };
 }

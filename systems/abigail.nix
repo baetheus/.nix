@@ -179,6 +179,13 @@
         path = "/var/lib/photoprism/originals";
         devices = [ "rosalind" "toph" "bartleby" ];
       };
+
+      "music" = {
+        id = "xa7yg-mu5ic";
+        type = "receiveonly";
+        path = "/home/brandon/share";
+        devices = [ "rosalind" "toph" "abigail" ];
+      }
     };
   };
 
