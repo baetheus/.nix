@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     openssh # For a good ssh-agent
+    zsh-completions # For completions
   ];
 
   programs.zsh = {
