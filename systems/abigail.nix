@@ -3,7 +3,6 @@
 {
   imports = [
     ./bundles/sys-1-sat-32.nix
-    ./modules/fossil.nix
     ./modules/photoprism-local.nix
   ];
 
@@ -49,19 +48,6 @@
           proxyWebsockets = true;
           extraConfig = ''
             proxy_buffering off;
-          '';
-        };
-      };
-
-      "code.null.pub" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/" = {
-          extraConfig = ''
-            include ${pkgs.nginx}/conf/scgi_params;
-            scgi_pass 127.0.0.1:${toString config.services.fossil.port};
-            scgi_param HTTPS "on";
-            scgi_param SCRIPT_NAME "";
           '';
         };
       };
@@ -187,14 +173,6 @@
         devices = [ "rosalind" "toph" "bartleby" ];
       };
     };
-  };
-
-  # Fossil
-  services.fossil = {
-    enable = true;
-    repolist = true;
-    scgi = true;
-    git = pkgs.git;
   };
 
   # Photoprism
