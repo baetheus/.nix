@@ -14,6 +14,7 @@
       tailscale # For remote access
       bottom # basic perf
       # SCM
+      jujutsu
       git 
       fossil
     ];
@@ -25,6 +26,7 @@
 
   imports = [
     (import (../configs/git) inputs)
+    (import (../configs/jujutsu) inputs)
     ../configs/zsh # Shell
     ../configs/vim # Coding
     ../configs/direnv # Useful for dev environments
