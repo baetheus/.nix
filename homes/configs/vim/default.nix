@@ -5,8 +5,8 @@
       vimPlugins.ale
       vimPlugins.vim-unimpaired
       vimPlugins.vim-commentary
-      vimPlugins.vim-fugitive
       vimPlugins.vim-noctu
+      vimPlugins.vim-ledger
     ];
     extraConfig = builtins.readFile ./vimrc;
   };
