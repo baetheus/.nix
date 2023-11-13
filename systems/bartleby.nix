@@ -9,6 +9,7 @@
   networking.hostName = "bartleby";
   networking.hostId = "1de212b7";
   networking.firewall.allowedTCPPorts = [ 22 80 443 32400 ];
+  networking.firewall.allowedUDPPorts = [ 41641 ]; # Tailscale
 
   # Secrets
   age.secrets.basicauth = {

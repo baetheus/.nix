@@ -12,6 +12,7 @@
   networking.hostName = "abigail";
   networking.hostId = "a9a768fa";
   networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+  networking.firewall.allowedUDPPorts = [ 41641 ]; # Tailscale
 
   # Secrets
   age.secrets.vaultwarden.file = ../secrets/vaultwarden.age;
