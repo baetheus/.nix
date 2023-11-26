@@ -62,7 +62,7 @@
     overrideFolders = true;
     overrideDevices = true;
     
-    devices = {
+    settings.devices = {
       "rosalind" = {
         id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW";
         addresses = [ "tcp://rosalind:22000" ];
@@ -77,7 +77,7 @@
       };
     };
 
-    folders = {
+    settings.folders = {
       "share" = {
         id = "xa7yg-wn5qo";
         path = "/home/brandon/share";
@@ -99,5 +99,6 @@
       };
     };
   };
+
 }
 
