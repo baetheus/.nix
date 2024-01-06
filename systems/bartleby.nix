@@ -72,7 +72,6 @@
       "series.null.pub" = {
         forceSSL = true;
         enableACME = true;
-        basicAuthFile = config.age.secrets.basicauth.path;
         locations."/" = {
           proxyPass = "http://0.0.0.0:8989";
           proxyWebsockets = true;
@@ -82,7 +81,6 @@
       "movies.null.pub" = {
         forceSSL = true;
         enableACME = true;
-        basicAuthFile = config.age.secrets.basicauth.path;
         locations."/" = {
           proxyPass = "http://0.0.0.0:7878";
           proxyWebsockets = true;
@@ -92,7 +90,6 @@
       "music.null.pub" = {
         forceSSL = true;
         enableACME = true;
-        basicAuthFile = config.age.secrets.basicauth.path;
         locations."/" = {
           proxyPass = "http://0.0.0.0:8686";
           proxyWebsockets = true;
