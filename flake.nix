@@ -14,6 +14,8 @@
 
     agenix.url = "github:ryantm/agenix/main";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
+
+    my-overlays.url = "./overlays";
   };
 
   outputs = inputs:

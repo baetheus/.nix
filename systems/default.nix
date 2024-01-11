@@ -9,12 +9,12 @@
 # TODO
 # * Simplify darwin configurations to be more like
 #   nixos configurations.
-{ self, nixpkgs, home-manager, nix-darwin, agenix, ... }:
+{ self, nixpkgs, home-manager, nix-darwin, agenix, my-overlays, ... }:
 let
   # Create pkgs from nixpkgs using system and overlays
   # Prefer allowUnfree
-  mkPkgs = { system, overlays ? [ ] }: import nixpkgs {
-    inherit system;
+  mkPkgs = { system, overlays ? my-overlays.overlays.default }: import nixpkgs {
+    inherit system overlays;
     config.allowUnfree = true;
   };
 
