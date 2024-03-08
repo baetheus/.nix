@@ -16,7 +16,6 @@
       # SCM
       jujutsu
       git 
-      fossil
     ];
   };
 

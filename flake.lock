@@ -152,11 +152,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-VYHszVc26Ug6z+lY3F//Mry1y7gIkurCiMAQ1eCkzXE=",
-        "path": "/nix/store/z65zmk6ass2ar2vsxj4lvchhjk1f5xsn-source/overlays",
+        "path": "/nix/store/cb2hn2vknfri14fq3vffskc57yb4ly25-source/overlays",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/z65zmk6ass2ar2vsxj4lvchhjk1f5xsn-source/overlays",
+        "path": "/nix/store/cb2hn2vknfri14fq3vffskc57yb4ly25-source/overlays",
         "type": "path"
       }
     },
