@@ -18,11 +18,20 @@
     my-overlays.url = "./overlays";
   };
 
-  outputs = inputs:
-    (import ./homes/default.nix inputs)
+  outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
+    (flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+        shell = with pkgs; mkShell {
+          buildInputs = [ nixos-anywhere ];
+        };
+      in
+      {
+        devShells.default = shell;
+      }))
+    // (import ./homes/default.nix inputs)
     // (import ./systems/default.nix inputs)
     // (import ./templates/default.nix inputs);
-
 }
 
 

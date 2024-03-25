@@ -93,5 +93,16 @@ in
         ./bartleby.nix
       ];
     };
+
+    # Test server (OVHCloud)
+    clementine = nixosSystem rec {
+      pkgs = mkPkgs { inherit system; };
+      system = "x86_64-linux";
+      modules = [
+        hm-nixos
+        self.homes.brandon.basic
+        ./clementine.nix
+      ];
+    };
   };
 }
