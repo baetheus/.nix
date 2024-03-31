@@ -30,6 +30,7 @@
         };
       in
       {
+        devShell = shell;
         devShells.default = shell;
       }))
     // (import ./homes/default.nix inputs)
