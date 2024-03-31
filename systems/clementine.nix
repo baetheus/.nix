@@ -33,7 +33,7 @@
 
   # Disks
   disko.devices = {
-    disk.sda {
+    disk.sda = {
       type = "disk";
       device = "/dev/disk/by-id/wwn-0x5000cca24bc0981d";
       content = {
