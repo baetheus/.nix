@@ -9,7 +9,7 @@
 # TODO
 # * Simplify darwin configurations to be more like
 #   nixos configurations.
-{ self, nixpkgs, home-manager, nix-darwin, agenix, flakes, ... }:
+{ self, nixpkgs, disko, home-manager, nix-darwin, agenix, flakes, ... }:
 let
   defaultOverlays = [
     flakes.jujutsu.overlays.default
@@ -103,6 +103,7 @@ in
       pkgs = mkPkgs { inherit system; };
       system = "x86_64-linux";
       modules = [
+        disko.nixosModules.disko
         hm-nixos
         self.homes.brandon.basic
         ./clementine.nix
