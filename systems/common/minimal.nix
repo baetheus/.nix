@@ -14,7 +14,7 @@
 
   # Configure nix for all the fun stuff
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixStable;
 
     settings = {
       trusted-users = [ "@wheel" ];

@@ -109,11 +109,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-GmIhHX+oyK6yia3ofshnYiu+q2pFvPJshPtXc+dDeeY=",
-        "path": "/nix/store/f05rmvp8f99zpqck11g8ginglrdcywbq-source/flakes",
+        "path": "/nix/store/sn5vfn3pvfrypkyaxfjhf1667j9hv3x7-source/flakes",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/f05rmvp8f99zpqck11g8ginglrdcywbq-source/flakes",
+        "path": "/nix/store/sn5vfn3pvfrypkyaxfjhf1667j9hv3x7-source/flakes",
         "type": "path"
       }
     },

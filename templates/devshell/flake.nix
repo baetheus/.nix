@@ -1,7 +1,7 @@
 {
   description = "A minimal devshell";
 
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.05";
   inputs.utils.url = "github:numtide/flake-utils";
   inputs.devshell.url = "github:numtide/devshell";
 

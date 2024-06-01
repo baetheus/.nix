@@ -1,7 +1,7 @@
 {
   description = "Devshell for managing secrets";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.05";
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.agenix-flake.url = "github:ryantm/agenix";
   inputs.agenix-flake.inputs.nixpkgs.follows = "nixpkgs";
