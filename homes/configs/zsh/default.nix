@@ -11,6 +11,7 @@
     initExtra = ''
       PROMPT="%n@%B%m%b %# "
       RPROMPT="%~"
+      export PATH="/Users/brandon/.deno/bin:$PATH"
       eval `ssh-agent`;
       new() {
         nix flake new -t ~/share/src/nix#$1 $2

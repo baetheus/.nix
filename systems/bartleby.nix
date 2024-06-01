@@ -29,7 +29,7 @@
       isSystemUser = true;
     };
     groups.media = {
-      members = [ "media" ];
+      members = [ "media" "nvidia" ];
     };
   };
 
@@ -46,6 +46,16 @@
         enableACME = true;
         locations."/" = {
           root = "/var/www/bartleby.null.pub";
+          extraConfig = "autoindex on;";
+        };
+      };
+
+      "media.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        basicAuthFile = config.age.secrets.basicauth.path;
+        locations."/" = {
+          root = "/media";
           extraConfig = "autoindex on;";
         };
       };
