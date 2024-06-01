@@ -50,6 +50,16 @@
         };
       };
 
+      "media.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        basicAuthFile = config.age.secrets.basicauth.path;
+        locations."/" = {
+          root = "/media";
+          extraConfig = "autoindex on;";
+        };
+      };
+
       "plex.null.pub" = {
         forceSSL = true;
         enableACME = true;
@@ -65,8 +75,7 @@
         basicAuthFile = config.age.secrets.basicauth.path;
         locations."/" = {
           proxyPass = "http://0.0.0.0:6789";
-          proxyWebsockets = true;
-        };
+          proxyWebsockets = true; };
       };
 
       "series.null.pub" = {
