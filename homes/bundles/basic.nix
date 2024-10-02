@@ -16,6 +16,8 @@
       # SCM
       jujutsu
       git 
+      # Work stuff
+      python312
     ];
   };
 
