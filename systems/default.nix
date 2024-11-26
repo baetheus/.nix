@@ -45,6 +45,7 @@ in
         self.homes.brandon.basic
         ./common/minimal.nix
         ./darwin/minimal.nix
+        ./darwin/diane.nix
       ];
     };
 
