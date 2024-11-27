@@ -185,27 +185,31 @@
         id = "5HMRD3B-UWFLIFC-XDY2NPO-TVWGA2U-GB5H2CT-FUFWNDB-OTKAGEQ-JGLF5QF";
         addresses = [ "tcp://abigail:22000" ];
       };
+      "diane" = {
+        id = "D5TXPEW-4MFW7PA-4HANFUA-XU7ZTDJ-I7PUNHU-5EC4YSQ-AA46NZM-OX7VDAO";
+        addresses = [ "tcp://diane:22000" ];
+      };
     };
 
     settings.folders = {
       "share" = {
         id = "xa7yg-wn5qo";
         path = "/home/brandon/share";
-        devices = [ "rosalind" "toph" "abigail" ];
+        devices = [ "rosalind" "toph" "abigail" "diane" ];
       };
 
       "photos" = {
         id = "xa7yg-ph0to";
         type = "receiveonly";
         path = "/home/brandon/photos";
-        devices = [ "rosalind" "toph" "abigail" ];
+        devices = [ "rosalind" "toph" "abigail" "diane" ];
       };
 
       "music" = {
         id = "xa7yg-mu5ic";
         type = "sendonly";
         path = "/media/music";
-        devices = [ "rosalind" "toph" "abigail" ];
+        devices = [ "rosalind" "toph" "abigail" "diane" ];
       };
     };
   };

@@ -151,27 +151,31 @@
         id = "OKG5G4Y-BJDA6GS-3G6XCCN-QZC6RIS-N7QDDS5-WL6MO2C-N74QD3S-YC5AIQ5";
         addresses = [ "tcp://bartleby:22000" ];
       };
+      "diane" = {
+        id = "D5TXPEW-4MFW7PA-4HANFUA-XU7ZTDJ-I7PUNHU-5EC4YSQ-AA46NZM-OX7VDAO";
+        addresses = [ "tcp://diane:22000" ];
+      };
     };
 
     settings.folders = {
       "share" = {
         id = "xa7yg-wn5qo";
         path = "/home/brandon/share";
-        devices = [ "rosalind" "toph" "bartleby" ];
+        devices = [ "rosalind" "toph" "bartleby" "diane" ];
       };
 
       "photos" = {
         id = "xa7yg-ph0to";
         type = "sendonly";
         path = "/var/lib/photoprism/originals";
-        devices = [ "rosalind" "toph" "bartleby" ];
+        devices = [ "rosalind" "toph" "bartleby" "diane" ];
       };
 
       "music" = {
         id = "xa7yg-mu5ic";
         type = "receiveonly";
         path = "/home/brandon/music";
-        devices = [ "rosalind" "toph" "bartleby" ];
+        devices = [ "rosalind" "toph" "bartleby" "diane" ];
       };
     };
   };
