@@ -15,6 +15,7 @@
   # Configure nix for all the fun stuff
   nix = {
     package = pkgs.nixStable;
+    optimise.automatic = true;
 
     settings = {
       trusted-users = [ "@wheel" ];
@@ -24,8 +25,6 @@
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       ];
-
-      auto-optimise-store = true;
     };
 
     gc = {
