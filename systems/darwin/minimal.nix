@@ -10,6 +10,8 @@
 
   # System
   system = {
+    stateVersion = 5;
+
     defaults = {
       NSGlobalDomain = {
         AppleMetricUnits = 1;
@@ -39,7 +41,7 @@
 
       dock = {
         autohide = true;
-        expose-group-by-app = false;
+        expose-group-apps = false;
         mru-spaces = false;
         tilesize = 32;
         showhidden = true;

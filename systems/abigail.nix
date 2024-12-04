@@ -140,7 +140,7 @@
 
     settings.devices = {
       "rosalind" = {
-        id = "FU4DRZY-65RNCNZ-CDJXQOS-V2PKRY2-ULGBH4J-Q5AA7GC-WNQ3JFP-PLB6MQW";
+        id = "FIFUNFL-3QFVW3N-5P7XESL-Q7JZF4S-55B7TTY-2KG57S5-5JYAZVE-KHDOGAW";
         addresses = [ "tcp://rosalind:22000" ];
       };
       "toph" = {

@@ -9,11 +9,10 @@
 # TODO
 # * Simplify darwin configurations to be more like
 #   nixos configurations.
-{ self, nixpkgs, disko, home-manager, nix-darwin, agenix, flakes, ... }:
+
+{ self, nixpkgs, disko, home-manager, nix-darwin, agenix, ... }:
 let
-  defaultOverlays = [
-    flakes.jujutsu.overlays.default
-  ];
+  defaultOverlays = [ ];
 
   # Create pkgs from nixpkgs using system and overlays
   # Prefer allowUnfree
