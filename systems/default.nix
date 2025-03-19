@@ -19,6 +19,10 @@ let
   mkPkgs = { system, overlays ? defaultOverlays }: import nixpkgs {
     inherit system overlays;
     config.allowUnfree = true;
+    # TODO: Remove asap
+    config.permittedInsecurePackages = [
+      "dotnet-sdk-6.0.428"
+    ];
   };
 
   # Supplement nixosSystem with flake inputs

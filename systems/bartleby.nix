@@ -104,15 +104,6 @@
           proxyWebsockets = true;
         };
       };
-
-      "reader.null.pub" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/" = {
-          proxyPass = "http://0.0.0.0:8080";
-          proxyWebsockets = true;
-        };
-      };
     };
   };
 
@@ -153,11 +144,6 @@
     # This is an internal only service
     # Requires ssh tunnel for setup
     openFirewall = false;
-  };
-
-  services.miniflux = {
-    enable = true;
-    adminCredentialsFile = config.age.secrets.miniflux.path;
   };
 
   # Syncthing

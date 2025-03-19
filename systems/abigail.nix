@@ -106,11 +106,11 @@
 
     settings = {
       server_url = "https://net.null.pub";
-      dns_config = {
+      dns = {
         magic_dns = true;
         base_domain = "rou.st";
-        domains = [ "rou.st" ];
-        nameservers = [ "1.1.1.1" ];
+        search_domains = [ "rou.st" ];
+        nameservers.global = [ "1.1.1.1" "4.4.4.4" ];
       };
     };
   };
