@@ -138,14 +138,6 @@
     group = "media";
   };
 
-  # NZB Hydra
-  services.nzbhydra2 = {
-    enable = true;
-    # This is an internal only service
-    # Requires ssh tunnel for setup
-    openFirewall = false;
-  };
-
   # Syncthing
   services.syncthing = {
     enable = true;
