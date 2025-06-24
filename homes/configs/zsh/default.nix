@@ -8,7 +8,7 @@
     enable = true;
     dotDir = ".local/zsh";
     defaultKeymap = "viins"; # Use vi for insert mode
-    initExtra = ''
+    initContent = ''
       PROMPT="%n@%B%m%b %# "
       RPROMPT="%~"
       export PATH="/Users/brandon/.deno/bin:$PATH"
