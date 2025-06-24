@@ -1,15 +1,11 @@
 { pkgs, ... }: {
-  # Users
-  nix.configureBuildUsers = true;
-
-  # Services
-  services.nix-daemon.enable = true;
-
   # Programs
   programs.zsh.enable = true;
 
   # System
   system = {
+    primaryUser = "brandon";
+
     stateVersion = 5;
 
     defaults = {
