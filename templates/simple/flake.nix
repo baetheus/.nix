@@ -19,7 +19,7 @@
 
         shellHook = ''
           export SOME_ENV_VAR="Hello World"
-        ''
+        '';
       };
     in {
       devShells.default = shell;
