@@ -5,10 +5,15 @@ inputs: {
       path = ./simple;
       description = "nix flake new -t github:baetheus/.nix#simple .";
     };
-    # Simple nix flake with numtide devShell and flake-utils
+    # A nix flake setup for rust
     rust = {
       path = ./rust;
       description = "nix flake new -t github:baetheus/.nix#rust .";
+    };
+    # A web api and frontend client pair template for TypeScript
+    web = {
+      path = ./web;
+      description = "nix flake new -t github:baetheus/.nix#web .";
     };
   };
 }
