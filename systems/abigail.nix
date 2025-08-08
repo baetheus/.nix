@@ -3,7 +3,6 @@
 {
   imports = [
     ./bundles/sys-1-sat-32.nix
-    ./modules/photoprism-local.nix
   ];
 
   # General
@@ -16,7 +15,6 @@
 
   # Secrets
   age.secrets.vaultwarden.file = ../secrets/vaultwarden.age;
-  age.secrets.photoprism.file = ../secrets/photoprism.age;
 
   # Nginx
   security.acme.acceptTerms = true;
@@ -38,18 +36,6 @@
         locations."/" = {
           root = "/var/www/public.null.pub";
           extraConfig = "autoindex on;";
-        };
-      };
-
-      "photos.null.pub" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:2342";
-          proxyWebsockets = true;
-          extraConfig = ''
-            proxy_buffering off;
-          '';
         };
       };
 
@@ -180,12 +166,12 @@
         devices = [ "rosalind" "toph" "bartleby" "diane" ];
       };
 
-      "photos" = {
-        id = "xa7yg-ph0to";
-        type = "sendonly";
-        path = "/var/lib/photoprism/originals";
-        devices = [ "rosalind" "toph" "bartleby" "diane" ];
-      };
+      # "photos" = {
+      #   id = "xa7yg-ph0to";
+      #   type = "sendonly";
+      #   path = "/var/lib/photoprism/originals";
+      #   devices = [ "rosalind" "toph" "bartleby" "diane" ];
+      # };
 
       "music" = {
         id = "xa7yg-mu5ic";
@@ -194,13 +180,6 @@
         devices = [ "rosalind" "toph" "bartleby" "diane" ];
       };
     };
-  };
-
-  # Photoprism
-  services.photoprism-local = {
-    enable = true;
-    group = "users";
-    environmentFile = config.age.secrets.photoprism.path;
   };
 
   # Immich
