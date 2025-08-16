@@ -86,7 +86,7 @@
         enableACME = true;
         forceSSL = true;
         locations."/" = {
-          proxyPass = "http://[::1]:${toString config.services.pocket-id.port}";
+          proxyPass = "http://[::1]:1411";
           proxyWebsockets = true;
           recommendedProxySettings = true;
           extraConfig = ''
