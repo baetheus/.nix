@@ -147,6 +147,7 @@
   # Personal OIDC provider
   services.pocket-id = {
     enable = true;
+    package = pkgs.unstable.pocket-id;
     settings = {
       TRUST_PROXY = true;
       PUBLIC_APP_URL = "https://id.null.pub";

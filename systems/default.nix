@@ -10,9 +10,17 @@
 # * Simplify darwin configurations to be more like
 #   nixos configurations.
 
-{ self, nixpkgs, disko, home-manager, nix-darwin, agenix, ... }:
+{ self, nixpkgs, disko, home-manager, nix-darwin, agenix, ... } @ inputs:
 let
-  defaultOverlays = [ ];
+  defaultOverlays = [
+    # This overlay puts unstable packages in pkgs.unstable
+    (final: prev: {
+      unstable = import inputs.nixpkgs-unstable {
+        system = final.system;
+        config.allowUnfree = true;
+      };
+    })
+  ];
 
   # Create pkgs from nixpkgs using system and overlays
   # Prefer allowUnfree
