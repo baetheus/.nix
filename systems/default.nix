@@ -10,12 +10,12 @@
 # * Simplify darwin configurations to be more like
 #   nixos configurations.
 
-{ self, nixpkgs, disko, home-manager, nix-darwin, agenix, ... } @ inputs:
+{ self, nixpkgs, nixpkgs-unstable, disko, home-manager, nix-darwin, agenix, ... } @ inputs:
 let
   defaultOverlays = [
     # This overlay puts unstable packages in pkgs.unstable
     (final: prev: {
-      unstable = import inputs.nixpkgs-unstable {
+      unstable = import nixpkgs-unstable {
         system = final.system;
         config.allowUnfree = true;
       };
@@ -91,6 +91,14 @@ in
       pkgs = mkPkgs { inherit system; };
       system = "x86_64-linux";
       modules = [
+        {
+          disabledModules = [
+            "services/security/pocket-id.nix"
+          ];
+          imports = [
+            "${nixpkgs-unstable}/nixos/modules/services/security/pocket-id.nix"
+          ];
+        }
         hm-nixos
         agenix.nixosModules.age
         self.homes.brandon.basic

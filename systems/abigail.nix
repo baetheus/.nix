@@ -1,17 +1,9 @@
 { config, pkgs, ... } @ inputs:
 
 {
-  # Disable 
-  disabledModules = [
-    "services/security/pocket-id.nix"
-  ];
-
   # Imports
   imports = [
     ./bundles/sys-1-sat-32.nix
-
-    # Add pocket-id from unstable
-    "${inputs.nixpkgs-unstable}/nixos/modules/services/security/pocket-id.nix"
   ];
 
   # General
@@ -159,7 +151,7 @@
     package = pkgs.unstable.pocket-id;
     settings = {
       TRUST_PROXY = true;
-      PUBLIC_APP_URL = "https://id.null.pub";
+      APP_URL = "https://id.null.pub";
     };
   };
 
