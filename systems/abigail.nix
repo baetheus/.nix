@@ -128,6 +128,15 @@
     environmentFile = config.age.secrets.vaultwarden.path;
   };
 
+  # Personal OIDC provider
+  services.pocket-id = {
+    enable = true;
+    settings = {
+      TRUST_PROXY = true;
+      PUBLIC_APP_URL = "https://id.null.pub";
+    };
+  };
+
   # Syncthing
   services.syncthing = {
     enable = true;
