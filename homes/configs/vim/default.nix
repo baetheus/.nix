@@ -9,7 +9,7 @@
 
       # Life Plugins
       vimPlugins.vim-ledger
-      vimPlugins.vim-orgmode
+      vimPlugins.todo-txt-vim
 
       # Programming Plugins
       vimPlugins.ale

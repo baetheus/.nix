@@ -4,6 +4,7 @@ set re=0
 filetype plugin indent on
 colorscheme noctu
 
+set exrc
 set nocompatible
 set background=dark
 set expandtab
@@ -29,7 +30,12 @@ set backupdir=~/.local/vim/backup//,/tmp//
 set directory=~/.local/vim/swp//,/tmp//
 set undodir=~/.local/vim/undo//,/tmp//
 
+" Leader mapping
 map <Space> <Leader>
+
+" Custom unimpaired mappings
+nmap [w <C-W>w
+nmap ]w <C-W>W
 
 " Fuzzy file finding
 set path=$PWD/**
@@ -85,13 +91,23 @@ nmap <Leader>f <Plug>(ale_fix)
 nmap <silent> [d <Plug>(ale_previous_wrap)
 nmap <silent> ]d <Plug>(ale_next_wrap)
 
+let is_node = $IS_NODE
+
+if is_node == '1'
+  let js_linters = ['eslint', 'tsserver']
+  let js_fixers = ['eslint', 'prettier']
+else
+  let js_linters = ['deno']
+  let js_fixers = ['deno']
+endif
+
 " ALE linters
 let g:ale_linters = {
-\  'javascript': ['deno'],
-\  'javascriptreact': ['deno'],
 \  'nix': ['rnix_lsp'],
-\  'typescript': ['deno'],
-\  'typescriptreact': ['deno'],
+\  'javascript': js_linters,
+\  'javascriptreact': js_linters,
+\  'typescript': js_linters,
+\  'typescriptreact': js_linters,
 \  'rust': ['analyzer'],
 \  'json': ['jq'],
 \  'go': ['gofmt', 'gopls'],
@@ -101,11 +117,11 @@ let g:ale_linters = {
 " ALE fixers (formatting)
 let g:ale_fixers = {
 \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-\  'javascript': ['deno'],
-\  'javascriptreact': ['deno'],
 \  'nix': ['statix'],
-\  'typescript': ['deno'],
-\  'typescriptreact': ['deno'],
+\  'javascript': js_fixers,
+\  'javascriptreact': js_fixers,
+\  'typescript': js_fixers,
+\  'typescriptreact': js_fixers,
 \  'rust': ['rustfmt'],
 \  'json': ['jq'],
 \  'go': ['gofmt', 'goimports'],
