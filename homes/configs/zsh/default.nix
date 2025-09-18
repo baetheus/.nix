@@ -11,6 +11,7 @@
     initContent = ''
       PROMPT="%n@%B%m%b %# "
       RPROMPT="%~"
+      COLORTERM=1
       export PATH="/Users/brandon/.deno/bin:$PATH"
       eval `ssh-agent`;
       new() {
@@ -19,10 +20,10 @@
     '';
 
     shellAliases = {
-      ll = "ls -alhG"; # Pretty ll
+      ll = "ls -alhG --color=always"; # Pretty ll
       vi = "vim"; # Prefer vim
       sw = if pkgs.stdenv.isDarwin
-        then "darwin-rebuild switch --flake ~/share/src/nix"
+        then "sudo darwin-rebuild switch --flake ~/share/src/nix"
         else "nixos-rebuild switch --flake ~/share/src/nix --use-remote-sudo";
     };
 

@@ -68,6 +68,9 @@ endfunction
 inoremap <Tab> <c-r>=Tab()<CR>
 inoremap <S-Tab> <c-r>=ShiftTab()<CR>
 
+" Ledger settings
+let g:ledger_is_hledger = 1
+
 " ALE Settings
 let g:ale_fix_on_save = 1 " Run fixers on write
 let g:ale_completion_enabled = 1 " Allow autocompletion

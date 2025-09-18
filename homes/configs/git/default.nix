@@ -9,6 +9,12 @@
     };
     extraConfig = {
       init.defaultBranch = "main";
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowedGitSigners";
+    };
+    signing = {
+      format = "ssh";
+      key = "~/.ssh/id_ed25519_sk_rk_default.pub";
+      signByDefault = true;
     };
   };
 }
