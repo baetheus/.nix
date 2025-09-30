@@ -13,6 +13,7 @@
       ripgrep # Because I always need it
       tailscale # For remote access
       bottom # basic perf
+      comma # trying it out
       # SCM
       jujutsu
       git 
