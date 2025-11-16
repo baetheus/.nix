@@ -1,5 +1,6 @@
 { config, pkgs, ... }: {
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  # Default to latest LTS kernel but update this if needed
+  # boot.kernelPackages = pkgs.linuxPackages_6_12;
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.devNodes = "/dev/";
 
