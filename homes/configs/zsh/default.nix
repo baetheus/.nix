@@ -19,6 +19,8 @@
       }
     '';
 
+    envExtra = "eval \"$(direnv hook zsh)\"";
+
     shellAliases = {
       ll = "ls -alhG --color=always"; # Pretty ll
       vi = "vim"; # Prefer vim

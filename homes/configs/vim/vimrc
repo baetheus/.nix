@@ -33,7 +33,7 @@ set undodir=~/.local/vim/undo//,/tmp//
 " Leader mapping
 map <Space> <Leader>
 
-" Custom unimpaired mappings
+" Custom unimpaired mappings for jumping between windows
 nmap [w <C-W>w
 nmap ]w <C-W>W
 
@@ -42,7 +42,7 @@ set path=$PWD/**
 set wildmenu
 set wildignore+=**/.git/**,**/node_modules/**,**/result/**,**/dist/**,**/build/**
 
-" Use ripgrep
+" Use ripgrep for grep when we can
 if executable("rg")
   set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
   set grepformat=%f:%l:%c:%m
@@ -76,8 +76,6 @@ let g:ale_fix_on_save = 1 " Run fixers on write
 let g:ale_completion_enabled = 1 " Allow autocompletion
 let g:ale_completion_autoimport = 1 " Allow autocompletion of imports
 let g:ale_set_balloons = 1 " Show hover info in balloon
-
-" ALE deno customization
 let g:ale_deno_unstable = 1
 
 " ALE Autocompletion
@@ -94,6 +92,8 @@ nmap <Leader>f <Plug>(ale_fix)
 nmap <silent> [d <Plug>(ale_previous_wrap)
 nmap <silent> ]d <Plug>(ale_next_wrap)
 
+" Stupid work still uses node, so switch up linters/fixers based on
+" the IS_NODE environment variable. ;_;
 let is_node = $IS_NODE
 
 if is_node == '1'
@@ -127,6 +127,6 @@ let g:ale_fixers = {
 \  'typescriptreact': js_fixers,
 \  'rust': ['rustfmt'],
 \  'json': ['jq'],
-\  'go': ['gofmt', 'goimports'],
+\  'go': ['gofmt', 'goimports', 'gopls'],
 \  'markdown': ['deno']
 \}
