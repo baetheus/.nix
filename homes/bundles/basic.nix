@@ -21,6 +21,7 @@
   };
 
   programs = {
+    # We are using home manager
     home-manager.enable = true;
   };
 

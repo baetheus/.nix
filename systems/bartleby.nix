@@ -104,6 +104,15 @@
           proxyWebsockets = true;
         };
       };
+
+      "read.null.pub" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:8787";
+          proxyWebsockets = true;
+        };
+      };
     };
   };
 
@@ -133,6 +142,12 @@
   };
 
   services.lidarr = {
+    enable = true;
+    user = "media";
+    group = "media";
+  };
+
+  services.readarr = {
     enable = true;
     user = "media";
     group = "media";
