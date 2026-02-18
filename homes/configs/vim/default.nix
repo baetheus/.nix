@@ -6,11 +6,9 @@
       vimPlugins.vim-unimpaired
       vimPlugins.vim-commentary
       vimPlugins.vim-noctu
-      vimPlugins.vim-sneak
 
       # Life Plugins
       vimPlugins.vim-ledger
-      vimPlugins.todo-txt-vim
 
       # Programming Plugins
       vimPlugins.ale
