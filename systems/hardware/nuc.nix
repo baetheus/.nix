@@ -28,6 +28,11 @@
       fsType = "vfat";
     };
 
+  fileSystems."/media" =
+    { device = "pool/media";
+      fsType = "zfs";
+    };
+
   swapDevices = [ ];
 
   networking.useDHCP = lib.mkDefault true;
