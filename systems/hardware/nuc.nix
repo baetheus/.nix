@@ -29,7 +29,7 @@
     };
 
   fileSystems."/media" =
-    { device = "pool/media";
+    { device = "media/media";
       fsType = "zfs";
     };
 
