@@ -15,6 +15,7 @@
       vimPlugins.vim-dadbod
       vimPlugins.vim-dadbod-ui
       vimPlugins.vim-dadbod-completion
+      nixfmt
     ];
     extraConfig = builtins.readFile ./vimrc;
   };
