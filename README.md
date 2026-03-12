@@ -1,3 +1,5 @@
+<h1>This repository is archived. Its replacement lives at github:baetheus/nur</h1>
+
 # Brandon's Nix Flake
 
 I use nix flakes to manage laptop and server configurations,
